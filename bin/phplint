@@ -1,0 +1,9 @@
+#!/bin/sh
+
+WORKING_DIR='.'
+if [ -n "$1" ]; then
+	WORKING_DIR="$1"
+fi
+
+# We're only interested in errors (i.e. ignore 'No syntax errors')
+find "$WORKING_DIR" -type f -name '*.php' -print0 | xargs -0 -n1 -P4 php -lf | grep -Hnv 'No syntax errors'

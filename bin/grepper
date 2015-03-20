@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	echo 'Need a search string' ;
+	exit
+fi
+
+WORKING_DIR='.'
+if [ -n "$2" ]; then
+	WORKING_DIR="$2"
+fi
+
+# TODO: pass name search patterns as args
+find "$WORKING_DIR" -type f \( -name '*.php' -o -name '*.js' \) -print0 | xargs -0 grep -Hn "$1"

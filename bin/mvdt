@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Add -remote-tab-silent if arguments specified
+MVIMARGS='--servername DEV'
+if [ $# -gt 0 ]; then
+	MVIMARGS="$MVIMARGS --remote-tab-silent" ;
+fi
+
+eval mvim "$MVIMARGS $@"
