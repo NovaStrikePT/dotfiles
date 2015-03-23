@@ -1,26 +1,26 @@
 "Display current whitespace option values
-function! WSStatus()
+function! whitespace#Status()
 	set expandtab? smarttab? tabstop? shiftwidth? softtabstop?
 endfunction
 
 "New tabs and indentations will be 8 spaces
-function! WSUseSpaces()
+function! whitespace#UseSpaces()
 	set expandtab smarttab tabstop=8 shiftwidth=8 softtabstop=0 
 endfunction
 
 "Use tabs that appear 8 characters long
-function! WSUseTabs()
+function! whitespace#UseTabs()
 	set noexpandtab tabstop=8 shiftwidth=8 softtabstop=0
 endfunction
 
 "Convert tabs to spaces
-function! WSConvertToSpaces()
+function! whitespace#ConvertToSpaces()
 	call WSUseSpaces()
 	retab
 endfunction
 
 "Convert spaces to tabs
-function! WSConvertToTabs()
+function! whitespace#ConvertToTabs()
 	call WSUseTabs()
 	retab!
 endfunction
