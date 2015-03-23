@@ -91,5 +91,5 @@ PS1="\n\[$Yellow\]\w\[$BRed\]\$(__git_ps1)\n\[$Cyan\]\d \@ \[$White\]\h:\[$Green
 
 # Git auto-completion
 if [ -f "${HOME}/git-completion.bash" ]; then
-	source "${HOME}/.git-completion.bash"
+	source "${HOME}/git-completion.bash"
 fi
