@@ -83,8 +83,8 @@ On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White
 
 # Git prompt
-if [ -f "${HOME}/.git-prompt.sh" ]; then
-	source "${HOME}/.git-prompt.sh"
+if [ -f "${HOME}/git-prompt.sh" ]; then
+	source "${HOME}/git-prompt.sh"
 fi
 
 PS1="\n\[$Yellow\]\w\[$BRed\]\$(__git_ps1)\n\[$Cyan\]\d \@ \[$White\]\h:\[$Green\]\u\[$Color_Off\] \$ "
