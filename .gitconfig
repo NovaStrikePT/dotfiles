@@ -1,0 +1,11 @@
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	dt = difftool
+[diff]
+	tool = meld
+[merge]
+	tool = meld
+[user]
+	name = Phuong Tran
