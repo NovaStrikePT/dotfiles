@@ -11,4 +11,4 @@ if [ -n "$2" ]; then
 fi
 
 # TODO: pass name search patterns as args
-find "$WORKING_DIR" -type f \( -name '*.php' -o -name '*.js' \) -print0 | xargs -0 grep -Hn "$1"
+find "$WORKING_DIR" -type f \( -name '*.php' -o -name '*.js' \) -print0 | xargs -0 grep --color=auto -Hn "$1"
