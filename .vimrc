@@ -11,8 +11,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Install these from Github repos
-Plugin 'wincent/command-t'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'wincent/command-t'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -27,6 +28,12 @@ set ruler
 set colorcolumn=120
 set laststatus=2
 set autoindent
+set incsearch
 set hlsearch
+
+" Use airline tabline extension for non-gui vims
+if !has('gui_running')
+	let g:airline#extensions#tabline#enabled = 1
+endif
 
 syntax on
