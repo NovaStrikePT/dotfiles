@@ -1,14 +1,105 @@
 #!/bin/bash
 
+##
+# Show script usage
+##
+show_usage() {
+cat <<-USAGE
+	Usage:
+	${0##*/} search_string -f filename_pattern [-f filename_pattern2 [-f…]] [-e exclude_path1 [-e exclude_path2 [-e…]]] [search_path]
+
+	Exclude paths should not have a trailing slash.
+
+	Example:
+	${0##*/} '^function\\s\\+' -f '*.php' -f '*.js' -e projects/.git -e projects/lib/*.js projects
+USAGE
+}
+
+# Search string should be first positional argument
+#
 if [ -z "$1" ]; then
-	echo 'Need a search string' ;
-	exit
+	echo 'search_string is required'
+	show_usage >&2
+	exit 1
+fi
+search_string="$1"
+shift
+
+# Parse options
+#
+# Reset OPTIND in case getopts was used previously
+OPTIND=1
+
+# At least one -f is required
+# Accumulate -f and -e args in arrays
+f_given=false
+f_count=0
+e_count=0
+while getopts "f:e:" opt; do
+	case "$opt" in
+		f)
+			f_args[$f_count]=$OPTARG
+			((f_count++))
+			if [ $f_given != true ]; then
+				f_given=true
+			fi
+			;;
+		e)
+			e_args[$e_count]=$OPTARG
+			((e_count++))
+			;;
+		'?')
+			show_usage >&2
+			exit 1
+			;;
+	esac
+done
+
+# Check required option: -f
+if [ $f_given != true ]; then
+	echo 'At least one filename pattern is required'
+	show_usage >&2
+	exit 1
 fi
 
-WORKING_DIR='.'
-if [ -n "$2" ]; then
-	WORKING_DIR="$2"
+# The next positional argument, if it is given, should be the search path
+#
+shift "$((OPTIND-1))" # Shift off the options and optional --.
+working_dir='.'
+if [ -n "$1" ]; then
+	working_dir="$1"
 fi
 
-# TODO: pass name search patterns as args
-find "$WORKING_DIR" -type f \( -name '*.php' -o -name '*.js' \) -print0 | xargs -0 grep --color=auto -Hn "$1"
+# Build name pattern arguments string
+#
+filename_patterns='-type f \( '
+filename_patterns="$filename_patterns -name '${f_args[0]}'"
+
+i=1
+while [ "$i" -lt "$f_count" ]; do
+	filename_patterns="$filename_patterns -o -name '${f_args[i]}'"
+	((i++))
+done
+
+filename_patterns="$filename_patterns \\)"
+
+# Build path pruning arguments string
+#
+if [ ${e_args[0]+notexist} ]; then
+	prune_args="\\( -path '${e_args[0]}'"
+fi
+
+i=1
+while [ "$i" -lt "$e_count" ]; do
+	prune_args="$prune_args -o -path '${e_args[i]}'"
+	((i++))
+done
+
+if [ -n "$prune_args" ]; then
+	prune_args="$prune_args \\) -prune -o"
+fi
+
+# Execute the search
+#
+search_cmd="find '$working_dir' $prune_args $filename_patterns -print0 | xargs -0 grep --color=auto -Hn '$search_string'"
+eval "$search_cmd"
