@@ -20,18 +20,28 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 set backspace=indent,eol,start
+
 set directory^=$HOME/.vim/.swap_files
+
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
+
 set ruler
 set colorcolumn=120
+
+"Use soft wrapping
+set textwidth=0
+set linebreak
+set wrap
+
 set laststatus=2
 set autoindent
+
 set incsearch
 set hlsearch
 
-" Use airline tabline extension for non-gui vims
+" Use airline tabline extension for non-gui vims; let GUI vims use their own tabbing interface
 if !has('gui_running')
 	let g:airline#extensions#tabline#enabled = 1
 endif
