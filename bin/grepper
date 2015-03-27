@@ -65,9 +65,10 @@ fi
 # The next positional argument, if it is given, should be the search path
 #
 shift "$((OPTIND-1))" # Shift off the options and optional --.
-working_dir='.'
 if [ -n "$1" ]; then
 	working_dir="$1"
+else
+	working_dir='.'
 fi
 
 # Build name pattern arguments string

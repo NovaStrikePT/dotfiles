@@ -1,8 +1,9 @@
 #!/bin/sh
 
-WORKING_DIR='.'
 if [ -n "$1" ]; then
 	WORKING_DIR="$1"
+else
+	WORKING_DIR='.'
 fi
 
 # We're only interested in errors (i.e. ignore 'No syntax errors')
