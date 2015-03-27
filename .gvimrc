@@ -1,6 +1,6 @@
 colorscheme solarized
 set background=light
-AirlineTheme tomorrow
+let g:airline_theme = 'tomorrow'
 "set background=dark
-""AirlineTheme luna
+"let g:airline_theme = 'luna'
 set guifont=Menlo:h12

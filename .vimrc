@@ -44,7 +44,7 @@ set hlsearch
 " Use airline tabline extension for non-gui vims; let GUI vims use their own tabbing interface
 if !has('gui_running')
 	let g:airline#extensions#tabline#enabled = 1
-	AirlineTheme dark
+	let g:airline_theme = 'dark'
 endif
 
 syntax on
