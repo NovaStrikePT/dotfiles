@@ -1,3 +1,6 @@
 colorscheme solarized
-"set lines=60 columns=130
+set background=light
+AirlineTheme tomorrow
+"set background=dark
+""AirlineTheme luna
 set guifont=Menlo:h12
