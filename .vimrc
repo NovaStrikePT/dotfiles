@@ -41,10 +41,11 @@ set autoindent
 set incsearch
 set hlsearch
 
-" Use airline tabline extension for non-gui vims; let GUI vims use their own tabbing interface
+" For non-gui vims, use use airline tabline extension and dark theme
+" Let GUI vims use their own tabbing interface
 if !has('gui_running')
 	let g:airline#extensions#tabline#enabled = 1
-	let g:airline_theme = 'dark'
+	autocmd VimEnter * AirlineTheme dark
 endif
 
 syntax on
