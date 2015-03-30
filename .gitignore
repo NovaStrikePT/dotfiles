@@ -1,1 +1,6 @@
+# Vim bundles that Vundle installs
+.vim/bundle/*
+!.vm/bundle/Vundle.vim
+
+# OS X Files
 .DS_Store
