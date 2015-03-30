@@ -7,6 +7,11 @@ These dotfiles have only been tested on my Yosemite environments.
 2. Init submodules
 
 	```
+	#Antigen
+	cd antigen
+	git submodule init
+	git submodule update
+	
 	#Vundle.vim
 	cd .vim/bundle/Vundle.vim/
 	git submodule init
