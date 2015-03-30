@@ -4,63 +4,47 @@
 # Show script usage
 ##
 show_usage() {
-cat <<-USAGE
-	Usage:
-	${0##*/} search_string -f filename_pattern [-f filename_pattern2 [-f…]] [-e exclude_path1 [-e exclude_path2 [-e…]]] [search_path]
+cat <<USAGE
+Usage:
+	${0##*/} <search_string> <file_extensions> [-x <exclude_pattern>] [<search_path>]
 
-	Exclude paths should not have a trailing slash.
+	<search_string> is a pattern passed to grep.
+	<file_extensions> should be a string with vertical bar separated values.
+	<exclude_pattern> will be matched anywhere in the find path.
 
-	Example:
-	${0##*/} '^function\\s\\+' -f '*.php' -f '*.js' -e projects/.git -e projects/lib/*.js projects
+Example:
+	#Search starting at the current working directory for files with extension .php, .java, .js, excluding any paths that have .git or lib directories
+	${0##*/} '^function\\s\\+' 'php|java|js' -x '/(\.git|lib)/' .
 USAGE
 }
 
 # Search string should be first positional argument
+# File extension pattern the second
 #
 if [ -z "$1" ]; then
 	echo 'search_string is required'
 	show_usage >&2
 	exit 1
+elif [ -z "$2" ]; then
+	echo 'file_extension is required'
+	show_usage >&2
+	exit 1
 fi
 search_string="$1"
-shift
+include_pattern="$2"
+shift 2
 
 # Parse options
 #
 # Reset OPTIND in case getopts was used previously
 OPTIND=1
-
-# At least one -f is required
-# Accumulate -f and -e args in arrays
-f_given=false
-f_count=0
-e_count=0
-while getopts "f:e:" opt; do
+while getopts "x:" opt; do
 	case "$opt" in
-		f)
-			f_args[$f_count]=$OPTARG
-			((f_count++))
-			if [ $f_given != true ]; then
-				f_given=true
-			fi
-			;;
-		e)
-			e_args[$e_count]=$OPTARG
-			((e_count++))
-			;;
-		'?')
-			show_usage >&2
-			exit 1
+		x)
+			exclude_pattern=$OPTARG
 			;;
 	esac
 done
-
-# Check required option: -f
-if [ $f_given != true ]; then
-	echo 'At least one filename pattern is required'
-	show_usage >&2
-	exit 1
-fi
 
 # The next positional argument, if it is given, should be the search path
 #
@@ -73,34 +57,16 @@ fi
 
 # Build name pattern arguments string
 #
-filename_patterns='-type f \( '
-filename_patterns="$filename_patterns -name '${f_args[0]}'"
-
-i=1
-while [ "$i" -lt "$f_count" ]; do
-	filename_patterns="$filename_patterns -o -name '${f_args[i]}'"
-	((i++))
-done
-
-filename_patterns="$filename_patterns \\)"
+filesearch_args="-type f -iregex '.*\\.($include_pattern)'"
 
 # Build path pruning arguments string
 #
-if [ ${e_args[0]+notexist} ]; then
-	prune_args="\\( -path '${e_args[0]}'"
-fi
-
-i=1
-while [ "$i" -lt "$e_count" ]; do
-	prune_args="$prune_args -o -path '${e_args[i]}'"
-	((i++))
-done
-
-if [ -n "$prune_args" ]; then
-	prune_args="$prune_args \\) -prune -o"
+if [ -n "$exclude_pattern" ]; then
+	prune_args="-iregex '.*$exclude_pattern.*' -prune -o"
 fi
 
 # Execute the search
 #
-search_cmd="find '$working_dir' $prune_args $filename_patterns -print0 | xargs -0 grep --color=auto -Hn '$search_string'"
+search_cmd="find -E '$working_dir' $prune_args $filesearch_args -print0 | xargs -0 grep --color=auto -Hn '$search_string'"
+echo "$search_cmd"
 eval "$search_cmd"
