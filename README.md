@@ -3,8 +3,9 @@ These dotfiles have only been tested on my Yosemite environments.
 
 ## After cloning
 
-1. Create symlinks
-2. Init submodules
+1. Install [patched Powerline fonts](https://github.com/powerline/fonts).
+1. Create symlinks.
+2. Init submodules.
 
 	```
 	#Antigen
@@ -17,12 +18,12 @@ These dotfiles have only been tested on my Yosemite environments.
 	git submodule init
 	git submodule update
 	```
-3. Install Vundle plugins
+3. Install Vundle plugins.
 
 	```
 	vim +PluginInstall +qall
 	```
-4. Compile Command-T
+4. Compile Command-T.
 
 	```
 	cd ~/.vim/bundle/command-t/ruby/command-t

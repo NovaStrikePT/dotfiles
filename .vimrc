@@ -41,6 +41,10 @@ set autoindent
 set incsearch
 set hlsearch
 
+" Use powerline fonts
+" Make sure the fonts have been installed; see https://github.com/powerline/fonts
+let g:airline_powerline_fonts = 1
+
 " For non-gui vims, use use airline tabline extension and dark theme
 " Let GUI vims use their own tabbing interface
 if !has('gui_running')
