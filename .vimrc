@@ -1,3 +1,8 @@
+" VIM works better with a more POSIX-compliant shell
+if &shell =~# 'fish$'
+	set shell=sh
+endif
+
 set nocompatible
 filetype on
 filetype off
@@ -14,6 +19,7 @@ Plugin 'gmarik/Vundle.vim'
 " Install these from Github repos
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
+Plugin 'dag/vim-fish'
 Plugin 'wincent/command-t'
 
 " All of your Plugins must be added before the following line
