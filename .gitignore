@@ -2,5 +2,8 @@
 .vim/bundle/*
 !.vm/bundle/Vundle.vim
 
+# Vim Netrw history file
+.netrwhist
+
 # OS X Files
 .DS_Store
