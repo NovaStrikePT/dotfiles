@@ -50,6 +50,9 @@ set autoindent
 set incsearch
 set hlsearch
 
+" Press Space to turn off search highlighting and clear any message already displayed.
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
 " Use powerline fonts
 " Make sure the fonts have been installed; see https://github.com/powerline/fonts
 let g:airline_powerline_fonts = 1
