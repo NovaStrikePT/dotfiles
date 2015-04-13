@@ -1,0 +1,93 @@
+#!/usr/local/bin/fish
+
+# Show battery percentage on OS X (tested in Yosemite)
+# Optionally only show percentage when in a certain state (charged, discharging, charging)
+# This can be useful for handling different states when called from an external interface (e.g. tmux)
+# Usage loosely based on https://github.com/richo/battery/blob/master/bin/battery
+
+# Sample (pmset -g ps) outputs:
+## Not a battery powered device (e.g. iMac)
+#
+#    Now drawing from 'AC Power'
+#
+## Charged
+#
+#    Now drawing from 'AC Power'
+#     -InternalBattery-0     100%; charged; 0:00 remaining
+#
+## Discharging
+#
+#    Now drawing from 'Battery Power'
+#     -InternalBattery-0     100%; discharging; (no estimate)
+#
+## Discharging with estimate
+#
+#    Now drawing from 'Battery Power'
+#     -InternalBattery-0     100%; discharging; 1:23 remaining
+#
+## Low
+#
+#    Now drawing from 'Battery Power'
+#     -InternalBattery-0     10%; discharging; 0:12 remaining
+#
+## Charging
+#
+#    Now drawing from 'AC Power'
+#     -InternalBattery-0     98%; charging; (no estimate)
+#
+## Charging with estimate
+#
+#    Now drawing from 'AC Power'
+#     -InternalBattery-0     10%; charging; 1:23 remaining
+
+####
+# TEST
+####
+set -l DEBUG false
+if test $DEBUG = true
+	# Not a battery powered device (e.g. iMac)
+	set -l powerstatus_nobattery "Now drawing from 'AC Power'"
+
+	# Charged
+	set -l powerstatus_charged "Now drawing from 'AC Power'  -InternalBattery-0     100%; charged; 0:00 remaining"
+
+	# Discharging
+	set -l powerstatus_discharging_noestimate "Now drawing from 'Battery Power'  -InternalBattery-0     100%; discharging; (no estimate)"
+
+	# Discharging with estimate
+	set -l powerstatus_discharging_withestimate "Now drawing from 'Battery Power'  -InternalBattery-0     100%; discharging; 1:23 remaining"
+
+	# Low
+	set -l powerstatus_discharging_low "Now drawing from 'Battery Power'  -InternalBattery-0     10%; discharging; 0:12 remaining"
+
+	# Charging
+	set -l powerstatus_charging_noestimate "Now drawing from 'AC Power'  -InternalBattery-0     98%; charging; (no estimate)"
+
+	# Charging with estimate
+	set -l powerstatus_charging_withestimate "Now drawing from 'AC Power'  -InternalBattery-0     10%; charging; 1:23 remaining"
+
+	echo $powerstatus_nobattery
+	echo $powerstatus_charged
+	echo $powerstatus_discharging_noestimate
+	echo $powerstatus_discharging_withestimate
+	echo $powerstatus_discharging_low
+	echo $powerstatus_charging_noestimate
+	echo $powerstatus_charging_withestimate
+
+	echo $powerstatus_charging_withestimate | perl -nle 'print "$1 $2" if /([0-9]+%); (charged|discharging|charging)/'
+
+	exit
+end
+####
+# END TEST
+####
+
+set -l powerstatus (pmset -g ps)
+
+# Don't return anything if an internal battery isn't present (e.g. desktop computer)
+# Otherwise, show the battery percentage and charging status
+if echo $powerstatus | grep -qv 'InternalBattery'
+	exit
+end
+
+echo $powerstatus | perl -nle 'print " $1 $2 " if /([0-9]+%); (charged|discharging|charging)/'
