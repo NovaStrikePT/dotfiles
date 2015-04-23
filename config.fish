@@ -26,6 +26,9 @@ alias efind 'find -E'
 # Launch tmux
 alias tmx 'tmux new -s (hostname -s)'
 
+# Vagrant
+alias vg 'vagrant'
+
 # Remove newline at end of file - for those super minor changes where vi still makes a needless modification
 alias chompeofnewline "perl -pi -e 'chomp if eof'"
 
