@@ -6,15 +6,17 @@
 show_usage() {
 cat <<USAGE
 Usage:
-	${0##*/} <search_string> <file_extensions> [-x <exclude_pattern>] [<search_path>]
+	${0##*/} <search_string> <file_extensions> [-x <exclude_pattern>] [-i] [<search_path>]
 
 	<search_string> is a pattern passed to grep.
 	<file_extensions> should be a string with vertical bar separated values.
 	<exclude_pattern> will be matched anywhere in the find path.
 
+	If -i is given, a case-insensitive search on <search_string> will be used.
+
 Example:
 	#Search starting at the current working directory for files with extension .php, .java, .js, excluding any paths that have .git or lib directories
-	${0##*/} '^function\\s\\+' 'php|java|js' -x '/(\.git|lib)/' .
+	${0##*/} '^function\\s\\+' 'php|java|js' -i -x '/(\.git|lib)/' .
 USAGE
 }
 
@@ -38,10 +40,14 @@ shift 2
 #
 # Reset OPTIND in case getopts was used previously
 OPTIND=1
-while getopts "x:" opt; do
+grep_args='-Hn'
+while getopts "x:i" opt; do
 	case "$opt" in
 		x)
 			exclude_pattern=$OPTARG
+			;;
+		i)
+			grep_args="${grep_args}i"
 			;;
 	esac
 done
@@ -67,6 +73,6 @@ fi
 
 # Execute the search
 #
-search_cmd="find -E '$working_dir' $prune_args $filesearch_args -print0 | xargs -0 grep --color=auto -Hn '$search_string'"
+search_cmd="find -E '$working_dir' $prune_args $filesearch_args -print0 | xargs -0 grep --color=auto $grep_args '$search_string'"
 echo "$search_cmd"
 eval "$search_cmd"
