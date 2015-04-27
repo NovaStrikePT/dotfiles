@@ -1,0 +1,47 @@
+#!/bin/sh
+
+##
+# Create the ssh configuration file (if one doesn't exist) using a base configuration (embedded in this script)
+# and appending any config-* files in the .ssh directory. This allows us to keep a base configuration in source
+# control and extend it for local installations.
+##
+
+# Use GNU tools for OS X (they can be installed using Homebrew)
+mkdir_cmd='gmkdir'
+chmod_cmd='gchmod'
+
+ssh_dir="${HOME}/.ssh"
+ssh_config_target="${ssh_dir}/config"
+
+# Don't do anything if a config file already exists; otherwise, check to make sure the directory exists and proceed
+if [ -e $ssh_config_target ]; then
+	echo "$ssh_config_target already exists. Exiting without making changes…"
+	exit 1
+elif [ ! -d $ssh_dir ]; then
+	$mkdir_cmd -vp $ssh_dir
+	$chmod_cmd -v 700 $ssh_dir
+fi
+
+# Create a base configuration
+# Note that read isn't necessary, but I'm keeping it here for my own reference.
+# Read options:
+#   -r
+#     If this option is given, backslash does not act as an escape character. The backslash is considered to be part of
+#     the line. In particular, a backslash-newline pair may not be used as a line continuation.
+#   -d delim 
+#     The first character of delim is used to terminate the input line, rather than newline.
+read -r -d '' basic_config << CONFIG
+Host *
+	ControlMaster auto
+	ControlPath $ssh_dir/master-%r@%h:%p
+CONFIG
+echo "$basic_config" | tee $ssh_config_target
+
+# Append any other config-* files in the .ssh directory to the configuration
+if [ -f $ssh_dir/config-* ]; then
+	cat $ssh_dir/config-* | tee -a $ssh_config_target
+fi
+
+# Done!
+echo "${ssh_config_target} created!"
+$chmod_cmd -v 600 $ssh_config_target
