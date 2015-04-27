@@ -10,3 +10,5 @@
 	tool = meld
 [user]
 	name = Phuong Tran
+[credential]
+	helper = osxkeychain
