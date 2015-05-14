@@ -3,8 +3,7 @@
 	co = checkout
 	ci = commit
 	st = status
-	dt = difftool
-	dty = difftool -y
+	dt = difftool -y
 [diff]
 	tool = meld
 [merge]
@@ -13,3 +12,7 @@
 	name = Phuong Tran
 [credential]
 	helper = osxkeychain
+[color]
+	ui = auto
+[push]
+	default = simple

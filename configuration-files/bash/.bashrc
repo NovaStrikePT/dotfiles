@@ -1,12 +1,22 @@
 # Aliases
 #
-# Some people use a different file for aliases
-if [ -f "${HOME}/.bash_aliases" ]; then
-	source "${HOME}/.bash_aliases"
+alias lsa='ls -lah --color=auto'
+
+# Make vi always run vim
+alias vi='vim'
+
+# grep in color
+alias grep='grep --color=auto'
+
+# Show all file extensions for files in the current directory hierarchy
+alias fileextensions="find . -type f | perl -ne 'print \$1 if m/\\.([^.\\/]+)$/' | sort -u"
+
+# Use colordiff whenever possible
+if hash colordiff 2>/dev/null; then
+	alias diff='colordiff'
 fi
 
 # Colors
-#
 #
 
 # Reset
@@ -83,11 +93,16 @@ On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White
 
 # Git prompt
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWUPSTREAM="auto"
+#GIT_PS1_SHOWCOLORHINTS=1
 if [ -f "${HOME}/git-prompt.sh" ]; then
 	source "${HOME}/git-prompt.sh"
 fi
 
-PS1="\n\[$Yellow\]\w\[$BRed\]\$(__git_ps1)\n\[$Cyan\]\d \@ \[$White\]\h:\[$Green\]\u\[$Color_Off\] \$ "
+PS1="\n\[$Cyan\]\h:\[$Green\]\u\n\[$Blue\]\w\[$Yellow\]\$(__git_ps1)\[$Color_Off\] \\$ "
 
 # Git auto-completion
 if [ -f "${HOME}/git-completion.bash" ]; then

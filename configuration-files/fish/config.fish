@@ -17,6 +17,12 @@ alias vi 'vim'
 # grep in color
 alias grep 'grep --color=auto'
 
+# Use colordiff whenever possible
+if hash colordiff 2>/dev/null;
+	alias diff 'colordiff'
+end
+
+
 # Brew Cask
 alias cask 'brew cask'
 

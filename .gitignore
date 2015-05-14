@@ -1,6 +1,6 @@
 # Vim bundles that Vundle installs
-.vim/bundle/*
-!.vm/bundle/Vundle.vim
+configuration-files/common/.vim/bundle/*
+!configuration-files/common/.vim/bundle/Vundle.vim
 
 # Vim Netrw history file
 .netrwhist

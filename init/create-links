@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# Assumption: bash is always available; fish may not be.
+
+show_usage() {
+	echo 'Usage: create-links <bash|fish|all>'
+}
+
+# Expect an argument from (bash|fish|all)
+if [ -z "$1" ]; then
+	show_usage >&2
+	exit 1
+elif [ "$1" = "bash" ]; then
+	bash_enabled=true
+elif [ "$1" = "fish" ]; then
+	fish_enabled=true
+elif [ "$1" = "all" ]; then
+	bash_enabled=true
+	fish_enabled=true
+else
+	show_usage >&2
+	exit 1
+fi
+
+####
+# Setup
+####
+
+# Determine the path to this repository based on this script so that we have the correct absolute paths
+dotfiles_dir=$(cd -- $(dirname -- "$0")/.. && pwd)
+
+# ln options:
+#   -i Prompt if target already exists
+#   -s Symbolic link
+link='ln -is'
+
+# Try to use GNU mkdir if it exists (e.g. on OS X)
+shopt -s expand_aliases
+gnu_mkdir() {
+	# mkdir options:
+	#   -v Print message for each created directory
+	#   -p Make parent directories as needed
+	if hash gmkdir 2>/dev/null; then
+		alias mkdir='gmkdir'
+	fi
+	mkdir -vp "$@"
+}
+
+# Create links for all items from a source directory ($1) into a target ($2), using shallow traversal (depth = 1)
+shallow_directory_link() {
+	find "$1" -mindepth 1 -maxdepth 1 -exec $link {} "$2/" \;
+}
+
+# Bin files
+bin_dir="${HOME}/bin"
+if [ ! -d $bin_dir ]; then
+	gnu_mkdir $bin_dir
+fi
+
+####
+# Common files
+####
+
+# Config files
+shallow_directory_link ${dotfiles_dir}/configuration-files/common $HOME
+
+# Bin files
+shallow_directory_link ${dotfiles_dir}/bin-files/common $bin_dir
+
+####
+# Fish-specific files
+####
+if [ "$fish_enabled" = true ]; then
+	# Config files
+	fish_config_dir="${HOME}/.config/fish"
+	if [ ! -d $fish_config_dir ]; then
+		gnu_mkdir $fish_config_dir
+	fi
+	shallow_directory_link ${dotfiles_dir}/configuration-files/fish $fish_config_dir
+
+	# Bin files
+	shallow_directory_link ${dotfiles_dir}/bin-files/fish $bin_dir
+fi
+
+####
+# Bash-specific files
+####
+if [ "$bash_enabled" = true ]; then
+	# Config files
+	shallow_directory_link ${dotfiles_dir}/configuration-files/bash $HOME
+fi
+
+####
+
+echo 'Done'

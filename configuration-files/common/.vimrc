@@ -37,7 +37,11 @@ set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
 
 set ruler
-set colorcolumn=120
+
+" Vim 7.3+ specific features (for deployments with older versions of vim)
+if version >= 703
+	set colorcolumn=120
+endif
 
 "Use soft wrapping
 set textwidth=0
