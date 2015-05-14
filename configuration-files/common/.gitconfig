@@ -4,6 +4,7 @@
 	ci = commit
 	st = status
 	dt = difftool -y
+	dtc = difftool -y --cached
 [diff]
 	tool = meld
 [merge]
