@@ -57,14 +57,24 @@ set hlsearch
 " Press Space to turn off search highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" Change Command-T's default \b mapping to use most recently used buffer order
+:nnoremap <silent> <leader>b :CommandTMRU<CR>
+
+" Display Command-T matches in reverse order, with the best match at the bottom near the prompt
+let g:CommandTMatchWindowReverse = 1
+
 " Use powerline fonts
 " Make sure the fonts have been installed; see https://github.com/powerline/fonts
 let g:airline_powerline_fonts = 1
 
-" For non-gui vims, use use airline tabline extension and dark theme
-" Let GUI vims use their own tabbing interface
+" Use airline tabline extension interface with vertical separators
+" Note that this overrides GUI tabs
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" For non-gui vims, use the dark theme
 if !has('gui_running')
-	let g:airline#extensions#tabline#enabled = 1
 	autocmd VimEnter * AirlineTheme dark
 endif
 
