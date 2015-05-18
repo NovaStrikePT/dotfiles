@@ -73,6 +73,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
+" Navigate buffers
+" \h \l : go back/forward
+nnoremap <Leader>h :bp<CR>
+nnoremap <Leader>l :bn<CR>
+
 " For non-gui vims, use the dark theme
 if !has('gui_running')
 	autocmd VimEnter * AirlineTheme dark
