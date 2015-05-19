@@ -3,27 +3,29 @@ function! whitespace#Status()
 	verbose set expandtab? smarttab? tabstop? shiftwidth? softtabstop?
 endfunction
 
-"New tabs and indentations will be 8 spaces
-function! whitespace#UseSpaces()
-	set expandtab smarttab tabstop=8 shiftwidth=8 softtabstop=0
+"New tabs and indentations will be <width> spaces
+function! whitespace#UseSpaces(width)
+	let setexpr = 'set expandtab smarttab softtabstop=0 tabstop='.a:width.' shiftwidth='.a:width
+	execute setexpr
         call whitespace#Status()
 endfunction
 
-"Use tabs that appear 8 characters long
-function! whitespace#UseTabs()
-	set noexpandtab tabstop=8 shiftwidth=8 softtabstop=0
+"Use tabs that appear <width> characters long
+function! whitespace#UseTabs(width)
+	let setexpr = 'set noexpandtab softtabstop=0 tabstop='.a:width.' shiftwidth='.a:width
+	execute setexpr
         call whitespace#Status()
 endfunction
 
-"Convert tabs to spaces
-function! whitespace#ConvertToSpaces()
-	call whitespace#UseSpaces()
+"Convert tabs to spaces (using a <width> tabstop)
+function! whitespace#ConvertToSpaces(width)
+	call whitespace#UseSpaces(a:width)
 	retab
 endfunction
 
-"Convert spaces to tabs
-function! whitespace#ConvertToTabs()
-	call whitespace#UseTabs()
+"Convert spaces to tabs (using a <width> tabstop)
+function! whitespace#ConvertToTabs(width)
+	call whitespace#UseTabs(a:width)
 	retab!
 endfunction
 
