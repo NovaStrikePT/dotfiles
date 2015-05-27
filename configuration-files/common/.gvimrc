@@ -6,4 +6,4 @@ command AirlineThemeLight set background=light | AirlineTheme tomorrow
 autocmd GUIEnter * AirlineThemeLight
 
 set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h12
-set transparency=10
+set transparency=7
