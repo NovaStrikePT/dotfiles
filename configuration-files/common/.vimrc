@@ -54,6 +54,10 @@ set autoindent
 set incsearch
 set hlsearch
 
+" Allow hidden modified buffers
+set hidden
+set bufhidden=
+
 " Press Space to turn off search highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
