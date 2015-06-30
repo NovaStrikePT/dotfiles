@@ -16,6 +16,9 @@ if hash colordiff 2>/dev/null; then
 	alias diff='colordiff'
 fi
 
+# Use vi mode
+set -o vi
+
 # Colors
 #
 
