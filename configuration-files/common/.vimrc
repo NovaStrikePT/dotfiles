@@ -54,6 +54,10 @@ set autoindent
 set incsearch
 set hlsearch
 
+" Set splits to appear below/right
+set splitbelow
+set splitright
+
 " Allow hidden modified buffers
 set hidden
 set bufhidden=
