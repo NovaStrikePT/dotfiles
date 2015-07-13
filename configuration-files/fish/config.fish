@@ -7,6 +7,9 @@ set -g -x PATH {$HOME}/bin $PATH
 # No welcome message, please
 set -g -x fish_greeting ''
 
+# Use vi mode
+fish_vi_mode
+
 # "Aliases"
 #
 alias lsa 'ls -Glah'
