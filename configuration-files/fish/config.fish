@@ -45,3 +45,9 @@ alias chompeofnewline "perl -pi -e 'chomp if eof'"
 function fileextensions
 	find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
 end
+
+# Source (optional) local configuration
+set -l local_config {$HOME}/.config/fish/local.fish
+if test -f $local_config
+	source $local_config
+end
