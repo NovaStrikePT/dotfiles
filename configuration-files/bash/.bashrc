@@ -111,3 +111,9 @@ PS1="\n\[$Cyan\]\h:\[$Green\]\u\n\[$Blue\]\w\[$Yellow\]\$(__git_ps1)\[$Color_Off
 if [ -f "${HOME}/git-completion.bash" ]; then
 	source "${HOME}/git-completion.bash"
 fi
+
+# Source (optional) local configuration
+local_config="${HOME}/.bashrc.local"
+if [ -f "$local_config" ]; then
+	source "$local_config"
+end
