@@ -5,6 +5,7 @@
 	st = status
 	dt = difftool -y
 	dtc = difftool -y --cached
+	diffc = diff --cached
 [diff]
 	tool = meld
 [merge]
