@@ -116,4 +116,4 @@ fi
 local_config="${HOME}/.bashrc.local"
 if [ -f "$local_config" ]; then
 	source "$local_config"
-end
+fi
