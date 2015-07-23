@@ -3,7 +3,7 @@
 # Use the current directory name as the mvim server name (if the directory name is not empty, e.g. root)
 printf -v current_dir '%s' "${PWD##*/}"
 if [ -n "$current_dir" ]; then
-	MVIMARGS="--servername $current_dir"
+	MVIMARGS="--servername '$current_dir'"
 fi
 
 # Add -remote-tab-silent if arguments specified
