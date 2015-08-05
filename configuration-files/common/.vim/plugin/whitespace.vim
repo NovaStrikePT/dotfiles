@@ -7,14 +7,14 @@ endfunction
 function! whitespace#UseSpaces(width)
 	let setexpr = 'set expandtab smarttab softtabstop=0 tabstop='.a:width.' shiftwidth='.a:width
 	execute setexpr
-        call whitespace#Status()
+	echo 'Spaces: '.a:width
 endfunction
 
 "Use tabs that appear <width> characters long
 function! whitespace#UseTabs(width)
 	let setexpr = 'set noexpandtab softtabstop=0 tabstop='.a:width.' shiftwidth='.a:width
 	execute setexpr
-        call whitespace#Status()
+	echo 'Tabs: '.a:width
 endfunction
 
 "Convert tabs to spaces (using a <width> tabstop)
