@@ -1,14 +1,48 @@
 #!/bin/bash
 
-# Use the current directory name as the mvim server name (if the directory name is not empty, e.g. root)
-printf -v current_dir '%s' "${PWD##*/}"
-if [ -n "$current_dir" ]; then
-	MVIMARGS="--servername '$current_dir'"
+vimCmd='mvim'
+
+# Use a vim server whose name will be based on the current path.
+# If inside a Git repo, use the repo top level directory name.
+# Otherwise, use the current working directory name.
+workingDir='ROOT'
+git rev-parse 2> /dev/null  # `git rev-parse` will exit with a non-zero status code when called outside a git repo
+if [ $? -eq 0 ]; then
+	# We are in a Git repo
+	workingDir=$(basename $(git rev-parse --show-toplevel))
+else
+	printf -v workingDir '%s' "${PWD##*/}"
 fi
 
-# Add -remote-tab-silent if arguments specified
+# $workingDir will be empty if at the root directory; set a ROOT servername
+serverName="${workingDir:-ROOT}"
+
+vimOpts="--servername '$serverName'"
+
+# Set up options and filenames if a file (arg) list is specified
 if [ $# -gt 0 ]; then
-	MVIMARGS="$MVIMARGS --remote-silent" ;
+	vimOpts="$vimOpts --remote-silent" ;
+
+	# Retain literal whitespace in filenames by wrapping in quotes
+	filesList=()
+	while (( "$#" )); do
+		filesList+=("'$1'")
+		shift
+	done
+
+	# When there isn't an existing server instance with the specified name, vim will first start a new instance
+	# with a [No Name] buffer before loading the specified files for editing. We want to delete that empty buffer
+	# so that there isn't an extra buffer loaded.
+	# fgrep: search for a fixed (non-RE) pattern
+	# options:
+		# i: ignore-case
+		# q: quiet
+		# x: match only entire lines
+	if ! $vimCmd --serverlist | fgrep -iqx "$serverName"; then
+		# A new server instance will be started; delete the empty buffer
+		vimOpts="$vimOpts +bdelete1"
+	fi
 fi
 
-eval mvim "$MVIMARGS $@"
+
+eval "$vimCmd $vimOpts ${filesList[@]}"
