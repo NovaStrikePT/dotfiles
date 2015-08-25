@@ -63,6 +63,10 @@ set splitright
 set hidden
 set bufhidden=
 
+" Ignore certain paths for file lists / wildcard expansion (e.g. for Command-T)
+set wildignore=**/.git/*,**/node_modules/*,**/bower_components/*,vendor/**,tmp/**
+	" Note that only top-level vendor and tmp are ignored
+
 " Press Space to turn off search highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
