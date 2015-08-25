@@ -29,6 +29,8 @@ end
 # Brew Cask
 alias cask 'brew cask'
 
+alias cask_outdated "brew cask info (brew cask list) | fgrep -iB3 'not installed' ;or true"
+
 # Find with extended regex
 alias efind 'find -E'
 
