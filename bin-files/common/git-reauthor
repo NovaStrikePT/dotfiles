@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Source: https://help.github.com/articles/changing-author-info/
+
+show_usage() {
+	echo "Usage: ${0##*/} <old email> <correct name> <correct email>"
+}
+
+# Expect three arguments
+if [ "$#" -lt "3" ]; then
+	show_usage >&2
+	exit 1
+fi
+
+old_email="$1"
+correct_name="$2"
+correct_email="$3"
+
+git filter-branch --env-filter "
+if [ \"\$GIT_COMMITTER_EMAIL\" = \"$old_email\" ]
+then
+    export GIT_COMMITTER_NAME=\"$correct_name\"
+    export GIT_COMMITTER_EMAIL=\"$correct_email\"
+fi
+if [ \"\$GIT_AUTHOR_EMAIL\" = \"$old_email\" ]
+then
+    export GIT_AUTHOR_NAME=\"$correct_name\"
+    export GIT_AUTHOR_EMAIL=\"$correct_email\"
+fi
+" --tag-name-filter cat -- --branches --tags
