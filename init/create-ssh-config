@@ -15,14 +15,24 @@ if hash gchmod 2>/dev/null; then
 	alias chmod='gchmod'
 fi
 
+# Check for an 'f' option
+OPTIND=1  # Reset OPTIND in case getopts was used previously
+getopts "f" opt
+if [ "$opt" = 'f' ]; then
+	overwrite_mode=true
+fi
+
 ssh_dir="${HOME}/.ssh"
 ssh_config_target="${ssh_dir}/config"
 
-# Don't do anything if a config file already exists; otherwise, check to make sure the directory exists and proceed
-if [ -e $ssh_config_target ]; then
-	echo "$ssh_config_target already exists. Exiting without making changes…"
+# Require the -f option to overwrite an existing file
+if [ -f $ssh_config_target -a "$overwrite_mode" != 'true' ]; then
+	echo "$ssh_config_target already exists. Use the -f option to force overwrite."
 	exit 1
-elif [ ! -d $ssh_dir ]; then
+fi
+
+# Create the ssh config directory if it doesn't exist
+if [ ! -d $ssh_dir ]; then
 	mkdir -vp $ssh_dir
 	chmod -v 700 $ssh_dir
 fi
