@@ -3,7 +3,11 @@
 # Assumption: bash is always available; fish may not be.
 
 show_usage() {
-	echo 'Usage: create-links <bash|fish|all>'
+cat <<USAGE
+Usage: ${0##*/} <bash|fish|all> [-f|-i]
+       -f Automatically overwrite any target files that already exist
+       -i Prompt to overwrite if a target file exists
+USAGE
 }
 
 # Expect an argument from (bash|fish|all)
@@ -22,6 +26,19 @@ else
 	exit 1
 fi
 
+# Parse the 'f' or 'i' option
+OPTIND=1  # Reset OPTIND in case getopts was used previously
+shift
+getopts "fi" opt
+case "$opt" in
+	f)
+		ln_overwrite_arg='f'
+		;;
+	i)
+		ln_overwrite_arg='i'
+		;;
+esac
+
 ####
 # Setup
 ####
@@ -30,9 +47,10 @@ fi
 dotfiles_dir=$(cd -- $(dirname -- "$0")/.. && pwd)
 
 # ln options:
-#   -i Prompt if target already exists
 #   -s Symbolic link
-link='ln -is'
+#   -v Verbose
+# $ln_overwrite_arg can be 'f' (force overwrite existing) or 'i' (prompt to overwrite existing)
+link="ln -sv$ln_overwrite_arg"
 
 # Try to use GNU mkdir if it exists (e.g. on OS X)
 shopt -s expand_aliases
