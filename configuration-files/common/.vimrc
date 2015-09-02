@@ -22,6 +22,7 @@ Plugin 'bling/vim-airline'
 Plugin 'dag/vim-fish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'wincent/command-t'
 
