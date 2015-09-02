@@ -64,7 +64,7 @@ set hidden
 set bufhidden=
 
 " Ignore certain paths for file lists / wildcard expansion (e.g. for Command-T)
-set wildignore=**/.git/*,**/node_modules/*,**/bower_components/*,vendor/**,tmp/**
+set wildignore=**/.git/*,**/node_modules/*,node_modules/**,**/bower_components/*,bower_components/**,vendor/**,tmp/**
 	" Note that only top-level vendor and tmp are ignored
 
 " Press Space to turn off search highlighting and clear any message already displayed.
@@ -79,12 +79,6 @@ let g:CommandTMatchWindowReverse = 1
 " Use powerline fonts
 " Make sure the fonts have been installed; see https://github.com/powerline/fonts
 let g:airline_powerline_fonts = 1
-
-" Use airline tabline extension interface with vertical separators
-" Note that this overrides GUI tabs
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Navigate buffers
 " \h \l : go back/forward
@@ -102,8 +96,12 @@ autocmd BufReadPost *
 
 augroup END
 
-" For non-gui vims, use the dark theme
+" For non-gui vims, use the dark theme and the airline tabline extension
 if !has('gui_running')
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#left_sep = ''
+	let g:airline#extensions#tabline#left_alt_sep = '|'
+
 	autocmd VimEnter * AirlineTheme dark
 endif
 
