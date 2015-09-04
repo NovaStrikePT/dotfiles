@@ -81,6 +81,12 @@ let g:CommandTMatchWindowReverse = 1
 " Make sure the fonts have been installed; see https://github.com/powerline/fonts
 let g:airline_powerline_fonts = 1
 
+" Navigate window splits
+nnoremap <silent> <A-D-Up> :wincmd k<CR>
+nnoremap <silent> <A-D-Down> :wincmd j<CR>
+nnoremap <silent> <A-D-Left> :wincmd h<CR>
+nnoremap <silent> <A-D-Right> :wincmd l<CR>
+
 " Navigate buffers
 " \h \l : go back/forward
 nnoremap <Leader><Left> :bp<CR>
