@@ -17,6 +17,9 @@ alias lsa 'ls -Glah'
 # Make vi always run vim
 alias vi 'vim'
 
+# vdr using tabpages
+alias viet 'vdr -t'
+
 # grep in color
 alias grep 'grep --color=auto'
 
@@ -24,7 +27,6 @@ alias grep 'grep --color=auto'
 if hash colordiff 2>/dev/null;
 	alias diff 'colordiff'
 end
-
 
 # Brew Cask
 alias cask 'brew cask'
