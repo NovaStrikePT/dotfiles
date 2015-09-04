@@ -86,6 +86,10 @@ nnoremap <silent> <A-D-Up> :wincmd k<CR>
 nnoremap <silent> <A-D-Down> :wincmd j<CR>
 nnoremap <silent> <A-D-Left> :wincmd h<CR>
 nnoremap <silent> <A-D-Right> :wincmd l<CR>
+inoremap <silent> <A-D-Up> <C-o>:wincmd k<CR>
+inoremap <silent> <A-D-Down> <C-o>:wincmd j<CR>
+inoremap <silent> <A-D-Left> <C-o>:wincmd h<CR>
+inoremap <silent> <A-D-Right> <C-o>:wincmd l<CR>
 
 " Navigate buffers
 " \h \l : go back/forward
