@@ -3,6 +3,11 @@ function! ws#Status()
 	verbose set expandtab? smarttab? tabstop? shiftwidth? softtabstop?
 endfunction
 
+"Shortcut for UseSpaces(2)
+function! ws#2()
+	call ws#UseSpaces(2)
+endfunction
+
 "New tabs and indentations will be <width> spaces
 function! ws#UseSpaces(width)
 	let setexpr = 'set expandtab smarttab softtabstop=0 tabstop='.a:width.' shiftwidth='.a:width
