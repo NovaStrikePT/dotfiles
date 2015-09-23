@@ -6,17 +6,17 @@
 show_usage() {
 cat <<USAGE
 Usage:
-	${0##*/} <search_string> <file_extensions> [-x <exclude_pattern>] [-i] [<search_path>]
+	${0##*/} <search_string> <file_extensions> [-x <exclude_directories>] [-i] [<search_path>]
 
 	<search_string> is a pattern passed to grep.
 	<file_extensions> should be a string with vertical bar separated values.
-	<exclude_pattern> will be matched anywhere in the find path.
+	<exclude_directories> should be a string with vertical bar separated directories to exclude from searching. If a directory appears anywhere in a file path, it will be excluded from the search.
 
 	If -i is given, a case-insensitive search on <search_string> will be used.
 
 Example:
 	#Search starting at the current working directory for files with extension .php, .java, .js, excluding any paths that have .git or lib directories
-	${0##*/} '^function\\s\\+' 'php|java|js' -i -x '/(\.git|lib)/' .
+	${0##*/} '^function\\s\\+' 'php|java|js' -i -x '\.git|lib' .
 USAGE
 }
 
@@ -44,7 +44,7 @@ grep_args='-Hn'
 while getopts "x:i" opt; do
 	case "$opt" in
 		x)
-			exclude_pattern=$OPTARG
+			exclude_directories=$OPTARG
 			;;
 		i)
 			grep_args="${grep_args}i"
@@ -67,8 +67,8 @@ filesearch_args="-type f -iregex '.*\\.($include_pattern)'"
 
 # Build path pruning arguments string
 #
-if [ -n "$exclude_pattern" ]; then
-	prune_args="-iregex '.*$exclude_pattern.*' -prune -o"
+if [ -n "$exclude_directories" ]; then
+	prune_args="-iregex '.*/($exclude_directories)/.*' -prune -o"
 fi
 
 # Execute the search
