@@ -4,8 +4,13 @@ function! ws#Status()
 endfunction
 
 "Shortcut for UseSpaces(2)
-function! ws#2()
+function! ws#2s()
 	call ws#UseSpaces(2)
+endfunction
+
+"Shortcut for UseSpaces(4)
+function! ws#4s()
+	call ws#UseSpaces(4)
 endfunction
 
 "New tabs and indentations will be <width> spaces
