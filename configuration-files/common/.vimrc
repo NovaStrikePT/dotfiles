@@ -107,16 +107,27 @@ inoremap <silent> <A-D-Right> <C-o>:wincmd l<CR>
 nnoremap <Leader><Left> :bp<CR>
 nnoremap <Leader><Right> :bn<CR>
 
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-" Copied from $VIMRUNTIME/vimrc_example.vim
-autocmd BufReadPost *
-\ if line("'\"") >= 1 && line("'\"") <= line("$") |
-\   exe "normal! g`\"" |
-\ endif
 
-augroup END
+" Copied from $VIMRUNTIME/vimrc_example.vim
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+	" Put these in an autocmd group, so that we can delete them easily.
+	augroup vimrcEx
+	au!
+
+	" When editing a file, always jump to the last known cursor position.
+	" Don't do it when the position is invalid or when inside an event handler
+	" (happens when dropping a file on gvim).
+	" Also don't do it when the mark is in the first line, that is the default
+	" position when opening a file.
+	autocmd BufReadPost *
+	\ if line("'\"") > 1 && line("'\"") <= line("$") |
+	\   exe "normal! g`\"" |
+	\ endif
+
+	augroup END
+endif
+" End copied from $VIMRUNTIME/vimrc_example.vim
 
 " For non-gui vims, use the dark theme and the airline tabline extension
 if !has('gui_running')
