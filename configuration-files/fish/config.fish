@@ -2,13 +2,18 @@
 source {$HOME}/.config/fish/agnoster.fish
 
 # Add private bin to PATH
-set -g -x PATH {$HOME}/bin $PATH
+set -gx PATH {$HOME}/bin $PATH
 
 # No welcome message, please
-set -g -x fish_greeting ''
+set -gx fish_greeting ''
 
 # Use vi mode
 #fish_vi_mode
+
+# Set up less to use syntax highlighting (with color) and no de-init (don't clear the screen)
+# source-highlight needs to be installed for syntax highlighting
+set -gx LESS '-RX'
+set -gx LESSOPEN "| src-hilite-lesspipe.sh %s"
 
 # "Aliases"
 #
