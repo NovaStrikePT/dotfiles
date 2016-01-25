@@ -38,7 +38,7 @@ alias cask 'brew cask'
 
 alias cask_outdated "brew cask info (brew cask list) | fgrep -iB3 'not installed' ;or true"
 
-alias brouhaha 'cask cleanup ;and brew cleanup ;and brew update ;and echo --brew outdated-- ;and brew outdated ;and echo --cask outdated-- ;and cask_outdated'
+alias brouhaha 'sudo chown -R (whoami) /usr/local ;and cask cleanup ;and brew cleanup ;and brew update ;and echo --brew outdated-- ;and brew outdated ;and echo --cask outdated-- ;and cask_outdated'
 
 # Find with extended regex
 alias efind 'find -E'
