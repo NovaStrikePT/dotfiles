@@ -18,12 +18,13 @@ Plugin 'gmarik/Vundle.vim'
 
 " Install these from Github repos
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
 Plugin 'dag/vim-fish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wincent/command-t'
 
 " All of your Plugins must be added before the following line
