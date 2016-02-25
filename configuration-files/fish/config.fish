@@ -60,6 +60,17 @@ function fileextensions
 	find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
 end
 
+# Common grepper macros
+#
+# Laravel grepper
+function lvg --argument-names 'search_string' 'search_path'
+	grepper "$search_string" 'php' -x '.git|.vagrant|node_modules|vendor' "$search_path"
+end
+# Ember grepper
+function emg --argument-names 'search_string' 'search_path'
+	grepper "$search_string" 'js|hbs' -x '.git|tmp|node_modules|bower_components|vendor|dist' "$search_path"
+end
+
 # Source (optional) local configuration
 set -l local_config {$HOME}/.config/fish/local.fish
 if test -f $local_config
