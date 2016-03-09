@@ -60,6 +60,9 @@ function fileextensions
 	find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
 end
 
+# Common rsync over ssh macro
+alias rsshnc 'rsync -avh --progress -e ssh'
+
 # Common grepper macros
 #
 # Laravel grepper
