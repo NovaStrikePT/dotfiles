@@ -24,6 +24,9 @@ set -o vi
 export LESS='-RX'
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 
+# NVM configuration
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
 
 # Colors
 #

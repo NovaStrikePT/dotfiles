@@ -10,6 +10,9 @@ set -gx fish_greeting ''
 # Use vi mode
 #fish_vi_mode
 
+# NVM configuration
+set -gx NVM_DIR $HOME/.nvm
+
 # Set up less to use syntax highlighting (with color) and no de-init (don't clear the screen)
 # source-highlight needs to be installed for syntax highlighting
 set -gx LESS '-RX'
@@ -38,13 +41,13 @@ alias cask 'brew cask'
 
 alias cask_outdated "brew cask info (brew cask list) | fgrep -iB3 'not installed' ;or true"
 
-alias brouhaha 'sudo chown -R (whoami) /usr/local ;and cask cleanup ;and brew cleanup ;and brew update ;and echo --brew outdated-- ;and brew outdated ;and echo --cask outdated-- ;and cask_outdated'
+alias brouhaha "sudo chown -R (whoami) /usr/local ;and cask cleanup ;and brew cleanup ;and brew update ;and echo --brew outdated-- ;and brew outdated ;and echo --cask outdated-- ;and cask_outdated ;and echo Don\\'t forget to run `fisher up`"
 
 # Find with extended regex
 alias efind 'find -E'
 
 # Launch tmux
-alias tmx 'tmux new -s (hostname -s)'
+#alias tmx 'tmux new -s (hostname -s)'
 
 # Vagrant
 alias vg 'vagrant'
@@ -62,6 +65,11 @@ end
 
 # Common rsync over ssh macro
 alias rsshnc 'rsync -avh --progress -e ssh'
+
+# Running NVM in fish is easy with bass
+function nvm
+	bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
+end
 
 # Common grepper macros
 #
