@@ -7,9 +7,6 @@ set -gx PATH {$HOME}/bin $PATH
 # No welcome message, please
 set -gx fish_greeting ''
 
-# Use vi mode
-#fish_vi_mode
-
 # NVM configuration
 set -gx NVM_DIR $HOME/.nvm
 
