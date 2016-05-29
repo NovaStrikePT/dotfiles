@@ -38,7 +38,17 @@ alias cask 'brew cask'
 
 alias cask_outdated "brew cask info (brew cask list) | fgrep -iB3 'not installed' ;or true"
 
-alias brouhaha "sudo chown -R (whoami) /usr/local ;and cask cleanup ;and brew cleanup ;and brew update ;and echo --brew outdated-- ;and brew outdated ;and echo --cask outdated-- ;and cask_outdated ;and echo Don\\'t forget to run `fisher up`"
+function brouhaha
+	sudo chown -R (whoami) /usr/local
+	cask cleanup ;and brew cleanup
+	brew update
+	echo -n '==> ' ; set_color --bold '#819090' ; echo brew outdated ; set_color normal
+	brew outdated
+	echo -n '==> ' ; set_color --bold '#819090' ; echo cask outdated ; set_color normal
+	cask_outdated ;
+	echo -n '==> ' ; set_color --bold '#819090' ; echo 'Reminder(s)' ; set_color normal
+	echo Don\'t forget to run `fisher up`
+end
 
 # Find with extended regex
 alias efind 'find -E'
