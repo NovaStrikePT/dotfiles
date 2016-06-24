@@ -42,12 +42,12 @@ function brouhaha
 	sudo chown -R (whoami) /usr/local
 	cask cleanup ;and brew cleanup
 	brew update
-	echo -n '==> ' ; set_color --bold '#819090' ; echo brew outdated ; set_color normal
+	echo -n '==> ' ; set_color --bold blue ; echo brew outdated ; set_color normal
 	brew outdated
-	echo -n '==> ' ; set_color --bold '#819090' ; echo cask outdated ; set_color normal
+	echo -n '==> ' ; set_color --bold blue ; echo cask outdated ; set_color normal
 	cask_outdated ;
-	echo -n '==> ' ; set_color --bold '#819090' ; echo 'Reminder(s)' ; set_color normal
-	echo Don\'t forget to run `fisher up`
+	echo -n '==> ' ; set_color --bold blue ; echo 'fisher up' ; set_color normal
+	fisher up
 end
 
 # Find with extended regex
