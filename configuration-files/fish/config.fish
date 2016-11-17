@@ -36,17 +36,28 @@ end
 # Brew Cask
 alias cask 'brew cask'
 
-alias cask_outdated "brew cask info (brew cask list) | fgrep -iB3 'not installed' ;or true"
+#alias cask_outdated "brew cask info (brew cask list) | fgrep -iB3 'not installed' ;or true"
+function cask_outdated
+	for c in (brew cask list)
+		# TODO: fish doesn't correctly save multi-line output to a variable, so we (cask info) twice
+		# See https://github.com/fish-shell/fish-shell/issues/159
+		set_color magenta ; echo -n '==> Latest    : ' ; set_color normal
+		brew cask info $c | head -1
+		set_color magenta ; echo -n '==> Installed : ' ; set_color normal
+		brew cask info $c | grep '/usr/local/Caskroom/' | tail -1 | cut -c 21-
+		echo
+	end
+end
 
 function brouhaha
 	sudo chown -R (whoami) /usr/local
 	cask cleanup ;and brew cleanup
 	brew update
-	echo -n '==> ' ; set_color --bold blue ; echo brew outdated ; set_color normal
+	set_color blue ; echo -n '==> ' ; set_color --bold cyan ; echo brew outdated ; set_color normal
 	brew outdated
-	echo -n '==> ' ; set_color --bold blue ; echo cask outdated ; set_color normal
+	set_color blue ; echo -n '==> ' ; set_color --bold cyan ; echo cask outdated ; set_color normal
 	cask_outdated ;
-	echo -n '==> ' ; set_color --bold blue ; echo 'fisher up' ; set_color normal
+	set_color blue ; echo -n '==> ' ; set_color --bold cyan ; echo 'fisher up' ; set_color normal
 	fisher up
 end
 
