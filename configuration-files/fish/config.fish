@@ -69,6 +69,7 @@ alias efind 'find -E'
 
 # Vagrant
 alias vg 'vagrant'
+alias vgbo 'vagrant box outdated'
 
 # Get formatted mtime of a file
 alias mtime 'stat -f "%Sm" -t "%Y-%m-%d %H.%M"'
