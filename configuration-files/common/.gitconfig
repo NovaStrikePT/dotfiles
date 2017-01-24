@@ -8,6 +8,11 @@
 	diffc = diff --cached
 [diff]
 	tool = meld
+[difftool]
+	prompt = false
+[difftool "meld"]
+	trustExitCode = true
+	cmd = /Applications/Meld.app/Contents/MacOS/Meld \"$LOCAL\" \"$PWD/$REMOTE\"
 [merge]
 	tool = meld
 [user]
