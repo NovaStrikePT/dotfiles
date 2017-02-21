@@ -44,7 +44,7 @@ function cask_outdated
 		set_color magenta ; echo -n '==> Latest    : ' ; set_color normal
 		brew cask info $c | head -1
 		set_color magenta ; echo -n '==> Installed : ' ; set_color normal
-		brew cask info $c | grep '/usr/local/Caskroom/' | tail -1 | cut -c 21-
+		brew cask info $c | grep '/usr/local/Caskroom/' | tail -1 | cut -c 21- | sed 's/\//: /'
 		echo
 	end
 end
