@@ -32,7 +32,7 @@ Within `bin-files` and `configuration-files`,
 	vim +PluginInstall
 	```
 4. Compile Command-T (requires Ruby and Vim compiled with Ruby support).
- 
+
 	```
 	cd ~/.vim/bundle/command-t/ruby/command-t
 	ruby extconf.rb
