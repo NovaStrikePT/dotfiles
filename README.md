@@ -1,6 +1,4 @@
-## My .files
-These dotfiles have only been tested on my Yosemite environments and a handful of remote/virtual servers.
-
+# Structure
 * `bin-files` – miscellaneous scripts
 * `configuration-files` – "dotfiles"
 * `init` – scripts to assist in deployment
@@ -11,7 +9,7 @@ Within `bin-files` and `configuration-files`,
 * `fish` – fish-specific files
 * `common` – files that can be deployed when using either shell
 
-## Installation
+# Installation
 1. Clone
 
 	```
