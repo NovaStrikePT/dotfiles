@@ -105,9 +105,12 @@ inoremap <silent> <A-D-Right> <C-o>:wincmd l<CR>
 
 " Navigate buffers
 " \h \l : go back/forward
-nnoremap <Leader><Left> :bp<CR>
-nnoremap <Leader><Right> :bn<CR>
+nnoremap <Leader><Left>  :bprevious<CR>
+nnoremap <Leader><Right> :bnext<CR>
 
+" Navigate tabs
+nnoremap <leader>[ :tabprevious<CR>
+nnoremap <leader>] :tabnext<CR>
 
 " Copied from $VIMRUNTIME/vimrc_example.vim
 " Only do this part when compiled with support for autocommands.
@@ -130,12 +133,8 @@ if has("autocmd")
 endif
 " End copied from $VIMRUNTIME/vimrc_example.vim
 
-" For non-gui vims, use the dark theme and the airline tabline extension
+" For non-gui vims, use the dark theme
 if !has('gui_running')
-	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#left_sep = ''
-	let g:airline#extensions#tabline#left_alt_sep = '|'
-
 	autocmd VimEnter * AirlineTheme dark
 endif
 
