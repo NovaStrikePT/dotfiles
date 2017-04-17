@@ -1,3 +1,5 @@
+set guitablabel=%N.\ %M%t
+
 colorscheme solarized
 
 " Create preset dark and light themes. Default to light.
