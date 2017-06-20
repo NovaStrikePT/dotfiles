@@ -7,29 +7,24 @@ set nocompatible
 filetype on
 filetype off
 
-"set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
 
 " Install these from Github repos
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'dag/vim-fish'
-Plugin 'tpope/vim-fugitive'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'wincent/command-t'
+" Make sure you use single quotes
+Plug 'altercation/vim-colors-solarized'
+Plug 'dag/vim-fish'
+Plug 'tpope/vim-fugitive'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'wincent/command-t'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
+" Automatically executes `filetype plugin indent on` and `syntax enable`
 
 set backspace=indent,eol,start
 
@@ -137,5 +132,3 @@ endif
 if !has('gui_running')
 	autocmd VimEnter * AirlineTheme dark
 endif
-
-syntax on
