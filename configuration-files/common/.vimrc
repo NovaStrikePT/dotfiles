@@ -4,9 +4,12 @@ if &shell =~# 'fish$'
 endif
 
 set nocompatible
-filetype on
-filetype off
+" I forget why we have the following on-off. TODO: Determine whether we need this
+"filetype on
+"filetype off
 
+" May want to set `g:plug_threads`
+" See https://github.com/junegunn/vim-plug/issues/502
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
