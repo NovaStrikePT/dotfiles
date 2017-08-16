@@ -1,6 +1,3 @@
-# Apply theme
-source {$HOME}/.config/fish/agnoster.fish
-
 # Add private bin to PATH
 set -gx PATH {$HOME}/bin $PATH
 
@@ -41,11 +38,12 @@ function cask_outdated
 	for c in (brew cask list)
 		# TODO: fish doesn't correctly save multi-line output to a variable, so we (cask info) twice
 		# See https://github.com/fish-shell/fish-shell/issues/159
-		set_color magenta ; echo -n '==> Latest    : ' ; set_color normal
-		brew cask info $c | head -1
-		set_color magenta ; echo -n '==> Installed : ' ; set_color normal
-		brew cask info $c | grep '/usr/local/Caskroom/' | tail -1 | cut -c 21- | sed 's/\//: /'
-		echo
+		#set_color magenta ; echo -n '==> Latest    : ' ; set_color normal
+		#brew cask info $c | head -1
+		#set_color magenta ; echo -n '==> Installed : ' ; set_color normal
+		#brew cask info $c | grep '/usr/local/Caskroom/' | tail -1 | cut -c 21- | sed 's/\//: /'
+		#echo
+		brew cask info $c | head -3 | gsed '2d' | gsed '1!b;s/^/Latest    > /'  | gsed 's/^\/usr\/local\/Caskroom\//Installed > /' | gsed '2!b;s/\//: /' | gsed '2!b;s/ (.*)$//' ;and echo
 	end
 end
 
@@ -56,10 +54,14 @@ function brouhaha
 	set_color blue ; echo -n '==> ' ; set_color --bold cyan ; echo brew outdated ; set_color normal
 	brew outdated
 	set_color blue ; echo -n '==> ' ; set_color --bold cyan ; echo cask outdated ; set_color normal
-	cask_outdated ;
+	# Suppress broken pipe messages (TODO: investigate cask_outdated pipes breaking)
+	cask_outdated 2>/dev/null ;
 	set_color blue ; echo -n '==> ' ; set_color --bold cyan ; echo 'fisher up' ; set_color normal
 	fisher up
 end
+
+# Use MacVim's vim version
+alias vim /Applications/MacVim.app/Contents/MacOS/Vim
 
 # Find with extended regex
 alias efind 'find -E'
@@ -90,16 +92,14 @@ function nvm
 	bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
 end
 
-# Common grepper macros
+# Ag aliases
 #
-# Laravel grepper
-function lvg --argument-names 'search_string' 'search_path'
-	grepper "$search_string" 'php' -x '.git|.vagrant|node_modules|vendor' "$search_path"
-end
-# Ember grepper
-function emg --argument-names 'search_string' 'search_path'
-	grepper "$search_string" 'js|hbs' -x '.git|tmp|node_modules|bower_components|vendor|dist' "$search_path"
-end
+
+# Search hidden files, use `less` paging
+alias hag 'ag --hidden --pager less'
+
+# Use ag to find files for fzf
+set -gx FZF_DEFAULT_COMMAND 'ag --hidden -g ""'
 
 # Source (optional) local configuration
 set -l local_config {$HOME}/.config/fish/local.fish

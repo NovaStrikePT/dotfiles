@@ -16,6 +16,8 @@ call plug#begin('~/.vim/plugged')
 
 " Install these from Github repos
 " Make sure you use single quotes
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'dag/vim-fish'
 Plug 'tpope/vim-fugitive'
@@ -24,7 +26,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'wincent/command-t'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 " Automatically executes `filetype plugin indent on` and `syntax enable`
@@ -74,18 +76,8 @@ inoremap <2-MiddleMouse> <Nop>
 inoremap <3-MiddleMouse> <Nop>
 inoremap <4-MiddleMouse> <Nop>
 
-" Ignore certain paths for file lists / wildcard expansion (e.g. for Command-T)
-set wildignore=**/.git/*,**/node_modules/*,node_modules/**,**/bower_components/*,bower_components/**,vendor/**,tmp/**
-	" Note that only top-level vendor and tmp are ignored
-
 " Press Space to turn off search highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-" Change Command-T's default \b mapping to use most recently used buffer order
-:nnoremap <silent> <leader>b :CommandTMRU<CR>
-
-" Display Command-T matches in reverse order, with the best match at the bottom near the prompt
-let g:CommandTMatchWindowReverse = 1
 
 " Use powerline fonts
 " Make sure the fonts have been installed; see https://github.com/powerline/fonts

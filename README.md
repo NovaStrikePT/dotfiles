@@ -12,8 +12,7 @@ Within `bin-files` and `configuration-files`,
 # Installation
 1. Install [patched Powerline fonts](https://github.com/powerline/fonts)
 1. [Create links](init/create-links)
-2. (Optional) [Create ssh config](init/create-ssh-config)
+1. (Optional) [Create ssh config](init/create-ssh-config)
 1. Install [plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim) into `.vim/autoload`
-3. Install plugins `vim +PlugInstall`
-4. Compile Command-T: https://github.com/wincent/command-t/blob/master/doc/command-t.txt#L300-L371
-5. Done.
+1. Install plugins `vim +PlugInstall`
+1. Done.
