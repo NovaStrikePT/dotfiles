@@ -102,6 +102,11 @@ nnoremap <Leader><Right> :bnext<CR>
 nnoremap <leader>[ :tabprevious<CR>
 nnoremap <leader>] :tabnext<CR>
 
+" Disable indentLine by default
+" let g:indentLine_enabled = 0
+" Performance increase, but some syntax highlighting may be incorrect? TODO: test
+let g:indentLine_faster = 1
+
 " Copied from $VIMRUNTIME/vimrc_example.vim
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
