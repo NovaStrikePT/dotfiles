@@ -18,6 +18,11 @@ function! ws#UseSpaces(width)
 	let setexpr = 'set expandtab smarttab softtabstop=0 tabstop='.a:width.' shiftwidth='.a:width
 	execute setexpr
 	echo 'Spaces: '.a:width
+
+	" See plugin 'Yggdroot/indentLine'
+	if exists(':IndentLinesReset')
+		IndentLinesReset
+	endif
 endfunction
 
 "Use tabs that appear <width> characters long
@@ -25,6 +30,11 @@ function! ws#UseTabs(width)
 	let setexpr = 'set noexpandtab softtabstop=0 tabstop='.a:width.' shiftwidth='.a:width
 	execute setexpr
 	echo 'Tabs: '.a:width
+
+	" See plugin 'Yggdroot/indentLine'
+	if exists(':IndentLinesReset')
+		IndentLinesReset
+	endif
 endfunction
 
 "Convert tabs to spaces (using a <width> tabstop)
