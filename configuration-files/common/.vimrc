@@ -107,9 +107,12 @@ nnoremap <leader>] :tabnext<CR>
 " Performance increase, but some syntax highlighting may be incorrect? TODO: test
 let g:indentLine_faster = 1
 
-" Prevent indentLine from overriding `conceal…` for json files
+" Prevent indentLine from overriding `conceal…` for problematic file types
 " See also https://github.com/Yggdroot/indentLine/issues/140
-autocmd Filetype json let g:indentLine_setConceal = 0
+augroup indentLineConceal
+	autocmd!
+	autocmd Filetype json,markdown let g:indentLine_setConceal = 0
+augroup END
 
 " Copied from $VIMRUNTIME/vimrc_example.vim
 " Only do this part when compiled with support for autocommands.
