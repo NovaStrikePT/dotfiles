@@ -3,10 +3,8 @@ if &shell =~# 'fish$'
 	set shell=sh
 endif
 
+" We like `:filetype`, therefore nocompatible
 set nocompatible
-" I forget why we have the following on-off. TODO: Determine whether we need this
-"filetype on
-"filetype off
 
 " May want to set `g:plug_threads`
 " See https://github.com/junegunn/vim-plug/issues/502
@@ -137,5 +135,8 @@ endif
 
 " For non-gui vims, use the dark theme
 if !has('gui_running')
-	autocmd VimEnter * AirlineTheme dark
+	augroup nonGuiTheme
+		autocmd!
+		autocmd VimEnter * AirlineTheme dark
+	augroup END
 endif
