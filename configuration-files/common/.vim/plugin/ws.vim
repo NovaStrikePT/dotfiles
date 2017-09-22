@@ -20,7 +20,7 @@ function! ws#UseSpaces(width)
 	echo 'Spaces: '.a:width
 
 	" See plugin 'Yggdroot/indentLine'
-	if exists(':IndentLinesReset')
+	if exists(':IndentLinesReset') && exists('b:indentLine_enabled') && b:indentLine_enabled == 1
 		IndentLinesReset
 	endif
 endfunction
@@ -32,7 +32,7 @@ function! ws#UseTabs(width)
 	echo 'Tabs: '.a:width
 
 	" See plugin 'Yggdroot/indentLine'
-	if exists(':IndentLinesReset')
+	if exists(':IndentLinesReset') && exists('b:indentLine_enabled') && b:indentLine_enabled == 1
 		IndentLinesReset
 	endif
 endfunction

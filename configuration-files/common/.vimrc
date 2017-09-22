@@ -101,7 +101,7 @@ nnoremap <leader>[ :tabprevious<CR>
 nnoremap <leader>] :tabnext<CR>
 
 " Disable indentLine by default
-" let g:indentLine_enabled = 0
+let g:indentLine_enabled = 0
 " Performance increase, but some syntax highlighting may be incorrect? TODO: test
 let g:indentLine_faster = 1
 
