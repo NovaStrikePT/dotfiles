@@ -1,9 +1,2 @@
-# Vim plug and plugins
-configuration-files/common/.vim/autoload/plug.vim
-configuration-files/common/.vim/plugged/*
-
-# Vim Netrw history file
-.netrwhist
-
 # OS X Files
 .DS_Store

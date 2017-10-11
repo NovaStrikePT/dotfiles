@@ -1,0 +1,14 @@
+[alias]
+	br = branch
+	co = checkout
+	ci = commit
+	st = status
+	dt = difftool
+	dtc = difftool --cached
+	diffc = diff --cached
+[color]
+	ui = auto
+[push]
+	default = current
+[include]
+	path = ~/.gitconfig.local

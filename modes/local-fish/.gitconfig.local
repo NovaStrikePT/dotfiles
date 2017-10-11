@@ -1,11 +1,3 @@
-[alias]
-	br = branch
-	co = checkout
-	ci = commit
-	st = status
-	dt = difftool
-	dtc = difftool --cached
-	diffc = diff --cached
 [diff]
 	tool = meld
 [difftool]
@@ -24,7 +16,3 @@
 	name = Phuong Tran
 [credential]
 	helper = osxkeychain
-[color]
-	ui = auto
-[push]
-	default = current

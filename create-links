@@ -1,0 +1,74 @@
+#!/bin/bash
+
+show_usage() {
+cat <<USAGE
+Usage: ${0##*/} <mode> [-f|-i]
+	-f Automatically overwrite any target files that already exist
+	-i Prompt to overwrite if a target file exists
+	-h Show this help
+USAGE
+}
+
+# Determine the path to this repository based on this script so that we have the correct absolute paths
+dotfiles_dir=$(cd -- $(dirname -- "$0") && pwd)
+
+# Expect a mode
+if [ -z "$1" ]; then
+	show_usage >&2
+	exit 1
+elif [ ! -d "${dotfiles_dir}/modes/$1" ]; then
+	echo 'Specified mode not found in modes/'
+	show_usage >&2
+	exit 1
+fi
+
+mode_dir="${dotfiles_dir}/modes/$1"
+
+# Parse the options
+OPTIND=1  # Reset OPTIND in case getopts was used previously
+shift
+getopts "fih" opt
+case "$opt" in
+	f)
+		ln_overwrite_arg='f'
+		;;
+	i)
+		ln_overwrite_arg='i'
+		;;
+	h)
+		show_usage
+		exit 0
+esac
+
+# ln options:
+#   -s Symbolic link
+#   -v Verbose
+# $ln_overwrite_arg can be 'f' (force overwrite existing) or 'i' (prompt to overwrite existing)
+link="ln -sv$ln_overwrite_arg"
+
+# Try to use GNU mkdir if it exists (-vp is buggy on BSD/Apple `mkdir`)
+# mkdir options:
+#   -v Print message for each created directory
+#   -p Make parent directories as needed
+if hash gmkdir 2>/dev/null; then
+	makedir='gmkdir -vp'
+else
+	makedir='mkdir -vp'
+fi
+
+# Create links for all files from a source directory ($1) into a target ($2), preserving the directory structure
+# Don't link: .DS_Store, .gitignore
+link_with_directories() {
+	cd "$1"
+	find . -type d -exec $makedir "$2/{}" \; \
+		-o -type f ! -name '\.DS_Store' ! -name '\.gitignore' -exec $link "$1/{}" "$2/{}" \;
+	cd -
+}
+
+destination="$HOME"
+
+# Generate links to common dotfiles
+link_with_directories "${dotfiles_dir}/shared" "$destination"
+
+# Generate links to dotfiles specific to the mode
+link_with_directories "$mode_dir" "$destination"

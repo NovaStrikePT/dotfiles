@@ -11,9 +11,6 @@ alias grep='grep --color=auto'
 # Show all file extensions for files in the current directory hierarchy
 alias fileextensions="find . -type f | perl -ne 'print \$1 if m/\\.([^.\\/]+)$/' | sort -u"
 
-# TODO: Add ag aliases once a good workflow has been established (see config.fish)
-# TODO: Do I need to add fallbacks to more portable ack (e.g. remote shared servers)?
-
 # Use colordiff whenever possible
 if hash colordiff 2>/dev/null; then
 	alias diff='colordiff'
@@ -33,8 +30,8 @@ export NVM_DIR="$HOME/.nvm"
 # Common rsync over ssh macro
 alias rsshnc='rsync -avh --progress -e ssh'
 
-# Use ag to find files for fzf
-export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+# Use ack to find files for fzf
+export FZF_DEFAULT_COMMAND='ack -l ""'
 
 
 # Colors

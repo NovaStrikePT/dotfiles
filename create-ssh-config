@@ -43,7 +43,7 @@ fi
 #   -r
 #     If this option is given, backslash does not act as an escape character. The backslash is considered to be part of
 #     the line. In particular, a backslash-newline pair may not be used as a line continuation.
-#   -d delim 
+#   -d delim
 #     The first character of delim is used to terminate the input line, rather than newline.
 read -r -d '' basic_config << CONFIG
 Host *

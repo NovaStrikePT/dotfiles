@@ -12,9 +12,9 @@ set nocompatible
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-" Install these from Github repos
-" Make sure you use single quotes
-Plug '/usr/local/opt/fzf'
+" Note: Per vim-plug instructions, use single quotes for plugin indentifiers
+" Note: The fzf install script should automatically find and use a fzf executable if it exists in $PATH
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install' }
 Plug 'junegunn/fzf.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'dag/vim-fish'
