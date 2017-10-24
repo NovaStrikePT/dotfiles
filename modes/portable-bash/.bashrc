@@ -22,7 +22,9 @@ set -o vi
 # Set up less to use syntax highlighting (with color) and no de-init (don't clear the screen)
 # source-highlight needs to be installed for syntax highlighting
 export LESS='-RX'
-export LESSOPEN="| src-hilite-lesspipe.sh %s"
+if hash src-hilite-lesspipe.sh 2>/dev/null; then
+	export LESSOPEN="| src-hilite-lesspipe.sh %s"
+fi
 
 # NVM configuration
 export NVM_DIR="$HOME/.nvm"
