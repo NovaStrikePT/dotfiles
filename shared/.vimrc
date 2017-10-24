@@ -140,3 +140,22 @@ if !has('gui_running')
 		autocmd VimEnter * AirlineTheme dark
 	augroup END
 endif
+
+" Set up fzf grep-based commands based on available executables
+if executable('rg')
+	command! -bang -nargs=* Rg
+		\ call fzf#vim#grep(
+		\   'rg --column --line-number --no-heading --color=always --hidden --glob \!.git '.shellescape(<q-args>),
+		\   1,
+		\   <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'),
+		\   <bang>0)
+endif
+
+if executable('ack')
+	command! -bang -nargs=* Ack
+		\ call fzf#vim#grep(
+		\   'ack --column --nogroup --nopager --color '.shellescape(<q-args>),
+		\   1,
+		\   <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'),
+		\   <bang>0)
+endif

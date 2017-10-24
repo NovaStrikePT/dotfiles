@@ -92,14 +92,12 @@ function nvm
 	bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
 end
 
-# Ag aliases
-#
-
-# Search hidden files, use `less` paging
-alias hag 'ag --hidden --pager less'
-
-# Use ag to find files for fzf
-set -gx FZF_DEFAULT_COMMAND 'ag --hidden -g ""'
+# `rg` aliases
+function arg
+	# See also $LESS options above
+	rg --hidden --pretty --glob \!.git $argv | less
+end
+set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --glob \!.git'
 
 # Source (optional) local configuration
 set -l local_config {$HOME}/.config/fish/local.fish
