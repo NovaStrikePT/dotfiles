@@ -36,19 +36,13 @@ alias cask 'brew cask'
 #alias cask_outdated "brew cask info (brew cask list) | fgrep -iB3 'not installed' ;or true"
 function cask_outdated
 	for c in (brew cask list)
-		# TODO: fish doesn't correctly save multi-line output to a variable, so we (cask info) twice
+		# TODO: fish doesn't correctly save multi-line output to a variable, so we do lots of piping
 		# See https://github.com/fish-shell/fish-shell/issues/159
-		#set_color magenta ; echo -n '==> Latest    : ' ; set_color normal
-		#brew cask info $c | head -1
-		#set_color magenta ; echo -n '==> Installed : ' ; set_color normal
-		#brew cask info $c | grep '/usr/local/Caskroom/' | tail -1 | cut -c 21- | sed 's/\//: /'
-		#echo
-		brew cask info $c | head -3 | gsed '2d' | gsed '1!b;s/^/Latest    > /'  | gsed 's/^\/usr\/local\/Caskroom\//Installed > /' | gsed '2!b;s/\//: /' | gsed '2!b;s/ (.*)$//' ;and echo
+		brew cask info $c | head -3 | gsed '2d' | gsed '1!b;s/^/Latest    > /' | gsed 's/^\/usr\/local\/Caskroom\//Installed > /' | gsed '2!b;s/\//: /' | gsed '2!b;s/ (.*)$//' ;and echo
 	end
 end
 
 function brouhaha
-	sudo chown -R (whoami) /usr/local
 	cask cleanup ;and brew cleanup
 	brew update
 	set_color blue ; echo -n '==> ' ; set_color --bold cyan ; echo brew outdated ; set_color normal
