@@ -1,4 +1,5 @@
 [alias]
+	adog = log --all --decorate --oneline --graph
 	br = branch
 	co = checkout
 	ci = commit
