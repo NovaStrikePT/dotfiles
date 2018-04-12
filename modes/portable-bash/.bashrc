@@ -2,7 +2,9 @@
 #
 alias lsa='ls -lah --color=auto'
 
-# Make vi always run vim
+# Use vim as default editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
 alias vi='vim'
 
 # grep in color
@@ -15,9 +17,6 @@ alias fileextensions="find . -type f | perl -ne 'print \$1 if m/\\.([^.\\/]+)$/'
 if hash colordiff 2>/dev/null; then
 	alias diff='colordiff'
 fi
-
-# Use vi mode
-set -o vi
 
 # Set up less to use syntax highlighting (with color) and no de-init (don't clear the screen)
 # source-highlight needs to be installed for syntax highlighting
