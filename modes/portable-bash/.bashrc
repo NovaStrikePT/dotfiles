@@ -1,3 +1,15 @@
+#!/bin/bash
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+# Set directory colors
+eval `dircolors ~/.dir_colors`
+
 # Aliases
 #
 alias lsa='ls -lah --color=auto'
@@ -121,7 +133,7 @@ if [ -f "${HOME}/git-prompt.sh" ]; then
 	source "${HOME}/git-prompt.sh"
 fi
 
-PS1="\n\[$Cyan\]\h:\[$Green\]\u\n\[$Blue\]\w\[$Yellow\]\$(__git_ps1)\[$Color_Off\] \\$ "
+export PS1="\n\[$Cyan\]\h:\[$Green\]\u\n\[$Blue\]\w\[$Yellow\]\$(__git_ps1)\[$Color_Off\] \\$ "
 
 # Git auto-completion
 if [ -f "${HOME}/git-completion.bash" ]; then

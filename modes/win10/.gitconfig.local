@@ -1,0 +1,18 @@
+[diff]
+	tool = vsdiffmerge
+[difftool]
+	prompt = false
+[difftool "vsdiffmerge"]
+	trustExitCode = true
+	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsDiffMerge.exe\" \"$LOCAL\" \"$REMOTE\" Source Target //t
+[merge]
+	tool = vsdiffmerge
+[mergetool]
+	prompt = false
+[mergetool "vsdiffmerge"]
+	trustExitCode = true
+	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsDiffMerge.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\" //m
+[user]
+	name = Phuong Tran
+#[credential]
+#	helper = osxkeychain
