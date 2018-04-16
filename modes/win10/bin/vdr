@@ -2,7 +2,7 @@
 
 # Running batch files through cmd.exe is WSL-specific (see also https://docs.microsoft.com/en-us/windows/wsl/interop#run-windows-tools-from-wsl)
 # We don't need to run batch files through cmd.exe from Cygwin/MinGW (e.g. Git Bash) (--serverlist doesn't seem to work properly when run through cmd.exe)
-# TODO: Generalize this, or branch this based on detected environment
+# TODO: Generalize this, or branch this based on detected environment. See also https://github.com/Microsoft/WSL/issues/1917
 vimCmd='cmd.exe /C vim.bat'
 gvimCmd='cmd.exe /C gvim.bat'
 
