@@ -1,6 +1,10 @@
 #!/bin/bash
 
-vimCmd='gvim'
+# Running batch files through cmd.exe is WSL-specific (see also https://docs.microsoft.com/en-us/windows/wsl/interop#run-windows-tools-from-wsl)
+# We don't need to run batch files through cmd.exe from Cygwin/MinGW (e.g. Git Bash) (--serverlist doesn't seem to work properly when run through cmd.exe)
+# TODO: Generalize this, or branch this based on detected environment
+vimCmd='cmd.exe /C vim.bat'
+gvimCmd='cmd.exe /C gvim.bat'
 
 show_usage() {
 cat <<USAGE
@@ -62,11 +66,11 @@ if [ $# -gt 0 ]; then
 		# i: ignore-case
 		# q: quiet
 		# x: match only entire lines
-	if ! $vimCmd --serverlist | fgrep -iqx "$serverName"; then
+		# **Windows-specific:** gvim --serverlist will return a list containing Windows newlines (\r\n). WSL fgrep -x option will only detect Unix newlines (\n), so we need to convert it prior to grepping.
+	if ! $vimCmd --serverlist | sed 's/\r$//' | fgrep -iqx "$serverName"; then
 		# A new server instance will be started; delete the empty buffer
 		vimOpts="$vimOpts +bdelete1"
 	fi
 fi
 
-
-eval "$vimCmd $vimOpts ${filesList[@]}"
+eval "$gvimCmd $vimOpts ${filesList[@]}"
