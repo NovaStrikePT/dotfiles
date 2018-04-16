@@ -10,5 +10,5 @@ augroup guiTheme
 	autocmd GUIEnter * AirlineThemeLight
 augroup END
 
-set guifont=Droid_Sans_Mono_Slashed_for_Pow:h9:cANSI:qDRAFT
-set lines=40 columns=130
+set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h12
+set transparency=4
