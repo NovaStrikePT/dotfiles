@@ -14,5 +14,5 @@
 	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsDiffMerge.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\" //m
 [user]
 	name = Phuong Tran
-#[credential]
-#	helper = osxkeychain
+[credential]
+	helper = cache --timeout=14400
