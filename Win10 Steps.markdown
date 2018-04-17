@@ -27,6 +27,14 @@
 		* PowerShell
 		* Developer Command Prompt for VS
 		* etc.
+* gitcredentials
+	* Git for Windows (e.g. Git Bash) already has `credential.helper=manager`
+	* For other git instances, such as WSL, e.g.:
+
+		```
+		git config "credential.https://github.com.username" NovaStrikePT
+		git config credential.helper "cache --timeout=28800"
+		```
 
 # TODO
 * Merge
