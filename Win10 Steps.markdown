@@ -16,6 +16,11 @@
 		* plugin\matchit.vim
 		* plugin\ws.vim
 	* .minttyrc
+* Install [rg](https://github.com/BurntSushi/ripgrep#installation) in Windows and WSL ().
+	* Ubuntu WSL: Use .deb file, at least as long as `snap` doesn't work.
+	* Windows
+		* Install into %Path% location (e.g. `%HOME%\AppData\Local\Microsoft\WindowsApps\`)
+		* Create **System** environment variable: FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul'
 * Download fzf.exe for Windows from https://github.com/junegunn/fzf-bin/releases and install into ~/.fzf/bin
 * (Per macOS setup) install git from (git-core/ppa repo), colordiff, source-highlight, source-highlight-solarized
 * Set solarized terminal colors
