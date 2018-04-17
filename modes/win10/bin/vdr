@@ -1,10 +1,16 @@
 #!/bin/bash
 
 # Running batch files through cmd.exe is WSL-specific (see also https://docs.microsoft.com/en-us/windows/wsl/interop#run-windows-tools-from-wsl)
-# We don't need to run batch files through cmd.exe from Cygwin/MinGW (e.g. Git Bash) (--serverlist doesn't seem to work properly when run through cmd.exe)
-# TODO: Generalize this, or branch this based on detected environment. See also https://github.com/Microsoft/WSL/issues/1917
-vimCmd='cmd.exe /C vim.bat'
-gvimCmd='cmd.exe /C gvim.bat'
+# We don't need to run batch files through cmd.exe from MinGW (e.g. Git Bash) (--serverlist doesn't seem to work properly when run through cmd.exe)
+# Determine environment through variable, MSYSTEM (see https://stackoverflow.com/questions/37460073/msys-vs-mingw-internal-environment-variables)
+# TODO: Generalize this to other Windows programs (e.g. Cygwin)
+if [ -n "$MSYSTEM" ]; then
+	vimCmd='vim.bat'
+	gvimCmd='gvim.bat'
+else
+	vimCmd='cmd.exe /C vim.bat'
+	gvimCmd='cmd.exe /C gvim.bat'
+fi
 
 show_usage() {
 cat <<USAGE
