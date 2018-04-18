@@ -36,8 +36,12 @@
 		* etc.
 * gitcredentials
 	* Git for Windows (e.g. Git Bash) already has `credential.helper=manager`
+	* For other git instances, such as WSL, e.g.: `git config credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe"`
+		* See also https://stackoverflow.com/questions/45925964/how-to-use-git-credential-store-on-wsl-ubuntu-on-windows
+		* Note: while git-credential-wincred.exe seems to work, git-credential-manager.exe doesn't seem to work
 
 # TODO
+* Try fish as default shell via wsl.exe (see https://github.com/Microsoft/WSL/issues/2199)
 * Merge/DRY up
 	* `vdr` in fish (mac) and win10
 	* `.gvimrc` in fish (mac) and win10
