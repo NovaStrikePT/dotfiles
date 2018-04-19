@@ -2,11 +2,9 @@
 alias viet='vdr -t'
 
 # `rg` aliases
-if hash rg 2>/dev/null; then
-	arg() {
-		rg --hidden --pretty --glob \!.git $* | less
-	}
+arg() {
+	rg --hidden --pretty --glob \!.git $* | less
+}
 
-	# Override .bashrc
-	export FZF_DEFAULT_COMMAND='rg --files --hidden --glob \!.git'
-fi
+# Override .bashrc
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob \!.git'
