@@ -4,6 +4,9 @@ set -gx PATH {$HOME}/bin $PATH
 # No welcome message, please
 set -gx fish_greeting ''
 
+# Set default user for Agnoster theme
+set -gx default_user (whoami)
+
 # NVM configuration
 set -gx NVM_DIR $HOME/.nvm
 
