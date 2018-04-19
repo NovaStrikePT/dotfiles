@@ -11,4 +11,4 @@ augroup guiTheme
 augroup END
 
 set guifont=Droid_Sans_Mono_Slashed_for_Pow:h9:cANSI:qDRAFT
-set lines=40 columns=130
+set lines=50 columns=130
