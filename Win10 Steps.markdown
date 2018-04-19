@@ -24,7 +24,13 @@
 		* Install into %Path% location (e.g. `%HOME%\AppData\Local\Microsoft\WindowsApps\`)
 		* Create **System** environment variable: FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul'
 * Download fzf.exe for Windows from https://github.com/junegunn/fzf-bin/releases and install into %Path% location (e.g. `%HOME%\AppData\Local\Microsoft\WindowsApps\`)
-* (Per macOS setup) install git from (git-core/ppa repo), colordiff, source-highlight, source-highlight-solarized
+* Per macOS setup:
+	* Install git from (git-core/ppa repo), colordiff, source-highlight, source-highlight-solarized
+	* Install [fish from ppa](https://launchpad.net/~fish-shell/+archive/ubuntu/release-2)
+		* Install fisherman
+		* Fisher install virtualxdriver/agnoster.fish
+		* **WSL+fishv2.6BUG:** Note that fish hangs when *first run* (e.g. if `chsh -s /usr/bin/fish`) (see https://github.com/fish-shell/fish-shell/issues/4427)
+			* Workaround: run `wsl.exe` with fish, then run again, then use Task Manager to kill the first process.
 * Set solarized terminal colors
 	* Create shortcut to C:\Windows\System32\bash.exe (named Ubuntu Solarized, e.g.)
 		* Set Start directory to %HOME%
@@ -41,8 +47,9 @@
 		* Note: while git-credential-wincred.exe seems to work, git-credential-manager.exe doesn't seem to work
 
 # TODO
-* Try fish as default shell via wsl.exe (see https://github.com/Microsoft/WSL/issues/2199)
 * Merge/DRY up
 	* `vdr` in fish (mac) and win10
 	* `.gvimrc` in fish (mac) and win10
+	* fish config
+* Revisit fish+WSL workaround when fish 3.0 is released, or WSL issue is resolved?
 * Resolve fzf.exe for mintty: https://github.com/junegunn/fzf/wiki/Windows#fzf-outputs-character-set-not-supported-when-term-environment-variable-is-set
