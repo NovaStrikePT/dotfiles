@@ -53,3 +53,7 @@
 	* fish config
 * Revisit fish+WSL workaround when fish 3.0 is released, or WSL issue is resolved?
 * Resolve fzf.exe for mintty: https://github.com/junegunn/fzf/wiki/Windows#fzf-outputs-character-set-not-supported-when-term-environment-variable-is-set
+* Find a place for Win scripts:
+	* `printf '\e]2;%s\a' 'Windows Git Bash'`  # Which one?
+		* This also works: `printf '\e]0;%s\a' 'Windows Git Bash'`
+	* Put this into a PowerShell profile (usually run as Administrator): `Function arg { rg.exe --hidden --pretty --glob !.git $args | Out-Host -Paging }`
