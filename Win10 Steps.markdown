@@ -56,4 +56,14 @@
 * Find a place for Win scripts:
 	* `printf '\e]2;%s\a' 'Windows Git Bash'`  # Which one?
 		* This also works: `printf '\e]0;%s\a' 'Windows Git Bash'`
-	* Put this into a PowerShell profile (usually run as Administrator): `Function arg { rg.exe --hidden --pretty --glob !.git $args | Out-Host -Paging }`
+	* https://github.com/Microsoft/WSL/issues/715#issuecomment-238010146
+	* PowerShell as Administrator doesn't share network drive session, so drives need to be (re-)mapped, but persisting the network drive (H:) does weird things (can't Remove-PSDrive, PowerShell profile is no longer read). Investigate further
+	* Put into PowerShell profiles
+		* See also https://blogs.technet.microsoft.com/heyscriptingguy/2012/05/21/understanding-the-six-powershell-profiles/)
+
+		```
+		Set-PSReadlineOption -BellStyle None
+		Set-Location $HOME
+		# function arg { rg.exe --hidden --pretty --glob !.git $args | Out-Host -Paging }
+		function arg { rg.exe --hidden --pretty --glob !.git $args }
+		```
