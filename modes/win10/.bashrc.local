@@ -13,13 +13,5 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --glob \!.git'
 export THEME=$HOME/.bash/themes/agnoster-bash/agnoster.bash
 if [[ -f $THEME ]]; then
 	export DEFAULT_USER=`whoami`
-
-	# Do special stuff for Git bash mintty
-	# Set the window title (includes current directory) with the prompt
-	# TODO: Better way?
-	if [ -n "$MSYSTEM" ]; then
-		export TERM_TITLE='\[\033]0;GitBash $PWD\007\]'
-	fi
-
 	source $THEME
 fi
