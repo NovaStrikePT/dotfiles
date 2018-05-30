@@ -36,9 +36,10 @@
 		* Fisher install virtualxdriver/agnoster.fish
 		* **WSL+fishv2.6BUG:** Note that fish hangs when *first run* (e.g. if `chsh -s /usr/bin/fish`) (see https://github.com/fish-shell/fish-shell/issues/4427)
 			* Workaround: run `wsl.exe` with fish, then run again, then use Task Manager to kill the first process.
+* `C:` mount point differs between Git bash and WSL. Create symlink in WSL for consistent behavior: `sudo ln -s /mnt/c /c`
 * gitcredentials
 	* Git for Windows (e.g. Git Bash) already has `credential.helper=manager`
-	* For other git instances, such as WSL, e.g.: `git config credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe"`
+	* For other git instances, such as WSL, e.g.: `git config credential.helper "/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe"`
 		* See also https://stackoverflow.com/questions/45925964/how-to-use-git-credential-store-on-wsl-ubuntu-on-windows
 		* Note: while git-credential-wincred.exe seems to work, git-credential-manager.exe doesn't seem to work
 
@@ -51,10 +52,17 @@
 	* fish config
 * Revisit fish+WSL workaround when fish 3.0 is released, or WSL issue is resolved?
 * Resolve `FZF_DEFAULT_COMMAND` for git bash for Windows (should use Windows version of `rg` (e.g. use Windows version of `FZF_DEFAULT_COMMAND`))
-	* `fzf` works with: `FZF_DEFAULT_COMMAND='' fzf`
+	* `fzf` works with: `FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul' fzf`
 	* `viet` works with `fzf-vim`: `TERM='' SHELL='' FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul' viet`
 		* In vim, `let $TMP='C:\Users\ptran\AppData\Local\Temp'` (can't set this in environment variable?)
 		* How to automatically fall back to Windows FZF_DEFAULT_COMMAND?
+
+		```
+		# Superfly aliases
+		# TODO: WHAT?
+		alias sffzf='FZF_DEFAULT_COMMAND="rg --files --hidden --glob !.git . 2>nul" fzf'
+		alias sfviet="echo \":let \\\$TMP='C:\\Users\\ptran\\AppData\\Local\\Temp\" ; TERM='' SHELL='' FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul' viet"
+		```
 	* Maybe helpful: https://github.com/junegunn/fzf/issues/1093
 * Find a place for Win scripts:
 	* Term beep? https://github.com/Microsoft/WSL/issues/715#issuecomment-238010146
