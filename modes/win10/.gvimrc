@@ -7,7 +7,7 @@ command AirlineThemeDark set background=dark | AirlineTheme luna
 command AirlineThemeLight set background=light | AirlineTheme papercolor
 augroup guiTheme
 	autocmd!
-	autocmd GUIEnter * AirlineThemeLight
+	autocmd GUIEnter * AirlineThemeDark
 augroup END
 
 set guifont=Droid_Sans_Mono_Slashed_for_Pow:h9:cANSI:qDRAFT
