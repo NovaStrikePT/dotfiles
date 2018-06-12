@@ -51,6 +51,8 @@
 	* `.gvimrc` in fish (mac) and win10
 	* fish config
 * Revisit fish+WSL workaround when fish 3.0 is released, or WSL issue is resolved?
+* Revisit ConEmu AppKeys (arrow keys in vim): https://github.com/Microsoft/WSL/issues/111
+	* Add to WSL task: `-new_console:p5`
 * Resolve `FZF_DEFAULT_COMMAND` for git bash for Windows (should use Windows version of `rg` (e.g. use Windows version of `FZF_DEFAULT_COMMAND`))
 	* `fzf` works with: `FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul' fzf`
 	* `viet` works with `fzf-vim`: `TERM='' SHELL='' FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul' viet`
