@@ -19,7 +19,9 @@ set -gx LESSOPEN "| src-hilite-lesspipe.sh %s"
 #
 alias lsa 'ls -lah --color=auto'
 
-# Make vi always run vim
+# Use vim as default editor
+set -gx VISUAL 'vim'
+set -gx EDITOR "$VISUAL"
 alias vi 'vim'
 
 # vdr using tabpages
