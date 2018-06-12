@@ -77,3 +77,7 @@
 		# function arg { rg.exe --hidden --pretty --glob !.git $args | Out-Host -Paging }
 		function arg { rg.exe --hidden --pretty --glob !.git $args }
 		```
+* Custom Explorer folder: https://winaero.com/blog/make-explorer-open-custom-folder-instead-of-this-pc-or-quick-access-in-windows-10/
+	1. Make registry keys/path: `HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{52205fd8-5dfb-447d-801a-d0b52f2e83e1}\shell\opennewwindow\command`
+	1. Assign value to (Default): `wscript.exe C:\Users\<username>\explorer-launch.vbs`
+	1. Create empty string value, `DelegateExecute`
