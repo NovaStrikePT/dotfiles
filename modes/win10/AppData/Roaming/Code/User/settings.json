@@ -1,8 +1,7 @@
 {
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    "editor.fontFamily": "Meslo LG M for Powerline",
-    "editor.fontSize": 12,
+    "window.newWindowDimensions": "inherit",
     "window.restoreWindows": "none",
     "workbench.colorCustomizations": {
         "statusBar.background": "#002b36",
