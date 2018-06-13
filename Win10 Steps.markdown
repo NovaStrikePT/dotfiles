@@ -1,11 +1,15 @@
 # Setup Steps
 * Add %HOME% environment variable
+* Install Ubuntu WSL
+	* See https://superuser.com/questions/1271682/is-there-a-way-of-installing-windows-subsystem-for-linux-on-win10-v1709-withou
+	* See also https://docs.microsoft.com/en-us/windows/wsl/install-on-server
+	* See also https://docs.microsoft.com/en-us/windows/wsl/faq
+	* Waiting on updated WSL and offline installation for Ubuntu 18.04 (https://blogs.msdn.microsoft.com/commandline/2018/05/15/build-2018-recap/)
 * Instructions for setting up home directory for user
 	* `ubuntu config --default-user root`
 	* `usermod --home ${newHome} ${user}`
 * Install `portable-bash` first, then install `win10`
 * Install gvim using [executable installer](https://www.vim.org/download.php#pc) (we use the batch files). TODO: Can we recreate the batch files for [nightly/64-bit gvim](https://github.com/vim/vim-win32-installer)?
-* Install Ubuntu WSL
 * Install [Cmder](http://cmder.net/)
 	* Add task for `fish::Ubuntu`: `"C:\Windows\System32\wsl.exe" -new_console:d%USERPROFILE% -new_console:P<Ubuntu>`
 		* (Optional) change icon to %ProgramFiles%\WindowsApps\CanonicalGroupLimited.UbuntuonWindows_1604.2017.922.0_x64__79rhkp1fndgsc\images\icon.ico (need to grant access to WindowsApps directory)
@@ -34,8 +38,6 @@
 	* Install [fish from ppa](https://launchpad.net/~fish-shell/+archive/ubuntu/release-2)
 		* Install fisherman
 		* Fisher install virtualxdriver/agnoster.fish
-		* **WSL+fishv2.6BUG:** Note that fish hangs when *first run* (e.g. if `chsh -s /usr/bin/fish`) (see https://github.com/fish-shell/fish-shell/issues/4427)
-			* Workaround: run `wsl.exe` with fish, then run again, then use Task Manager to kill the first process.
 * `C:` mount point differs between Git bash and WSL. Create symlink in WSL for consistent behavior: `sudo ln -s /mnt/c /c`
 * gitcredentials
 	* Git for Windows (e.g. Git Bash) already has `credential.helper=manager`
@@ -50,7 +52,11 @@
 	* `vdr` in fish (mac) and win10
 	* `.gvimrc` in fish (mac) and win10
 	* fish config
-* Revisit fish+WSL workaround when fish 3.0 is released, or WSL issue is resolved?
+* **WSL+fishv2.6BUG:** Note that fish hangs when *first run* (e.g. if `chsh -s /usr/bin/fish`) (see https://github.com/fish-shell/fish-shell/issues/4427)
+	* Workaround: run `wsl.exe` with fish, then run again, then use Task Manager to kill the first process.
+	* See also https://github.com/Microsoft/WSL/issues/1653
+	* And https://github.com/MicrosoftDocs/WSL/issues/191
+	* Should be resolved with WSL from Windows 1803
 * Revisit ConEmu AppKeys (arrow keys in vim): https://github.com/Microsoft/WSL/issues/111
 	* Add to WSL task: `-new_console:p5`
 * Resolve `FZF_DEFAULT_COMMAND` for git bash for Windows (should use Windows version of `rg` (e.g. use Windows version of `FZF_DEFAULT_COMMAND`))
