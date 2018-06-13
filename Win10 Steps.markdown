@@ -45,6 +45,10 @@
 		* See also https://stackoverflow.com/questions/45925964/how-to-use-git-credential-store-on-wsl-ubuntu-on-windows
 		* Note: while git-credential-wincred.exe seems to work, git-credential-manager.exe doesn't seem to work
 
+# Other setup/applications
+* [Gpg4win](https://gpg4win.org/thanks-for-download.html) (see also https://gnupg.org/download/)
+* `Install-Module -Name Recycle`
+
 # TODO
 * Update configs accounting for cmder (e.g. $MSYSTEM detection)
 * Store cmder and/or ConEmu configs?
