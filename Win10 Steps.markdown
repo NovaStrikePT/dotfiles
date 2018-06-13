@@ -81,13 +81,17 @@
 	* PowerShell as Administrator doesn't share network drive session, so drives need to be (re-)mapped, but persisting the network drive (H:) does weird things (can't Remove-PSDrive, PowerShell profile is no longer read). Investigate further
 	* Put into PowerShell profiles
 		* See also https://blogs.technet.microsoft.com/heyscriptingguy/2012/05/21/understanding-the-six-powershell-profiles/)
+		* `C:\Windows\System32\WindowsPowerShell\Profile.ps1`
+		* `$HOME\Documents\Profile.ps1` (GPO'd profile may be on network share)
+		* `echo $profile`
 		* For Cmder, put into `config/user-profile.ps1`
 
 		```
 		Set-PSReadlineOption -BellStyle None
-		Set-Location $HOME
+		Set-Location $HOME  # For Administrator/GPO'd profiles
 		# function arg { rg.exe --hidden --pretty --glob !.git $args | Out-Host -Paging }
 		function arg { rg.exe --hidden --pretty --glob !.git $args }
+		Set-Alias -Name recycle -Value Remove-ItemSafely  # cf `Find-Module -Name Recycle`
 		```
 * Custom Explorer folder: https://winaero.com/blog/make-explorer-open-custom-folder-instead-of-this-pc-or-quick-access-in-windows-10/
 	1. Make registry keys/path: `HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{52205fd8-5dfb-447d-801a-d0b52f2e83e1}\shell\opennewwindow\command`
