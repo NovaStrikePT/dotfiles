@@ -6,8 +6,13 @@
     "window.newWindowDimensions": "inherit",
     "window.restoreWindows": "none",
     "workbench.colorCustomizations": {
+        // Assumes Dark+ (Default dark) theme
         "statusBar.background": "#002b36",
-        // Using custom Monokai colors
+        // "tab.activeBackground": "#002B37",
+        "tab.activeBackground": "#005A6FAA",
+        // "tab.activeBackground": "#005A6F",
+
+        // Terminal uses custom Monokai(-esque) colors
         "terminal.ansiBlack": "#272822",
         "terminal.ansiBlue": "#01549e",
         "terminal.ansiGreen": "#74aa04",
