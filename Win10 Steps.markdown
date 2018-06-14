@@ -38,6 +38,17 @@
 	* Install [fish from ppa](https://launchpad.net/~fish-shell/+archive/ubuntu/release-2)
 		* Install fisherman
 		* Fisher install virtualxdriver/agnoster.fish
+	* Install nvm (also requires fisher to use nvm in fish)
+		* https://github.com/creationix/nvm#git-install
+		* Install node.js using `nvm`
+			* Install [Bass](https://github.com/edc/bass) (to be able to run nvm in fish)
+				```
+				fisher install edc/bass
+				```
+			* `mkdir ~/.nvm`
+			* If node was already installed with homebrew, see http://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x
+			* `nvm install node` to install the latest
+			* (Optional) create a .nvmrc or `nvm alias default <version>` to specify a default version to use
 * `C:` mount point differs between Git bash and WSL. Create symlink in WSL for consistent behavior: `sudo ln -s /mnt/c /c`
 * gitcredentials
 	* Git for Windows (e.g. Git Bash) already has `credential.helper=manager`

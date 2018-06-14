@@ -52,6 +52,11 @@ end
 # Common rsync over ssh macro
 alias rsshnc 'rsync -avh --progress -e ssh'
 
+# Running NVM in fish is easy with bass
+function nvm
+	bass source $HOME/.nvm/nvm.sh --no-use ';' nvm $argv
+end
+
 # `rg` aliases
 function arg
 	# See also $LESS options above
