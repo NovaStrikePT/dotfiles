@@ -41,6 +41,11 @@ alias efind 'find -regextype posix-extended'
 # Get formatted mtime of a file
 alias mtime 'stat -f "%Sm" -t "%Y-%m-%d %H.%M"'
 
+# WSL interacting with Windows: set TMPDIR to a Windows-accessible location
+# This is primarily used only for git diff/merge GUI tools
+# See https://www.sep.com/sep-blog/2017/06/07/20170607wsl-git-and-beyond-compare/
+alias gitwsl "env TMPDIR=$HOME/AppData/Local/Temp/ git"
+
 # Remove newline at end of file - for those super minor changes where vi still makes a needless modification
 alias chompeofnewline "perl -pi -e 'chomp if eof'"
 

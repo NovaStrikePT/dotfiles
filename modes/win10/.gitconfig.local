@@ -1,3 +1,8 @@
+[alias]
+	# See meld-wsl below
+	dtwsl = difftool --tool=meld-wsl --dir-diff --no-symlinks
+	dtcwsl = difftool --tool=meld-wsl --dir-diff --no-symlinks --cached
+	mtwsl = mergetool --tool=meld-wsl
 [diff]
 	tool = meld
 [difftool]
@@ -5,13 +10,24 @@
 [difftool "meld"]
 	trustExitCode = true
 	cmd = \"C:\\Program Files (x86)\\Meld\\Meld.exe\" \"$LOCAL\" \"$REMOTE\"
+[difftool "meld-wsl"]
+	trustExitCode = true
+	# Source: https://www.sep.com/sep-blog/2017/06/07/20170607wsl-git-and-beyond-compare/
+	cmd = \"/mnt/c/Program Files (x86)/Meld/Meld.exe\" \
+	      \"`echo $LOCAL | sed 's_/mnt/c_C:_'`\" \
+		  \"`echo $REMOTE | sed 's_/mnt/c_C:_'`\"
 [merge]
 	tool = meld
 [mergetool]
 	prompt = false
 [mergetool "meld"]
-	trustExitCode = true
-	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsDiffMerge.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\" //m
 	cmd = \"C:\\Program Files (x86)\\Meld\\Meld.exe\" --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output \"$MERGED\" --label \"MERGE (REMOTE BASE MY)\"
+[mergetool "meld-wsl"]
+	# Source: https://www.sep.com/sep-blog/2017/06/07/20170607wsl-git-and-beyond-compare/
+	cmd = \"/mnt/c/Program Files (x86)/Meld/Meld.exe\" --auto-merge \
+	      \"`echo $LOCAL | sed 's_/mnt/c_C:_'`\" \
+		  \"`echo $BASE | sed 's_/mnt/c_C:_'`\" \
+		  \"`echo $REMOTE | sed 's_/mnt/c_C:_'`\" \
+		  --output \"`echo $MERGED | sed 's_/mnt/c_C:_'`\" --label \"MERGE (REMOTE BASE MY)\"
 [user]
 	name = Phuong Tran
