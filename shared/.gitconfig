@@ -4,8 +4,8 @@
 	co = checkout
 	ci = commit
 	st = status
-	dt = difftool
-	dtc = difftool --cached
+	dt = difftool --dir-diff
+	dtc = difftool --dir-diff --cached
 	diffc = diff --cached
 [color]
 	ui = auto
