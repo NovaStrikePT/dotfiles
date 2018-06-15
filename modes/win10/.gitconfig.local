@@ -1,3 +1,5 @@
+[core]
+	autocrlf = true
 [alias]
 	# See meld-wsl below
 	dtwsl = difftool --tool=meld-wsl --dir-diff --no-symlinks
