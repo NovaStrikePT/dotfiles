@@ -102,6 +102,7 @@
 		Set-Location $HOME  # For Administrator/GPO'd profiles
 		# function arg { rg.exe --hidden --pretty --glob !.git $args | Out-Host -Paging }
 		function arg { rg.exe --hidden --pretty --glob !.git $args }
+		function git-bash { & 'C:\Program Files\Git\bin\bash.exe' --login -i $args }
 		Set-Alias -Name recycle -Value Remove-ItemSafely  # cf `Find-Module -Name Recycle`
 		```
 * Custom Explorer folder: https://winaero.com/blog/make-explorer-open-custom-folder-instead-of-this-pc-or-quick-access-in-windows-10/
