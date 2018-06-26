@@ -2,14 +2,6 @@
 [
     // Bindings for navigating between editor and terminal
     {
-        "key": "ctrl+`",
-        "command": "workbench.action.terminal.toggleTerminal"
-    },
-    {
-        "key": "alt+`",
-        "command": "-workbench.action.terminal.toggleTerminal"
-    },
-    {
         "key": "alt+`",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
