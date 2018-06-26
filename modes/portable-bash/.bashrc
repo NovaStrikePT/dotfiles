@@ -49,6 +49,9 @@ alias rsshnc='rsync -avh --progress -e ssh'
 # Use ack to find files for fzf
 export FZF_DEFAULT_COMMAND='ack -l ""'
 
+# Use 16-color terminal colors by default
+export FZF_DEFAULT_OPTS='--color=16'
+
 # Git auto-completion
 if [ -f "${HOME}/git-completion.bash" ]; then
 	source "${HOME}/git-completion.bash"

@@ -69,6 +69,9 @@ function arg
 end
 set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --glob \!.git'
 
+# Use 16-color terminal colors by default
+set -gx FZF_DEFAULT_OPTS '--color=16'
+
 # Source (optional) local configuration
 set -l local_config {$HOME}/.config/fish/local.fish
 if test -f $local_config
