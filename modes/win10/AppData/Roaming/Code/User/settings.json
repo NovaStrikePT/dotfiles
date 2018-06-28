@@ -1,10 +1,25 @@
 {
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
+
     "terminal.integrated.fontFamily": "Meslo LG S for Powerline",
     "terminal.integrated.fontSize": 12,
+    // Use Cmder PowerShell profile settings
+    // If the profile.ps1 below is a symlink, be sure $env:CMDER_ROOT is set to the proper location
+    // TODO: Use an environment-based profile path (see https://github.com/Microsoft/vscode/issues/2809)
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "terminal.integrated.shellArgs.windows": [
+        "-ExecutionPolicy", "Bypass",
+        "-NoLogo",
+        "-NoProfile",
+        "-NoExit",
+        "-Command", ". 'C:\\cmder-profiles\\profile.ps1'",
+    ],
+
+    // Control how new VSCode windows behave
     "window.newWindowDimensions": "inherit",
     "window.restoreWindows": "none",
+
     "workbench.colorCustomizations": {
         // Assumes Dark+ (Default dark) theme
         "statusBar.background": "#002b36",
@@ -31,5 +46,5 @@
         "terminal.ansiBrightWhite": "#ffffff",
     },
     "workbench.editor.closeOnFileDelete": false,
-    "workbench.statusBar.feedback.visible": false,
+    "workbench.statusBar.feedback.visible": false,  // I don't want to "Tweet feedback"
 }

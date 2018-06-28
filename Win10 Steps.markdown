@@ -74,6 +74,16 @@
 	* Should be resolved with WSL from Windows 1803
 * Revisit ConEmu AppKeys (arrow keys in vim): https://github.com/Microsoft/WSL/issues/111
 	* Add to WSL task: `-new_console:p5`
+* VS Code use environment vars in settings.json: https://github.com/Microsoft/vscode/issues/2809
+	1. Until that gets resolved, create a symlink to the cmder profile.ps1:
+		```
+		Push-Location C:\
+		New-Item -ItemType Directory test -ErrorAction SilentlyContinue
+		New-Item -ItemType SymbolicLink -Target <path to cmder profile.ps1> -Name profile.ps1
+		Pop-Location
+		```
+	1. If cmder was installed using the “Single User Portable Config” method, add an environment variable for the current user, `CMDER_ROOT`, that points to the cmder installation directory.
+		* profile.ps1 uses this path
 * Resolve `FZF_DEFAULT_COMMAND` for git bash for Windows (should use Windows version of `rg` (e.g. use Windows version of `FZF_DEFAULT_COMMAND`))
 	* `fzf` works with: `FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul' fzf`
 	* `viet` works with `fzf-vim`: `TERM='' SHELL='' FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul' viet`
