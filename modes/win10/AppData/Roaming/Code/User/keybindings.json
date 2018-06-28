@@ -97,4 +97,18 @@
         "command": "workbench.action.openView"
     },
 
+    // Toggle maximized panel (overrides default zoom keybindings)
+    {
+        "key": "ctrl+shift+-",
+        "command": "-workbench.action.zoomOut"
+    },
+    {
+        "key": "ctrl+shift+=",
+        "command": "-workbench.action.zoomIn"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+
 ]
