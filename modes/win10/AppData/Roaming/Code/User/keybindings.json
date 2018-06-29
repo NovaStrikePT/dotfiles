@@ -147,4 +147,11 @@
         "when": "terminalFocus"
     },
 
+    // Vim (and *nix terms) use ctrl+v
+    {
+        "key": "ctrl+v",
+        "command": "-workbench.action.terminal.paste",
+        "when": "terminalFocus"
+    },
+
 ]
