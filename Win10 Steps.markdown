@@ -84,19 +84,6 @@
 		```
 	1. If cmder was installed using the “Single User Portable Config” method, add an environment variable for the current user, `CMDER_ROOT`, that points to the cmder installation directory.
 		* profile.ps1 uses this path
-* Resolve `FZF_DEFAULT_COMMAND` for git bash for Windows (should use Windows version of `rg` (e.g. use Windows version of `FZF_DEFAULT_COMMAND`))
-	* `fzf` works with: `FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul' fzf`
-	* `viet` works with `fzf-vim`: `TERM='' SHELL='' FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul' viet`
-		* In vim, `let $TMP='C:\Users\ptran\AppData\Local\Temp'` (can't set this in environment variable?)
-		* How to automatically fall back to Windows FZF_DEFAULT_COMMAND?
-
-		```
-		# Superfly aliases
-		# TODO: WHAT?
-		alias sffzf='FZF_DEFAULT_COMMAND="rg --files --hidden --glob !.git . 2>nul" fzf'
-		alias sfviet="echo \":let \\\$TMP='C:\\Users\\ptran\\AppData\\Local\\Temp\" ; TERM='' SHELL='' FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul' viet"
-		```
-	* Maybe helpful: https://github.com/junegunn/fzf/issues/1093
 * Find a place for Win scripts:
 	* Term beep? https://github.com/Microsoft/WSL/issues/715#issuecomment-238010146
 	* PowerShell as Administrator doesn't share network drive session, so drives need to be (re-)mapped, but persisting the network drive (H:) does weird things (can't Remove-PSDrive, PowerShell profile is no longer read). Investigate further
