@@ -14,16 +14,20 @@ fi
 
 show_usage() {
 cat <<USAGE
-Usage: ${0##*/} [-h] [-t] [--] <files/paths list>
+Usage: ${0##*/} [-h] [-t] [-c <command> [-c <command> […]]] [--] <files/paths list>
        -h Show this help
        -t Use vim's remote-tab
+       -c <command> vim Ex command
 USAGE
 }
+
+# Allow Ex commands to be passed through to vim
+exCommands=()
 
 # Parse options
 # Reset OPTIND in case getopts was used previously
 OPTIND=1
-while getopts "ht" opt; do
+while getopts "htc:" opt; do
 	case "$opt" in
 		h)
 			show_usage
@@ -32,6 +36,8 @@ while getopts "ht" opt; do
 		t)
 			remoteOption='remote-tab-silent'
 			;;
+		c)
+			exCommands+=("$OPTARG")
 	esac
 done
 shift "$((OPTIND-1))" # Shift off the options and optional --.
@@ -52,6 +58,11 @@ fi
 serverName="${workingDir:-ROOT}"
 
 vimOpts="--servername '$serverName'"
+
+# Pass Ex commands to vim, if specified
+for (( i=0; i < ${#exCommands[@]}; i++ )); do
+	vimOpts="$vimOpts -c '${exCommands[$i]}'"
+done
 
 # Set up options and filenames if a file (arg) list is specified
 if [ $# -gt 0 ]; then
