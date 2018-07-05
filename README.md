@@ -1,10 +1,11 @@
 # Dotfiles
 
 ## Modes
-* `local-fish` for my local machines running fish (tested on macOS)
+* `local-fish` for my local machines running fish (tested on macOS). TODO: rename to mac-fish
 * `portable-bash` for remote servers running bash, usually shared hosting
+* `win10` for my local machines running Windows 10, including WSL
 
-One less-obvious difference between the modes is I'm able to use Ag in my `local-fish` environments, but instead use the more portable `ack` in `portable-bash` mode.
+One less-obvious difference between the modes is I'm able to use Ag in my local environments, but instead use the more portable `ack` in `portable-bash` mode.
 
 ## Installation
 1. Install [patched Powerline fonts](https://github.com/powerline/fonts)
