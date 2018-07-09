@@ -94,7 +94,7 @@ function arg
 	# See also $LESS options above
 	rg --hidden --pretty --glob \!.git $argv | less
 end
-set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --glob \!.git'
+set -gx FZF_DEFAULT_COMMAND 'fd --type file --hidden --exclude .git'
 
 # Source (optional) local configuration
 set -l local_config {$HOME}/.config/fish/local.fish

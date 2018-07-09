@@ -11,7 +11,7 @@ if [ -f "${HOME}/.bash_profile" ]; then
 fi
 
 # Override .bashrc[.local] to use Windows-compatible configuration
-export FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul'
+export FZF_DEFAULT_COMMAND='fd.exe --type file --hidden --exclude .git 2>nul'
 
 # TERM and SHELL should be empty (see https://github.com/junegunn/fzf/issues/1093)
 # Launching gVim from bash uses default bash temp dirs (e.g. /tmp), but fzf.vim needs a temp location accessible by the Windows user

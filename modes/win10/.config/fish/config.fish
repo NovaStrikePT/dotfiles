@@ -67,7 +67,7 @@ function arg
 	# See also $LESS options above
 	rg --hidden --pretty --glob \!.git $argv | less
 end
-set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --glob \!.git'
+set -gx FZF_DEFAULT_COMMAND 'fd --type file --hidden --exclude .git'
 
 # Use 16-color terminal colors by default
 set -gx FZF_DEFAULT_OPTS '--color=16'

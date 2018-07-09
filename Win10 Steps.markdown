@@ -62,8 +62,9 @@
 	* Ubuntu WSL: Use .deb file, at least as long as `snap` doesn't work.
 	* Windows
 		* Move/link `rg.exe` into a %Path% location
-		* Create **System** environment variable: FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git . 2>nul'
+1. [fd.exe](https://github.com/sharkdp/fd/releases)
 1. Download [fzf.exe for Windows](https://github.com/junegunn/fzf-bin/releases) and install/link into a %Path% location
+		* Create **System** environment variable: FZF_DEFAULT_COMMAND='fd.exe --type file --hidden --exclude .git 2>nul'
 1. `C:` mount point differs between Git bash and WSL. Create symlink in WSL for consistent behavior: `sudo ln -s /mnt/c /c`
 1. gitcredentials
 	* Git for Windows (e.g. Git Bash) already has `credential.helper=manager`
