@@ -41,7 +41,7 @@
 		* Git config files
 		* Most bash configuration files (used by Git bash for Windows)
 		* gVim uses *vimfiles*: `PS> New-Item -ItemType SymbolicLink -Target $HOME\.vim -Path $HOME\vimfiles`
-		* powershell-scripts
+		* PowerShell scripts (`~\bin\Windows\**`)
 1. [Cmder mini](https://github.com/cmderdev/cmder/releases) shared install
 	* Set env:`CMDER_ROOT` to install location
 	* Set env:`CMDER_USER_CONFIG` (e.g. `$HOME\.cmder\config`)
@@ -52,7 +52,7 @@
 			* https://github.com/Maximus5/ConEmu/issues/629
 	* Source PowerShell profile in the Cmder user-profile:
 		* Note: If `$Env:CMDER_USER_CONFIG/user-profile.ps1` doesn't exist, run a Cmder PowerShell profile to auto-generate the user-profile on first run.
-		* `PS> Add-Content -Path $Env:CMDER_USER_CONFIG\user-profile.ps1 -Value '. $HOME\powershell-scripts\profiles\AllUsersAllHosts.ps1'`
+		* `PS> Add-Content -Path $Env:CMDER_USER_CONFIG\user-profile.ps1 -Value '. $HOME\bin\Windows\profiles\AllUsersAllHosts.ps1'`
 	* Shortcut target: `%CMDER_ROOT%\Cmder.exe /C %UserProfile%\.cmder`
 	* (Optional) change icons for tasks
 	* See also https://blogs.technet.microsoft.com/heyscriptingguy/2012/05/21/understanding-the-six-powershell-profiles/)

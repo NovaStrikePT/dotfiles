@@ -1,4 +1,4 @@
-# Usage as a shortcut: `powershell.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -Noninteractive -File %UserProfile%\powershell-scripts\Turn-off-display.ps1 < nul`
+# Usage as a shortcut: `powershell.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -Noninteractive -File %UserProfile%\bin\Windows\Switch-Display-off.ps1 < nul`
 
 $MethodDefinition = @'
 [DllImport("user32.dll", SetLastError = true)]
