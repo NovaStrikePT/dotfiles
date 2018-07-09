@@ -26,7 +26,8 @@ alias vi='vim'
 alias grep='grep --color=auto'
 
 # Show all file extensions for files in the current directory hierarchy
-alias fileextensions="find . -type f | perl -ne 'print \$1 if m/\\.([^.\\/]+)$/' | sort -u"
+# Without quoting weirdness: `fd --type file | awk --field-separator . '{print $NF}' | sort | uniq --count | awk '{print $2,$1}'`
+alias fileextensions="fd --type file | awk --field-separator . '"'{print $NF}'"' | sort | uniq --count | awk '"'{print $2,$1}'"'"
 
 # Use colordiff whenever possible
 if hash colordiff 2>/dev/null; then

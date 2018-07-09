@@ -78,7 +78,7 @@ alias chompeofnewline "perl -pi -e 'chomp if eof'"
 
 # Show all file extensions for files in the current directory hierarchy
 function fileextensions
-	find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
+	fd --type file | awk --field-separator . '{print $NF}' | sort | uniq --count | awk '{print $2,$1}'
 end
 
 # Common rsync over ssh macro
