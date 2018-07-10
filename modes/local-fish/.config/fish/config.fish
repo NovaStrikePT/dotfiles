@@ -92,7 +92,7 @@ end
 # `rg` aliases
 function arg
 	# See also $LESS options above
-	rg --hidden --pretty --glob \!.git $argv | less
+	rg --hidden --pretty --smart-case --glob \!.git $argv | less
 end
 set -gx FZF_DEFAULT_COMMAND 'fd --type file --hidden --exclude .git'
 
