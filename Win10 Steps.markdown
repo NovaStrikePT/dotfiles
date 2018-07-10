@@ -93,10 +93,13 @@
 1. Add to %PATH%: `%UserProfile%\bin\Windows`
 1. Install [gvim](https://www.vim.org/download.php#pc)
 1. Install [rg](https://github.com/BurntSushi/ripgrep#installation) in Windows and WSL.
-	* Ubuntu WSL: Use .deb file, at least as long as `snap` doesn't work.
+	* Ubuntu WSL: .deb file
 	* Windows
-		* Move/link `rg.exe` into a %Path% location
-1. [fd.exe](https://github.com/sharkdp/fd/releases)
+		* Move/link `.exe` into a %Path% location
+1. Install [fd](https://github.com/sharkdp/fd/releases)
+	* Ubuntu WSL: .deb file
+	* Windows
+		* Move/link `.exe` into a %Path% location
 1. Download [fzf.exe for Windows](https://github.com/junegunn/fzf-bin/releases) and install/link into a %Path% location
 	* Needs to exist at `$HOME\.fzf\bin\fzf.exe` for gVim
 	* Create **System** environment variable: FZF_DEFAULT_COMMAND='fd.exe --type file --hidden --exclude .git 2>nul'
