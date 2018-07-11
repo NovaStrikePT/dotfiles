@@ -18,6 +18,7 @@
     // Control how new VSCode windows behave
     "window.newWindowDimensions": "inherit",
     "window.restoreWindows": "none",
+    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
     "window.titleBarStyle": "custom",
 
     "workbench.colorCustomizations": {
@@ -48,5 +49,6 @@
         "terminal.ansiBrightWhite": "#ffffff",
     },
     "workbench.editor.closeOnFileDelete": false,
-    "workbench.statusBar.feedback.visible": false,  // I don't want to "Tweet feedback"
+    "workbench.statusBar.feedback.visible": false,
+        // I don't want to "Tweet feedback"
 }
