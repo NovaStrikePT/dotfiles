@@ -62,15 +62,30 @@ function nvm
 	bass source $HOME/.nvm/nvm.sh --no-use ';' nvm $argv
 end
 
+# FZF configuration
+#
+
+set -gx FZF_DEFAULT_COMMAND 'fd --type file --hidden --exclude .git'
+
+# Use 16-color terminal colors by default
+set -gx FZF_DEFAULT_OPTS "--color=16"
+
+# Search everything for command-line pasting (CTRL+T)
+set -gx FZF_CTRL_T_COMMAND 'fd --hidden'
+
+# Search all directories for `cd`-ing to (ALT+C)
+# Provide a `tree` preview
+set -gx FZF_ALT_C_COMMAND 'fd --type directory --hidden'
+set -gx FZF_ALT_C_OPTS "--preview 'tree -C {} | head -100'"
+
+# Use `?` to toggle preview window for history commands (useful for longer commands)
+set -gx FZF_CTRL_R_OPTS "--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+
 # `rg` aliases
 function arg
 	# See also $LESS options above
 	rg --hidden --pretty --smart-case --glob \!.git $argv | less
 end
-set -gx FZF_DEFAULT_COMMAND 'fd --type file --hidden --exclude .git'
-
-# Use 16-color terminal colors by default
-set -gx FZF_DEFAULT_OPTS '--color=16'
 
 # Source (optional) local configuration
 set -l local_config {$HOME}/.config/fish/local.fish

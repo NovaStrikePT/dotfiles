@@ -47,11 +47,25 @@ export NVM_DIR="$HOME/.nvm"
 # Common rsync over ssh macro
 alias rsshnc='rsync -avh --progress -e ssh'
 
+# FZF configuration
+#
+
 # Use ack to find files for fzf
 export FZF_DEFAULT_COMMAND='ack -l ""'
 
 # Use 16-color terminal colors by default
 export FZF_DEFAULT_OPTS='--color=16'
+
+# Search everything for command-line pasting (CTRL+T)
+export FZF_CTRL_T_COMMAND='find -not \( -path "*/.git/*" -o -name ".git" \)'
+
+# Search all directories for `cd`-ing to (ALT+C)
+export FZF_ALT_C_COMMAND='find -type d'
+
+# Use `?` to toggle preview window for history commands (useful for longer commands)
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Git auto-completion
 if [ -f "${HOME}/git-completion.bash" ]; then

@@ -7,7 +7,18 @@ arg() {
 }
 
 # Override .bashrc
+
+# FZF configuration
+#
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git'
+
+# Search everything for command-line pasting (CTRL+T)
+export FZF_CTRL_T_COMMAND='fd --hidden'
+
+# Search all directories for `cd`-ing to (ALT+C)
+# Provide a `tree` preview
+export FZF_ALT_C_COMMAND='fd --type directory --hidden'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
 
 # Use Agnoster
 export THEME=$HOME/.bash/themes/agnoster-bash/agnoster.bash
