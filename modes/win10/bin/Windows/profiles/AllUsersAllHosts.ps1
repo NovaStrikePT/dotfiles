@@ -14,7 +14,3 @@ function git-bash {
 
 # Confer with `Find-Module -Name Recycle`
 Set-Alias -Name recycle -Value Remove-ItemSafely
-
-# Always start in $HOME, even when running with elevated privileges (Administrator)
-# (or with a GPO'd HOMEDRIVE/HOMEPATH/HOMESHARE)
-Set-Location $HOME
