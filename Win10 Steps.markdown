@@ -38,7 +38,7 @@
 		```
 	* Install [fisherman](https://github.com/fisherman/fisherman)
 		* `fisher install virtualxdriver/agnoster.fish`
-	* sudo apt install colordiff source-highlight
+	* sudo apt install colordiff source-highlight tree
 	* [source-highlight-solarized](https://github.com/jrunning/source-highlight-solarized)
 		1. Download / clone repo
 		1. Find existing datadir (try `source-highlight-settings` or see `~/.source-highlight/source-highlight.conf`)
