@@ -78,7 +78,7 @@ alias chompeofnewline "perl -pi -e 'chomp if eof'"
 
 # Show all file extensions for files in the current directory hierarchy
 function fileextensions
-	fd --type file | awk --field-separator . '{print $NF}' | sort | uniq --count | awk '{print $2,$1}'
+	fd --type file --no-ignore-vcs | awk --field-separator . '{print $NF}' | sort | uniq --count | awk '{print $2,$1}'
 end
 
 # Common rsync over ssh macro
@@ -92,17 +92,17 @@ end
 # FZF configuration
 #
 
-set -gx FZF_DEFAULT_COMMAND 'fd --type file --hidden --exclude .git'
+set -gx FZF_DEFAULT_COMMAND 'fd --type file --hidden --no-ignore-vcs --exclude .git'
 
 # Use 16-color terminal colors by default
 set -gx FZF_DEFAULT_OPTS "--color=16"
 
 # Search everything for command-line pasting (CTRL+T)
-set -gx FZF_CTRL_T_COMMAND 'fd --hidden'
+set -gx FZF_CTRL_T_COMMAND 'fd --hidden --no-ignore-vcs'
 
 # Search all directories for `cd`-ing to (ALT+C)
 # Provide a `tree` preview
-set -gx FZF_ALT_C_COMMAND 'fd --type directory --hidden'
+set -gx FZF_ALT_C_COMMAND 'fd --type directory --hidden --no-ignore-vcs'
 set -gx FZF_ALT_C_OPTS "--preview 'tree -C {} | head -100'"
 
 # Use `?` to toggle preview window for history commands (useful for longer commands)

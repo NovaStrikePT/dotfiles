@@ -102,7 +102,7 @@
 		* Move/link `.exe` into a %Path% location
 1. Download [fzf.exe for Windows](https://github.com/junegunn/fzf-bin/releases) and install/link into a %Path% location
 	* Needs to exist at `$HOME\.fzf\bin\fzf.exe` for gVim
-	* Create **System** environment variable: FZF_DEFAULT_COMMAND='fd.exe --type file --hidden --exclude .git 2>nul'
+	* Create **System** environment variable: FZF_DEFAULT_COMMAND='fd.exe --type file --hidden --no-ignore-vcs --exclude .git 2>nul'
 1. [Cmder mini](https://github.com/cmderdev/cmder/releases) shared install
 	* Set env:`CMDER_ROOT` to install location
 	* Set env:`CMDER_USER_CONFIG` (e.g. `$HOME\.cmder\config`)

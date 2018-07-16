@@ -10,14 +10,14 @@ arg() {
 
 # FZF configuration
 #
-export FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --type file --hidden --no-ignore-vcs --exclude .git'
 
 # Search everything for command-line pasting (CTRL+T)
-export FZF_CTRL_T_COMMAND='fd --hidden'
+export FZF_CTRL_T_COMMAND='fd --hidden --no-ignore-vcs'
 
 # Search all directories for `cd`-ing to (ALT+C)
 # Provide a `tree` preview
-export FZF_ALT_C_COMMAND='fd --type directory --hidden'
+export FZF_ALT_C_COMMAND='fd --type directory --hidden --no-ignore-vcs'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
 
 # Use Agnoster
