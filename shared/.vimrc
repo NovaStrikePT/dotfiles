@@ -145,7 +145,7 @@ endif
 if executable('rg')
 	command! -bang -nargs=* Rg
 		\ call fzf#vim#grep(
-		\   'rg --column --line-number --no-heading --color=always --hidden --glob \!.git '.shellescape(<q-args>),
+		\   'rg --column --line-number --no-heading --color=always --hidden --no-ignore-vcs --glob \!.git '.shellescape(<q-args>),
 		\   1,
 		\   <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'),
 		\   <bang>0)

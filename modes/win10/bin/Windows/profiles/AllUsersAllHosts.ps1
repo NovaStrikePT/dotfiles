@@ -3,7 +3,7 @@ Set-PSReadlineOption -BellStyle None
 
 # `rg` aliases
 function arg {
-    rg.exe --hidden --pretty --smart-case --glob !.git $args
+    rg.exe --hidden --pretty --smart-case --no-ignore-vcs --glob !.git $args
 }
 
 # Use a specialized profile to start Git bash for Windows

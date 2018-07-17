@@ -84,7 +84,7 @@ set -gx FZF_CTRL_R_OPTS "--preview 'echo {}' --preview-window down:3:hidden:wrap
 # `rg` aliases
 function arg
 	# See also $LESS options above
-	rg --hidden --pretty --smart-case --glob \!.git $argv | less
+	rg --hidden --pretty --smart-case --no-ignore-vcs --glob \!.git $argv | less
 end
 
 # Source (optional) local configuration

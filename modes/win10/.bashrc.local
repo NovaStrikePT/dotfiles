@@ -3,7 +3,7 @@ alias viet='vdr -t'
 
 # `rg` aliases
 arg() {
-	rg --hidden --pretty --smart-case --glob \!.git $* | less
+	rg --hidden --pretty --smart-case --no-ignore-vcs --glob \!.git $* | less
 }
 
 # Override .bashrc
