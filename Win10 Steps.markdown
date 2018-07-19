@@ -133,6 +133,11 @@
 
 # TODO
 
+## Use script to set environment variables
+```
+PS> [Environment]::SetEnvironmentVariable("MY_VAR", "My Value", "Machine"|"User")
+```
+
 ## Store apps on GPO'd machines
 * [EarTrumpet .appx/installer?](https://github.com/File-New-Project/EarTrumpet/issues/204)
 
