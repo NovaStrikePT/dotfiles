@@ -14,3 +14,8 @@ function git-bash {
 
 # Confer with `Find-Module -Name Recycle`
 Set-Alias -Name recycle -Value Remove-ItemSafely
+
+# Last bootup time
+function Last-Bootup-Time {
+    return (Get-CimInstance Win32_OperatingSystem).LastBootUpTime
+}
