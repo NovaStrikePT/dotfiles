@@ -19,6 +19,9 @@ set -gx LESSOPEN "| src-hilite-lesspipe.sh %s"
 #
 alias lsa 'ls -lah --color=auto'
 
+# Single-depth du
+alias du-hd1 'du -h --max-depth=1'
+
 # Use vim as default editor
 set -gx VISUAL 'vim'
 set -gx EDITOR "$VISUAL"

@@ -17,6 +17,9 @@ fi
 #
 alias lsa='ls -lah --color=auto'
 
+# Single-depth du
+alias du-hd1='du -h --max-depth=1'
+
 # Use vim as default editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
