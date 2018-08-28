@@ -21,8 +21,15 @@ export FZF_ALT_C_COMMAND='fd --type directory --hidden --no-ignore-vcs'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
 
 # Use Agnoster
-export THEME=$HOME/.bash/themes/agnoster-bash/agnoster.bash
-if [[ -f $THEME ]]; then
-	export DEFAULT_USER=`whoami`
-	source $THEME
-fi
+#export THEME=$HOME/.bash/themes/agnoster-bash/agnoster.bash
+#if [[ -f $THEME ]]; then
+#	export DEFAULT_USER=`whoami`
+#	source $THEME
+#fi
+#	export DEFAULT_USER=`whoami`
+#	source $THEME
+#fi
+
+# Use bash-powerline
+export THEME=$HOME/.bash/themes/bash-powerline/bash-powerline.sh
+[[ -f $THEME ]] && source $THEME 2> /dev/null
