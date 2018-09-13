@@ -26,9 +26,6 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
 #	export DEFAULT_USER=`whoami`
 #	source $THEME
 #fi
-#	export DEFAULT_USER=`whoami`
-#	source $THEME
-#fi
 
 # Use bash-powerline
 export THEME=$HOME/.bash/themes/bash-powerline/bash-powerline.sh
