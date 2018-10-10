@@ -8,6 +8,8 @@
 		* Waiting on updated WSL and offline installation for Ubuntu 18.04 (https://blogs.msdn.microsoft.com/commandline/2018/05/15/build-2018-recap/)
 	1. Enable Windows Subsystem for Linux (via Turn Windows features on or off)
 	1. Download via Store or appx
+		* If used appx, to move windows installation, see registry keys in `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss`
+			* Source: https://github.com/Microsoft/WSL/issues/3324
 	1. Run the Ubuntu app for initial installation
 	1. Update Ubuntu
 		```
