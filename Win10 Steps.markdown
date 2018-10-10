@@ -40,6 +40,34 @@
 		```
 	* Install [fisherman](https://github.com/fisherman/fisherman)
 		* `fisher install virtualxdriver/agnoster.fish`
+
+			```shell
+			function prompt_git -d "Display the actual git state"
+				set -l ref
+				set -l dirty
+				if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
+					# Modification from Agnoster
+					# Ignore git parsing for repos that contain a .wsl-agnoster-ignore file
+					if test -f (command git rev-parse --show-toplevel)/.wsl-agnoster-ignore
+						prompt_segment magenta black "wsl-agnoster-ignore"
+					else
+						set dirty (parse_git_dirty)
+						set ref (command git symbolic-ref HEAD 2> /dev/null)
+						if [ $status -gt 0 ]
+							set -l branch (command git show-ref --head -s --abbrev |head -n1 2> /dev/null)
+							set ref "➦ $branch "
+						end
+						set branch_symbol \uE0A0
+						set -l branch (echo $ref | sed  "s-refs/heads/-$branch_symbol -")
+						if [ "$dirty" != "" ]
+							prompt_segment yellow black "$branch $dirty"
+						else
+							prompt_segment green black "$branch $dirty"
+						end
+					end
+				end
+			end
+			```
 	* sudo apt install colordiff source-highlight tree
 	* [source-highlight-solarized](https://github.com/jrunning/source-highlight-solarized)
 		1. Download / clone repo
