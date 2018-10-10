@@ -1,4 +1,5 @@
 [alias]
+	dog = log --decorate --oneline --graph
 	adog = log --all --decorate --oneline --graph
 	br = branch
 	co = checkout
