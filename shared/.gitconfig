@@ -1,6 +1,7 @@
 [alias]
 	dog = log --decorate --oneline --graph
 	adog = log --all --decorate --oneline --graph
+	lrbdog = log --left-right --boundary --decorate --oneline --graph
 	br = branch
 	co = checkout
 	ci = commit
