@@ -192,6 +192,7 @@ PS> [Environment]::SetEnvironmentVariable("MY_VAR", "My Value", "Machine"|"User"
 	* Once that is resolved, we can use `CMDER_ROOT` to locate the Cmder profile
 
 ## Cmder
+* Cmder (1.3.6) and PowerShell core (6.1) color issue: https://github.com/cmderdev/cmder/issues/1899
 * Store cmder and/or ConEmu configs?
 
 ## Environments
