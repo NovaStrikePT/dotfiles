@@ -38,8 +38,15 @@
 		sudo apt install fish
 		chsh -s /usr/bin/fish
 		```
-	* Install [fisherman](https://github.com/fisherman/fisherman)
-		* `fisher install virtualxdriver/agnoster.fish`
+	* Install [fisher](https://github.com/jorgebucaran/fisher)
+		1. Use a customized version of `oh-my-fish/theme-agnoster`
+
+			```shell
+			git clone https://github.com/oh-my-fish/theme-agnoster ~/Projects/vendor/oh-my-fish/theme-agnoster
+			cd ~/Projects/vendor/oh-my-fish/theme-agnoster/
+			git co -b wsl-agnoster-ignore
+			```
+		1. Then edit the `prompt_git` function, in `~/Projects/vendor/oh-my-fish/theme-agnoster/fish_prompt.fish`, to check for a wsl-agnoster-ignore file
 
 			```shell
 			function prompt_git -d "Display the actual git state"
@@ -68,6 +75,7 @@
 				end
 			end
 			```
+		1. Finally, `fisher add ~/Projects/vendor/oh-my-fish/theme-agnoster`
 	* sudo apt install colordiff source-highlight tree
 	* [source-highlight-solarized](https://github.com/jrunning/source-highlight-solarized)
 		1. Download / clone repo
