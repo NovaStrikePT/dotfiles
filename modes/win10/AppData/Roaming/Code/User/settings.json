@@ -1,8 +1,8 @@
 {
     "breadcrumbs.enabled": true,
+    "diffEditor.ignoreTrimWhitespace": false,
     "editor.minimap.enabled": true,
-
-    "files.trimTrailingWhitespace": true,
+    "editor.renderWhitespace": "boundary",
 
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
