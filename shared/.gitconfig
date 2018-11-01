@@ -1,14 +1,16 @@
 [alias]
-	dog = log --decorate --oneline --graph
-	adog = log --all --decorate --oneline --graph
-	lrbdog = log --left-right --boundary --decorate --oneline --graph
-	br = branch
-	co = checkout
-	ci = commit
-	st = status
-	dt = difftool --dir-diff
-	dtc = difftool --dir-diff --cached
-	diffc = diff --cached
+	br      = branch
+	ci      = commit
+	co      = checkout
+	diffc   = diff --cached
+	diffns  = diff --name-status
+	diffcns = diff --cached --name-status
+	dt      = difftool --dir-diff
+	dtc     = difftool --dir-diff --cached
+	dog     = log --decorate --oneline --graph
+	adog    = log --all --decorate --oneline --graph
+	lrbdog  = log --left-right --boundary --decorate --oneline --graph
+	st      = status
 [color]
 	ui = auto
 [push]
