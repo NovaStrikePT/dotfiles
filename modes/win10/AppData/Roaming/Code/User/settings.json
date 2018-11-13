@@ -4,6 +4,9 @@
     "editor.minimap.enabled": true,
     "editor.renderWhitespace": "boundary",
 
+    "search.usePCRE2": true,
+    "search.showLineNumbers": true,
+
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
 
@@ -56,6 +59,7 @@
         "terminal.ansiBrightWhite": "#ffffff",
     },
     "workbench.editor.closeOnFileDelete": false,
+    "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "none",
     "workbench.statusBar.feedback.visible": false,
 }
