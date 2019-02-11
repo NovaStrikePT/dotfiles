@@ -3,6 +3,7 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.minimap.enabled": true,
     "editor.renderWhitespace": "boundary",
+    "files.hotExit": "off",
 
     "search.usePCRE2": true,
     "search.showLineNumbers": true,
@@ -28,6 +29,7 @@
     "window.restoreWindows": "none",
     "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
     "window.titleBarStyle": "custom",
+    "window.zoomLevel": 0,
 
     "workbench.activityBar.visible": true,
 
@@ -60,6 +62,6 @@
     },
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.highlightModifiedTabs": true,
-    "workbench.startupEditor": "none",
+    "workbench.startupEditor": "newUntitledFile",
     "workbench.statusBar.feedback.visible": false,
 }
