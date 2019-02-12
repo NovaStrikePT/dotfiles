@@ -99,7 +99,7 @@
         "command": "workbench.action.terminal.sendSequence",
         "args": { "text": "\u001b[1;3C\u007f" },
         "when": "terminalFocus"
-        },
+    },
     {
         "key": "alt+up",
         "command": "-workbench.action.terminal.focusPreviousPane",
