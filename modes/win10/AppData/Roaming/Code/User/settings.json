@@ -44,7 +44,7 @@
     // Control how new VSCode windows behave
     "window.newWindowDimensions": "inherit",
     "window.restoreWindows": "none",
-    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
+    "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}${separator}${appName}",
     "window.titleBarStyle": "custom",
     "window.zoomLevel": 0,
 
