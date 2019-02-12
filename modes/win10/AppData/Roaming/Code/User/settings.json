@@ -11,6 +11,23 @@
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
 
+    // (VS Code 1.31.0) See https://code.visualstudio.com/updates/v1_31#_improvements-to-commandstoskipshell-setting
+    "terminal.integrated.commandsToSkipShell": [
+        // Alt-] and Alt-] are specifically used in terminal view to switch intra-terminal panes
+        "workbench.action.nextPanelView",
+        "workbench.action.nextSideBarView",
+        "workbench.action.previousPanelView",
+        "workbench.action.previousSideBarView",
+
+        // Disable accidental Shift-Del on terminal (when intending to Cut from editor)
+        "workbench.action.terminal.deleteToLineStart",
+
+        // Ctrl-B (be able to toggle sidebar from terminal)
+        "workbench.action.toggleSidebarVisibility",
+
+        // Ctrl-Q (be able to use openView shortcut from terminal)
+        "workbench.action.openView",
+    ],
     "terminal.integrated.fontFamily": "Meslo LG S for Powerline",
     "terminal.integrated.fontSize": 12,
     // Use Cmder PowerShell profile settings
