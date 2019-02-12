@@ -43,6 +43,7 @@
     },
 
     // Navigate within side bar and panel views (contextual)
+    // Also use more iTerm-esque pane navigation (context: terminal)
     { "key": "alt+]", "command": "workbench.action.nextEditor" },
     { "key": "alt+[", "command": "workbench.action.previousEditor" },
     {
@@ -65,11 +66,18 @@
       "command": "workbench.action.previousPanelView",
       "when": "panelFocus"
     },
+    {
+        "key": "alt+]",
+        "command": "workbench.action.terminal.focusNextPane",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+[",
+        "command": "workbench.action.terminal.focusPreviousPane",
+        "when": "terminalFocus"
+    },
 
-    // Use more iTerm-esque pane navigation
-    // Also free up fish default keybindings for directory history navigation (prevd/nextd)
-    // TODO: Determine when escape key sequences get properly sent to shell
-    // Look at? https://github.com/Microsoft/vscode/issues/45693
+    // Use fish default keybindings for directory history navigation (prevd/nextd)
     {
         "key": "alt+left",
         "command": "-workbench.action.terminal.focusPreviousPane",
@@ -81,6 +89,18 @@
         "when": "terminalFocus"
     },
     {
+        "key": "alt+left",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u001b[1;3D\u007f" },
+        "when": "terminalFocus"
+        },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u001b[1;3C\u007f" },
+        "when": "terminalFocus"
+        },
+    {
         "key": "alt+up",
         "command": "-workbench.action.terminal.focusPreviousPane",
         "when": "terminalFocus"
@@ -88,16 +108,6 @@
     {
         "key": "alt+down",
         "command": "-workbench.action.terminal.focusNextPane",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt+]",
-        "command": "workbench.action.terminal.focusNextPane",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt+[",
-        "command": "workbench.action.terminal.focusPreviousPane",
         "when": "terminalFocus"
     },
 
