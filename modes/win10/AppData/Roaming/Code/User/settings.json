@@ -32,7 +32,7 @@
     "terminal.integrated.fontSize": 12,
     // Use Cmder PowerShell profile settings
     // TODO: Set $env:CMDER_ROOT and use an environment-based profile path (see https://github.com/Microsoft/vscode/issues/2809)
-    "terminal.integrated.shell.windows": "powershell.exe",
+    "terminal.integrated.shell.windows": "pwsh.exe",
     "terminal.integrated.shellArgs.windows": [
         "-ExecutionPolicy", "Bypass",
         "-NoLogo",
