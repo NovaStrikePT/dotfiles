@@ -143,6 +143,7 @@
 	* Create **System** environment variable: FZF_DEFAULT_COMMAND='fd.exe --type file --hidden --no-ignore-vcs --exclude .git 2>nul'
 1. [Cmder mini](https://github.com/cmderdev/cmder/releases) shared install
 	* Set env:`CMDER_ROOT` to install location
+	* Set env:`CMDER_USER_CONFIG` (e.g. `$HOME\.cmder\config`) (this is used by `%CMDER_ROOT%\vendor\profile.ps1`)
 	* (If needed) re-launch any Cmder, VS Code to get the new environment variables
 	* Modify `bash::bash` tasks to use Git for Windows installation: `%ProgramFiles%\Git\bin\bash.exe --init-file %UserProfile%\git-bash-for-windows.profile`
 	* Add a task for `fish::Ubuntu`: `%SystemRoot%\System32\wsl.exe -new_console:p5 -new_console:d%USERPROFILE%`
@@ -150,8 +151,8 @@
 			* https://github.com/Microsoft/WSL/issues/111
 			* https://github.com/Maximus5/ConEmu/issues/629
 	* Source PowerShell profile in the Cmder user-profile:
-		* Note: If `$HOME/.cmder/config/user-profile.ps1` doesn't exist, run a Cmder PowerShell profile to auto-generate the user-profile on first run.
-		* `PS> Add-Content -Path $HOME\.cmder\config\user-profile.ps1 -Value '. $HOME\bin\Windows\profiles\AllUsersAllHosts.ps1'`
+		* Note: If `$Env:CMDER_USER_CONFIG/user-profile.ps1` doesn't exist, run a Cmder PowerShell profile to auto-generate the user-profile on first run.
+		* `PS> Add-Content -Path $Env:CMDER_USER_CONFIG\user-profile.ps1 -Value '. $HOME\bin\Windows\profiles\AllUsersAllHosts.ps1'`
 	* Shortcut target: `%CMDER_ROOT%\Cmder.exe /C %UserProfile%\.cmder`
 	* (Optional) change icons for tasks
 	* See also https://blogs.technet.microsoft.com/heyscriptingguy/2012/05/21/understanding-the-six-powershell-profiles/)
