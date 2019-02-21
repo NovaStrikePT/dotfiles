@@ -1,33 +1,32 @@
+# The main wslpath documentation exists at https://docs.microsoft.com/en-us/windows/wsl/release-notes
+# wslpath usage:
+#   -a    force result to absolute path format
+#   -u    translate from a Windows path to a WSL path (default)
+#   -w    translate from a WSL path to a Windows path
+#   -m    translate from a WSL path to a Windows path, with ‘/’ instead of ‘\\’
+#   EX: wslpath ‘c:\users’
+
 [alias]
-	# See meld-wsl below
-	dtwsl = difftool --tool=meld-wsl --dir-diff --no-symlinks
-	dtcwsl = difftool --tool=meld-wsl --dir-diff --no-symlinks --cached
-	mtwsl = mergetool --tool=meld-wsl
+	dtwsl  = difftool  --tool=vscode-wsl --no-symlinks
+	dtcwsl = difftool  --tool=vscode-wsl --no-symlinks --cached
+	mtwsl  = mergetool --tool=vscode-wsl
 [diff]
-	tool = meld
+	tool = vscode
 [difftool]
 	prompt = false
-[difftool "meld"]
-	trustExitCode = true
-	cmd = \"C:\\Program Files (x86)\\Meld\\Meld.exe\" \"$LOCAL\" \"$REMOTE\"
-[difftool "meld-wsl"]
-	trustExitCode = true
-	# Source: https://www.sep.com/sep-blog/2017/06/07/20170607wsl-git-and-beyond-compare/
-	cmd = \"/mnt/c/Program Files (x86)/Meld/Meld.exe\" \
-	      \"`echo $LOCAL | sed 's_/mnt/c_C:_'`\" \
-		  \"`echo $REMOTE | sed 's_/mnt/c_C:_'`\"
+[difftool "vscode"]
+	cmd = code --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
+[difftool "vscode-wsl"]
+	# See wslpath notes above
+	cmd = code --new-window --wait --diff \"`wslpath -w $LOCAL`\" \"`wslpath -w $REMOTE`\"
 [merge]
-	tool = meld
+	tool = vscode
 [mergetool]
 	prompt = false
-[mergetool "meld"]
-	cmd = \"C:\\Program Files (x86)\\Meld\\Meld.exe\" --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output \"$MERGED\" --label \"MERGE (REMOTE BASE MY)\"
-[mergetool "meld-wsl"]
-	# Source: https://www.sep.com/sep-blog/2017/06/07/20170607wsl-git-and-beyond-compare/
-	cmd = \"/mnt/c/Program Files (x86)/Meld/Meld.exe\" --auto-merge \
-	      \"`echo $LOCAL | sed 's_/mnt/c_C:_'`\" \
-		  \"`echo $BASE | sed 's_/mnt/c_C:_'`\" \
-		  \"`echo $REMOTE | sed 's_/mnt/c_C:_'`\" \
-		  --output \"`echo $MERGED | sed 's_/mnt/c_C:_'`\" --label \"MERGE (REMOTE BASE MY)\"
+[mergetool "vscode"]
+	cmd = code --new-window --wait \"$MERGED\"
+[mergetool "vscode-wsl"]
+	# See wslpath notes above
+	cmd = code --new-window --wait \"`wslpath -w $MERGED`\"
 [user]
 	name = Phuong Tran

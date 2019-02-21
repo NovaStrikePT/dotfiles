@@ -5,8 +5,8 @@
 	diffc   = diff --cached
 	diffns  = diff --name-status
 	diffcns = diff --cached --name-status
-	dt      = difftool --dir-diff
-	dtc     = difftool --dir-diff --cached
+	dt      = difftool
+	dtc     = difftool --cached
 	dog     = log --decorate --oneline --graph
 	adog    = log --all --decorate --oneline --graph
 	lrbdog  = log --left-right --boundary --decorate --oneline --graph
