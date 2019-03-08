@@ -10,7 +10,6 @@ One less-obvious difference between the modes is I'm able to use Ag in my local 
 ## Included modules
 * `portable-bash` mode includes files that are not managed by a submodule/package/bundler and need to be updated manually:
     * ack (single-file version) from https://beyondgrep.com/install/
-    * git-completion.bash from https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
     * agnoster.bash from https://github.com/speedenator/agnoster-bash/blob/master/agnoster.bash
 
 ## Installation
