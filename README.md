@@ -1,11 +1,11 @@
 # Dotfiles
 
 ## Modes
-* `local-fish` for my local machines running fish (tested on macOS). TODO: rename to mac-fish
+* `mac-fish` for my local mac machines running fish
 * `portable-bash` for remote servers running bash, usually shared hosting
 * `win10` for my local machines running Windows 10, including WSL
 
-One less-obvious difference between the modes is I'm able to use Ag in my local environments, but instead use the more portable `ack` in `portable-bash` mode.
+One less-obvious difference between the modes is I'm able to use `ripgrep` in my local environments, but instead use the more portable `ack` in `portable-bash` mode.
 
 ## Included modules
 * `portable-bash` mode includes files that are not managed by a submodule/package/bundler and need to be updated manually:
