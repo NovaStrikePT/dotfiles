@@ -3,7 +3,7 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.minimap.enabled": true,
     "editor.renderWhitespace": "boundary",
-    "files.hotExit": "off",
+
 
     "search.usePCRE2": true,
     "search.showLineNumbers": true,
@@ -43,7 +43,6 @@
 
     // Control how new VSCode windows behave
     "window.newWindowDimensions": "inherit",
-    "window.restoreWindows": "none",
     "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}${separator}${appName}",
     "window.titleBarStyle": "custom",
     "window.zoomLevel": 0,
