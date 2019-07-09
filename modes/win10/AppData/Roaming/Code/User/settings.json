@@ -4,6 +4,7 @@
     "editor.minimap.enabled": true,
     "editor.renderWhitespace": "boundary",
 
+    "merge-conflict.diffViewPosition": "Below",
 
     "search.usePCRE2": true,
     "search.showLineNumbers": true,
@@ -79,5 +80,4 @@
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.statusBar.feedback.visible": false,
 }
