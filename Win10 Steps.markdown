@@ -128,6 +128,7 @@
 	curl -Lo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	vim +PlugInstall
 	```
+1. Install PowerShell Core and add to `%PATH%`
 1. Add to %PATH%: `%UserProfile%\bin\Windows`
 1. Install [gvim](https://www.vim.org/download.php#pc)
 1. Install [rg](https://github.com/BurntSushi/ripgrep#installation) in Windows and WSL.
@@ -151,9 +152,8 @@
 			* https://github.com/Microsoft/WSL/issues/111
 			* https://github.com/Maximus5/ConEmu/issues/629
 	* Source PowerShell profile in the Cmder user-profile:
-		* Note: If `$Env:CMDER_USER_CONFIG/user-profile.ps1` doesn't exist, run a Cmder PowerShell profile to auto-generate the user-profile on first run.
+		* Note: If `$Env:CMDER_USER_CONFIG/user_profile.ps1` doesn't exist, run a Cmder PowerShell profile to auto-generate the user-profile on first run.
 		* `PS> Add-Content -Path $Env:CMDER_USER_CONFIG\user-profile.ps1 -Value '. $HOME\bin\Windows\profiles\AllUsersAllHosts.ps1'`
-	* Shortcut target: `%CMDER_ROOT%\Cmder.exe /C %UserProfile%\.cmder`
 	* (Optional) change icons for tasks
 	* See also https://blogs.technet.microsoft.com/heyscriptingguy/2012/05/21/understanding-the-six-powershell-profiles/)
 		* `$PROFILE | Format-List * -Force`
@@ -176,9 +176,6 @@
 PS> [Environment]::SetEnvironmentVariable("MY_VAR", "My Value", "Machine"|"User")
 ```
 
-## Store apps on GPO'd machines
-* [EarTrumpet .appx/installer?](https://github.com/File-New-Project/EarTrumpet/issues/204)
-
 ## Symbolic links
 * Generate all symbolic links using Windows symlinks
 
@@ -187,13 +184,6 @@ PS> [Environment]::SetEnvironmentVariable("MY_VAR", "My Value", "Machine"|"User"
 * `.gvimrc` in fish (mac) and win10
 * fish config
 * Rename `local-fish` to `mac-fish` (or something to distinguish deployment OS/environment)
-
-## WSL+fishv2.6BUG
-* Note that fish hangs when *first run* (e.g. if `chsh -s /usr/bin/fish`) (see https://github.com/fish-shell/fish-shell/issues/4427)
-	* Workaround: run `wsl.exe` with fish, then run again, then use Task Manager to kill the first process.
-	* See also https://github.com/Microsoft/WSL/issues/1653
-	* And https://github.com/MicrosoftDocs/WSL/issues/191
-	* Should be resolved with WSL from Windows 1803
 
 ## VS Code
 * VS Code use environment vars in settings.json: https://github.com/Microsoft/vscode/issues/2809
