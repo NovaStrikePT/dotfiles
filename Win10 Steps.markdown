@@ -122,7 +122,6 @@
 		* Git config files
 		* Most bash configuration files (used by Git bash for Windows)
 		* gVim uses *vimfiles*: `PS> New-Item -ItemType SymbolicLink -Target $HOME\.vim -Path $HOME\vimfiles`
-		* PowerShell scripts: `New-Item -ItemType SymbolicLink -Target $HOME\bin\Windows\profiles\AllUsersAllHosts.ps1 -Path $Profile.AllUsersAllHosts`
 1. Install plug.vim, plugins
 	```
 	curl -Lo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -145,6 +144,7 @@
 1. [Cmder mini](https://github.com/cmderdev/cmder/releases) shared install
 	* Set env:`CMDER_ROOT` to install location
 	* Set env:`CMDER_USER_CONFIG` (e.g. `$HOME\.cmder\config`) (this is used by `%CMDER_ROOT%\vendor\profile.ps1`)
+	* Create a Windows shortcut `%CMDER_ROOT%\cmder.exe /C $HOME\.cmder`
 	* (If needed) re-launch any Cmder, VS Code to get the new environment variables
 	* Modify `bash::bash` tasks to use Git for Windows installation: `%ProgramFiles%\Git\bin\bash.exe --init-file %UserProfile%\git-bash-for-windows.profile`
 	* Add a task for `fish::Ubuntu`: `%SystemRoot%\System32\wsl.exe -new_console:p5 -new_console:d%USERPROFILE%`
@@ -178,6 +178,12 @@ PS> [Environment]::SetEnvironmentVariable("MY_VAR", "My Value", "Machine"|"User"
 
 ## Symbolic links
 * Generate all symbolic links using Windows symlinks
+
+	```PowerShell
+    Set-Location modes\win10
+    Get-ChildItem -Directory -Recurse | Resolve-Path -Relative | ForEach-Object { New-Item -ItemType Directory -Path (Join-Path -Path $HOME -ChildPath "temp" -AdditionalChildPath $_) | Select-Object FullName, Attributes }
+    Get-ChildItem -File -Recurse | ForEach-Object { New-Item -ItemType SymbolicLink -Target $_.FullName -Path (Join-Path -Path $HOME -ChildPath "temp" -AdditionalChildPath (Resolve-Path -Relative -Path $_)) | Select-Object LinkType,Target }
+	```
 
 ## Merge/DRY up
 * `vdr` in fish (mac) and win10
