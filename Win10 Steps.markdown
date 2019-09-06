@@ -28,7 +28,7 @@
 		```
 1. Install other items in WSL
 	* [git from ppa](https://launchpad.net/~git-core/+archive/ubuntu/ppa)
-	* [fish from ppa](https://launchpad.net/~fish-shell/+archive/ubuntu/release-2)
+	* [fish from ppa](https://launchpad.net/~fish-shell)
 		```
 		sudo apt update
 		sudo apt install fish
