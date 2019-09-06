@@ -1,3 +1,8 @@
+" With visualbell enabled (see .vimrc), we also want to disable the flash
+" That is, "If 't_vb' is cleared and 'visualbell' is set, no beep and no flash will ever occur"
+" Source: https://vim.fandom.com/wiki/Disable_beeping
+set t_vb=
+
 set guitablabel=%N.\ %M%t
 
 colorscheme solarized

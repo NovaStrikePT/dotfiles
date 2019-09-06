@@ -6,6 +6,9 @@ endif
 " We like `:filetype`, therefore nocompatible
 set nocompatible
 
+" No bell / beeping!
+set visualbell
+
 " May want to set `g:plug_threads`
 " See https://github.com/junegunn/vim-plug/issues/502
 
