@@ -1,11 +1,7 @@
 # Setup Steps
 1. Add user `HOME` environment variable = `%UserProfile%`
 1. Install Ubuntu WSL (18.04)
-	* For enterprise-managed on versions < 1803
-		* See https://superuser.com/questions/1271682/is-there-a-way-of-installing-windows-subsystem-for-linux-on-win10-v1709-withou
-		* See also https://docs.microsoft.com/en-us/windows/wsl/install-on-server
-		* See also https://docs.microsoft.com/en-us/windows/wsl/faq
-		* Waiting on updated WSL and offline installation for Ubuntu 18.04 (https://blogs.msdn.microsoft.com/commandline/2018/05/15/build-2018-recap/)
+	* See https://docs.microsoft.com/en-us/windows/wsl/install-on-server
 	1. Enable Windows Subsystem for Linux (via Turn Windows features on or off)
 	1. Download via Store or appx
 		* If used appx, to move windows installation, see registry keys in `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss`
