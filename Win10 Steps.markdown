@@ -155,6 +155,8 @@
 		* See also https://stackoverflow.com/questions/45925964/how-to-use-git-credential-store-on-wsl-ubuntu-on-windows
 		* Note: while git-credential-wincred.exe seems to work, git-credential-manager.exe doesn't seem to work.
 		* Note: This creates a credential configuration *per repo*. We really want a separate credential configuration *per environment*.
+		* Note: Git Credential Manager for Windows does not distinguish two accounts for the same domain (i.e. can't separately use credentials for two GitHub.com accounts). If most repositories use one GitHub account, we can use a local `credential.useHttpPath = true` for individual repos that require different account credentials.
+			* See also microsoft/Git-Credential-Manager-for-Windows issue 749
 
 # Other setup/applications
 * [Gpg4win](https://gpg4win.org/thanks-for-download.html) (see also https://gnupg.org/download/)
