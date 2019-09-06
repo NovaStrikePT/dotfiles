@@ -77,10 +77,6 @@ inoremap <4-MiddleMouse> <Nop>
 " Press Space to turn off search highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-" Use powerline fonts
-" Make sure the fonts have been installed; see https://github.com/powerline/fonts
-let g:airline_powerline_fonts = 1
-
 " Navigate window splits
 nnoremap <silent> <A-D-Up> :wincmd k<CR>
 nnoremap <silent> <A-D-Down> :wincmd j<CR>

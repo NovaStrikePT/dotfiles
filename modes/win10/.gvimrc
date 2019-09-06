@@ -10,5 +10,5 @@ augroup guiTheme
 	autocmd GUIEnter * AirlineThemeDark
 augroup END
 
-set guifont=Droid_Sans_Mono_Slashed_for_Pow:h9:cANSI:qDRAFT
+set guifont=Consolas:h9:cANSI:qDRAFT
 set lines=50 columns=130

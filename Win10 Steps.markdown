@@ -102,11 +102,6 @@
 			* `mkdir ~/.nvm`
 			* `nvm install node` to install the latest
 			* (Optional) create a .nvmrc or `nvm alias default <version>` to specify a default version to use
-1. Install [patched Powerline fonts](https://github.com/powerline/fonts) in both Win32/64 and WSL
-	* WSL: `sudo apt install fonts-powerline`
-	* Win: `PS> install.ps1`
-		* May need to change execution policy. As Administrator, `PS> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine`
-	* Configure terminals (emulators) to use fonts
 1. `create-links portable-bash -i` first, then `create-links win10 -i`
 	* Some symlinks need to be created in Windows (Windows symlinks) so that Windows programs can read them (e.g. Git for Windows, gVim)
 		* E.g. (PowerShell as Administrator)

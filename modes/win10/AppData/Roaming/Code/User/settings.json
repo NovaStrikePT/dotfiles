@@ -28,8 +28,8 @@
         // Ctrl-Q (be able to use openView shortcut from terminal)
         "workbench.action.openView",
     ],
-    "terminal.integrated.fontFamily": "Meslo LG S for Powerline",
-    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.fontFamily": "Consolas",
+    "terminal.integrated.fontSize": 14,
     // Use Cmder PowerShell profile settings
     // TODO: Set $env:CMDER_ROOT and use an environment-based profile path (see https://github.com/Microsoft/vscode/issues/2809)
     "terminal.integrated.shell.windows": "pwsh.exe",
