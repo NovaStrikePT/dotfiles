@@ -13,7 +13,7 @@ set -gx NVM_DIR $HOME/.nvm
 # Set up less to use syntax highlighting (with color) and no de-init (don't clear the screen)
 # source-highlight needs to be installed for syntax highlighting
 set -gx LESS '--RAW-CONTROL-CHARS --quit-if-one-screen --no-init' # Alternatively, `-RFX`
-set -gx LESSOPEN "| src-hilite-lesspipe.sh %s"
+set -gx LESSOPEN "| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 
 # "Aliases"
 #
