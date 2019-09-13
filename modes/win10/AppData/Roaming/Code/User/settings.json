@@ -50,13 +50,12 @@
     "workbench.activityBar.visible": true,
 
     "workbench.colorCustomizations": {
-        // Assumes Dark+ (Default dark) theme
+        // Assumes Monokai Dimmed theme
+        // See also Microsoft VS Code\resources\app\extensions\theme-monokai-dimmed\themes\dimmed-monokai-color-theme.json
+        "editor.lineHighlightBackground": "#1e1e1e",
+        "editor.lineHighlightBorder" : "#9872A2",
         "statusBar.background"         : "#002b36",
-        //"statusBar.noFolderBackground" : "#002b36",
-        //"statusBar.debuggingBackground": "#68217a", // Match Visual Studio
-        // "tab.activeBackground": "#002B37",
         "tab.activeBackground": "#005A6FAA",
-        // "tab.activeBackground": "#005A6F",
 
         // Terminal uses custom Monokai(-esque) colors
         "terminal.ansiBlack": "#272822",
@@ -76,6 +75,7 @@
         "terminal.ansiBrightYellow": "#cccc81",
         "terminal.ansiBrightWhite": "#ffffff",
     },
+    "workbench.colorTheme": "Monokai Dimmed",
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
