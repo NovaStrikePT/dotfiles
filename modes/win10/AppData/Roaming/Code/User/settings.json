@@ -6,12 +6,19 @@
 
     "merge-conflict.diffViewPosition": "Below",
 
+    // Use the PowerShell Preview extension
+    // See also TODO about environment variables with respect to vscode issue 2809
+    "powershell.developer.featureFlags": [ "PSReadLine" ],
+    "powershell.integratedConsole.focusConsoleOnExecute": false,
+    "powershell.powerShellExePath": "C:\\PowerShell Core\\pwsh.exe",
+    "powershell.powerShellDefaultVersion": "PowerShell Core",
+
     "search.showLineNumbers": true,
 
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
 
-    // (VS Code 1.31.0) See https://code.visualstudio.com/updates/v1_31#_improvements-to-commandstoskipshell-setting
+
     "terminal.integrated.commandsToSkipShell": [
         // Alt-] and Alt-] are specifically used in terminal view to switch intra-terminal panes
         "workbench.action.nextPanelView",
