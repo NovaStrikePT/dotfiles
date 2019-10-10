@@ -20,7 +20,7 @@ function arg
 # Human-readable file sizes
 # Source: https://superuser.com/questions/468782/show-human-readable-file-sizes-in-the-default-powershell-ls-command#answer-468795
 # Example usage: Get-ChildItem | Select-Object Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
-function Format-FileSize()
+function Format-FileSize
 {
     Param ([uint64]$size)
     If     ($size -gt 1TB) {[string]::Format("{0:0.00} TB", $size / 1TB)}
