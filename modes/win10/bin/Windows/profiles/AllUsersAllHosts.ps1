@@ -31,6 +31,59 @@ function Format-FileSize()
     Else                   {""}
 }
 
+# Compare input objects for equality
+# Returns true if and only if all inputs have matching hash contents
+function Compare-FileHashes
+{
+    Param(
+        [Parameter(Mandatory=$true)]
+        [AllowEmptyString()]
+        [string[]]
+        $InputObjects,
+
+        [Parameter()]
+        [ValidateSet('SHA1', 'SHA256', 'SHA384', 'SHA512', 'MD5')]  # See Get-FileHash
+        [string]
+        $Algorithm = 'SHA256'
+    )
+
+    # Map each input object to a hash value
+    # Initialize the mapping result to match length; by default we assume a literal hash value is given as input (see loop below)
+    $hashes = $($InputObjects)  # Use subexpression $() to force array copy
+
+    # Every hash in the array must match to return a $true result; $false if at least one item doesn't match
+    $areEqual = $true
+
+    for ($i = 0 ; $i -lt $InputObjects.Length ; $i++)
+    {
+        $obj = $InputObjects[$i]
+
+        # If the input object is a file path, compute its hash value
+        if (Test-Path -Path $obj -PathType Leaf)
+        {
+            $hashes[$i] = (Get-FileHash -Algorithm $Algorithm -Path $obj).Hash
+        }
+        # Otherwise, by default, the input object is taken to be a literal hash value
+
+        # Short-circut:
+        # * Once a mismatch is detected, we don't need to continue checking
+        # * Nothing to compare first object to
+        # Use case-insensitive comparison for file hash values
+        if ($areEqual -and ($i -gt 0) -and ($hashes[$i] -ne $hashes[$i - 1]))
+        {
+            $areEqual = $false
+        }
+    }
+
+    # Prepare the return value as a custom object
+    return [PSCustomObject]@{
+        Algorithm = $Algorithm;
+        InputObjects = $InputObjects;
+        Hashes = $hashes;
+        AreEqual = $areEqual
+    }
+}
+
 # Confer with `Find-Module -Name Recycle`
 Set-Alias -Name recycle -Value Remove-ItemSafely
 
