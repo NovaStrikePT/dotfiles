@@ -56,33 +56,13 @@
 
     "workbench.activityBar.visible": true,
 
+    "workbench.colorTheme": "One Monokai",
     "workbench.colorCustomizations": {
-        // Assumes Monokai Dimmed theme
-        // See also Microsoft VS Code\resources\app\extensions\theme-monokai-dimmed\themes\dimmed-monokai-color-theme.json
-        "editor.lineHighlightBackground": "#1e1e1e",
+        // Assumes One Monokai theme
         "editor.lineHighlightBorder" : "#9872A2",
-        "statusBar.background"         : "#002b36",
-        "tab.activeBackground": "#005A6FAA",
-
-        // Terminal uses custom Monokai(-esque) colors
-        "terminal.ansiBlack": "#272822",
-        "terminal.ansiBlue": "#01549e",
-        "terminal.ansiGreen": "#74aa04",
-        "terminal.ansiCyan": "#1a83a6",
-        "terminal.ansiRed": "#a70334",
-        "terminal.ansiMagenta": "#89569c",
-        "terminal.ansiYellow": "#b6b649",
-        "terminal.ansiWhite": "#cacaca",
-        "terminal.ansiBrightBlack": "#7c7c7c",
-        "terminal.ansiBrightBlue": "#0383f5",
-        "terminal.ansiBrightGreen": "#8dd006",
-        "terminal.ansiBrightCyan": "#58c2e5",
-        "terminal.ansiBrightRed": "#f3044b",
-        "terminal.ansiBrightMagenta": "#a87db8",
-        "terminal.ansiBrightYellow": "#cccc81",
-        "terminal.ansiBrightWhite": "#ffffff",
+        "statusBar.background"       : "#002b36",
+        "tab.activeBackground"       : "#005A6FAA",
     },
-    "workbench.colorTheme": "Monokai Dimmed",
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
