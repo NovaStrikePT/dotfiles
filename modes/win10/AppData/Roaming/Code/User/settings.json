@@ -1,8 +1,13 @@
 {
     "breadcrumbs.enabled": true,
     "diffEditor.ignoreTrimWhitespace": false,
+
+    "debug.showBreakpointsInOverviewRuler": true,
+
     "editor.minimap.enabled": true,
     "editor.renderWhitespace": "boundary",
+
+    "git.untrackedChanges": "separate",
 
     "merge-conflict.diffViewPosition": "Below",
 
@@ -19,6 +24,7 @@
     "telemetry.enableCrashReporter": false,
 
 
+    "terminal.integrated.allowChords": false,
     "terminal.integrated.commandsToSkipShell": [
         // Alt-] and Alt-] are specifically used in terminal view to switch intra-terminal panes
         "workbench.action.nextPanelView",
@@ -59,6 +65,11 @@
     "workbench.colorTheme": "One Monokai",
     "workbench.colorCustomizations": {
         // Assumes One Monokai theme
+        // Determine if theme file eventually adds this after the VS Code v1.40 release (which added more activityBar styling)
+        // See %HOME%\.vscode\extensions\azemoh.one-monokai-0.4.4\themes\OneMonokai-color-theme.json
+        "activityBar.activeBackground": "#28495a",
+        "activityBar.activeBorder": "#0981d0",
+
         "editor.lineHighlightBorder" : "#9872A2",
         "statusBar.background"       : "#002b36",
         "tab.activeBackground"       : "#005A6FAA",
