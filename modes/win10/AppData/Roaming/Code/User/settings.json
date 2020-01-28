@@ -15,7 +15,12 @@
     // See also TODO about environment variables with respect to vscode issue 2809
     "powershell.developer.featureFlags": [ "PSReadLine" ],
     "powershell.integratedConsole.focusConsoleOnExecute": false,
-    "powershell.powerShellExePath": "C:\\PowerShell Core\\pwsh.exe",
+    "powershell.powerShellAdditionalExePaths": [
+        {
+            "exePath": "C:\\PowerShell Core\\pwsh.exe",
+            "versionName": "PowerShell Core"
+        }
+    ],
     "powershell.powerShellDefaultVersion": "PowerShell Core",
 
     "search.showLineNumbers": true,
