@@ -34,74 +34,7 @@
 		sudo apt install fish
 		chsh -s /usr/bin/fish
 		```
-	* Install [fisher](https://github.com/jorgebucaran/fisher)
-		1. Use a customized version of `oh-my-fish/theme-agnoster`
-
-			```shell
-			git clone https://github.com/oh-my-fish/theme-agnoster ~/Projects/vendor/oh-my-fish/theme-agnoster
-			cd ~/Projects/vendor/oh-my-fish/theme-agnoster/
-			git co -b wsl-agnoster-ignore
-			```
-		1. Then edit the `prompt_git` function, in `~/Projects/vendor/oh-my-fish/theme-agnoster/fish_prompt.fish`, to check for a wsl-agnoster-ignore file
-
-			```shell
-			function prompt_git -d "Display the actual git state"
-				set -l ref
-				set -l dirty
-				if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
-					# Modification from Agnoster
-					# Ignore git parsing for repos that contain a .wsl-agnoster-ignore file
-					if test -f (command git rev-parse --show-toplevel)/.wsl-agnoster-ignore
-						prompt_segment magenta black "wsl-agnoster-ignore"
-					else
-						set dirty (parse_git_dirty)
-						set ref (command git symbolic-ref HEAD 2> /dev/null)
-						if [ $status -gt 0 ]
-							set -l branch (command git show-ref --head -s --abbrev |head -n1 2> /dev/null)
-							set ref "➦ $branch "
-						end
-						set branch_symbol \uE0A0
-						set -l branch (echo $ref | sed  "s-refs/heads/-$branch_symbol -")
-						if [ "$dirty" != "" ]
-							prompt_segment yellow black "$branch $dirty"
-						else
-							prompt_segment green black "$branch $dirty"
-						end
-					end
-				end
-			end
-			```
-		1. Finally, `fisher add ~/Projects/vendor/oh-my-fish/theme-agnoster`
 	* sudo apt install colordiff source-highlight tree
-	* [source-highlight-solarized](https://github.com/jrunning/source-highlight-solarized)
-		1. Download / clone repo
-		1. Find existing datadir (try `source-highlight-settings` or see `~/.source-highlight/source-highlight.conf`)
-		1. Symlink everything from existing datadir into `$HOME/.source-highlight/datadir`
-			```
-			cd $HOME/.source-highlight
-			ln -s /usr/share/source-highlight source-highlight-core
-			mkdir -p datadir && cd datadir
-			for f in ../source-highlight-core/*.* ; do
-				ln -sf $f ./
-			done
-			```
-		1. Symlink `esc-solarized.outlang`, `esc-solarized.style`, and `ruby.lang` into datadir (overwriting default files)
-			```
-			ln -sf esc-solarized.outlang esc.outlang
-			ln -sf esc-solarized.style esc.style
-			ln -sf extras/ruby.lang ruby.lang
-			```
-		1. Update source-highlight-settings _datadir_
-	* nvm (also requires fisher to use nvm in fish)
-		* https://github.com/creationix/nvm#git-install
-		* Install node.js using `nvm`
-			* Install [Bass](https://github.com/edc/bass) (to be able to run nvm in fish)
-				```
-				fisher install edc/bass
-				```
-			* `mkdir ~/.nvm`
-			* `nvm install node` to install the latest
-			* (Optional) create a .nvmrc or `nvm alias default <version>` to specify a default version to use
 1. `create-links portable-bash -i` first, then `create-links win10 -i`
 	* Some symlinks need to be created in Windows (Windows symlinks) so that Windows programs can read them (e.g. Git for Windows, gVim)
 		* E.g. (PowerShell as Administrator)

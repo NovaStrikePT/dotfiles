@@ -7,9 +7,6 @@ set -gx fish_greeting ''
 # Set default user for Agnoster theme
 set -gx default_user (whoami)
 
-# NVM configuration
-set -gx NVM_DIR $HOME/.nvm
-
 # Set up less to use syntax highlighting (with color) and no de-init (don't clear the screen)
 # source-highlight needs to be installed for syntax highlighting
 set -gx LESS '--RAW-CONTROL-CHARS --quit-if-one-screen --no-init' # Alternatively, `-RFX`
@@ -59,11 +56,6 @@ end
 
 # Common rsync over ssh macro
 alias rsshnc 'rsync -avh --progress -e ssh'
-
-# Running NVM in fish is easy with bass
-function nvm
-	bass source $HOME/.nvm/nvm.sh --no-use ';' nvm $argv
-end
 
 # FZF configuration
 #
