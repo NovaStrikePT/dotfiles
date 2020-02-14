@@ -11,6 +11,7 @@
 	adog    = log --all --decorate --oneline --graph
 	lrbdog  = log --left-right --boundary --decorate --oneline --graph
 	st      = status
+	ms      = stash
 [color]
 	ui = auto
 [push]
