@@ -15,5 +15,5 @@ augroup guiTheme
 	autocmd GUIEnter * AirlineThemeDark
 augroup END
 
-set guifont=Consolas:h9:cANSI:qDRAFT
+set guifont=Consolas:h10:cANSI:qDRAFT
 set lines=50 columns=130
