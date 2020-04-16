@@ -78,3 +78,8 @@ function! ws#Highlight()
 	"Trailing whitespace and spaces before a tab
 	call matchadd("WSMatchGroupWarning", '\s\+$\| \+\ze\t')
 endfunction
+
+" What is the opposite of "Highlight"?
+function! ws#Clear()
+	call clearmatches()
+endfunction
