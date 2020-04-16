@@ -6,6 +6,10 @@
 
     "editor.minimap.enabled": true,
     "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        { "column": 120, "color": "#FF00FF3F" },
+        { "column": 140, "color": "#FF00003F" },
+    ],
 
     "git.untrackedChanges": "separate",
 
@@ -63,7 +67,6 @@
     "window.newWindowDimensions": "inherit",
     "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}${separator}${appName}",
     "window.titleBarStyle": "custom",
-    "window.zoomLevel": 0,
 
     "workbench.activityBar.visible": true,
 
@@ -81,5 +84,6 @@
     },
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.untitled.labelFormat": "name",
     "workbench.startupEditor": "newUntitledFile",
 }
