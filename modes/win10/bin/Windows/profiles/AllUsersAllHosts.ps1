@@ -96,3 +96,7 @@ function Get-LastBootupTime
 {
     return (Get-CimInstance Win32_OperatingSystem).LastBootUpTime
 }
+
+# Use rg and fd ArgumentCompleter registrations
+. $HOME\bin\Windows\_rg.ps1
+. $HOME\bin\Windows\_fd.ps1
