@@ -11,6 +11,7 @@
         { "column": 140, "color": "#FF00003F" },
     ],
 
+    "git.showCommitInput": false,
     "git.untrackedChanges": "separate",
 
     "merge-conflict.diffViewPosition": "Below",
