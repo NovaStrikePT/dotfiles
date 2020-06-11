@@ -65,9 +65,10 @@
     ],
 
     // Control how new VSCode windows behave
+    "window.menuBarVisibility": "toggle",
     "window.newWindowDimensions": "inherit",
     "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}${separator}${appName}",
-    "window.titleBarStyle": "custom",
+    "window.titleBarStyle": "native",
 
     "workbench.activityBar.visible": true,
 
