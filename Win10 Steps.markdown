@@ -83,6 +83,7 @@
 		* `$PROFILE | Format-List * -Force`
 1. `C:` mount point differs between Git bash and WSL. Create symlink in WSL for consistent behavior: `sudo ln -s /mnt/c /c`
 1. gitcredentials
+	* NEW: Keep an eye on https://github.com/microsoft/Git-Credential-Manager-Core for Linux support
 	* Git for Windows (e.g. Git Bash) already has `credential.helper=manager`
 	* For WSL: `git config credential.helper "/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe"`
 		* See also https://stackoverflow.com/questions/45925964/how-to-use-git-credential-store-on-wsl-ubuntu-on-windows
