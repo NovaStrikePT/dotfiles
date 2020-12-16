@@ -88,4 +88,7 @@
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.untitled.labelFormat": "name",
     "workbench.startupEditor": "newUntitledFile",
+
+    "window.restoreWindows": "preserve",
+    "window.zoomLevel": 0,
 }
