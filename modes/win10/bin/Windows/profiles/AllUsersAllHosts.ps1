@@ -97,6 +97,27 @@ function Get-LastBootupTime
     return (Get-CimInstance Win32_OperatingSystem).LastBootUpTime
 }
 
+# At least until PowerShell/PowerShell issue 2289 has a solution
+# Not intended to be a complete replacement for https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command
+function MyMeasure-Command
+{
+    Param(
+        [Parameter(Mandatory=$true)]
+        [ScriptBlock]
+        $Expression
+    )
+
+    $stopwatch = New-Object 'System.Diagnostics.Stopwatch'
+    $stopwatch.Start()
+
+    & $Expression
+    
+    $stopwatch.Stop()
+
+    Write-Host "`nElapsed:" $stopwatch.Elapsed.ToString()
+    Write-Host "Finished:" (Get-Date -Format 'yyyy-MM-dd HH:mm:ss')
+}
+
 # Use rg and fd ArgumentCompleter registrations
 . $HOME\bin\Windows\_rg.ps1
 . $HOME\bin\Windows\_fd.ps1
