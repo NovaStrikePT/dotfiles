@@ -1,5 +1,12 @@
-# Disable term bell
-Set-PSReadlineOption -BellStyle None
+# Customize PSReadLine behavior
+    # Disable default history handler (sensitive info in command history DISCLAIMER). See PowerShell/PSReadLine pull 1058
+    # Picking a default from PowerShell session history default $MaximumHistoryCount
+    # Because bells…
+Set-PSReadLineOption `
+    -AddToHistoryHandler $null `
+    -MaximumHistoryCount 4096  `
+    -BellStyle           None  `
+;
 
 # Map PSReadLine key handlers using chords VSCode understands in its integrated terminals so that default keys work
 # like the external terminal (e.g. Ctrl+Backspace, Ctrl+Del, Ctrl+Space)
