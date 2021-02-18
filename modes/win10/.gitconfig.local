@@ -23,6 +23,7 @@
 	tool = vscode
 [mergetool]
 	prompt = false
+	keepBackup = false
 [mergetool "vscode"]
 	cmd = code --new-window --wait \"$MERGED\"
 [mergetool "vscode-wsl"]
