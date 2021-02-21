@@ -65,22 +65,6 @@
 1. Download [fzf.exe for Windows](https://github.com/junegunn/fzf-bin/releases) and install/link into a %Path% location
 	* Needs to exist at `$HOME\.fzf\bin\fzf.exe` for gVim
 	* Create **System** environment variable: FZF_DEFAULT_COMMAND='fd.exe --type file --hidden --no-ignore-vcs --exclude .git 2>nul'
-1. [Cmder mini](https://github.com/cmderdev/cmder/releases) shared install
-	* Set env:`CMDER_ROOT` to install location
-	* Set env:`CMDER_USER_CONFIG` (e.g. `$HOME\.cmder\config`) (this is used by `%CMDER_ROOT%\vendor\profile.ps1`)
-	* Create a Windows shortcut `%CMDER_ROOT%\cmder.exe /C $HOME\.cmder`
-	* (If needed) re-launch any Cmder, VS Code to get the new environment variables
-	* Modify `bash::bash` tasks to use Git for Windows installation: `%ProgramFiles%\Git\bin\bash.exe --init-file %UserProfile%\git-bash-for-windows.profile`
-	* Add a task for `fish::Ubuntu`: `%SystemRoot%\System32\wsl.exe -new_console:p5 -new_console:d%USERPROFILE%`
-		* Arrow keys issues:
-			* https://github.com/Microsoft/WSL/issues/111
-			* https://github.com/Maximus5/ConEmu/issues/629
-	* Source PowerShell profile in the Cmder user-profile:
-		* Note: If `$Env:CMDER_USER_CONFIG/user_profile.ps1` doesn't exist, run a Cmder PowerShell profile to auto-generate the user-profile on first run.
-		* `PS> Add-Content -Path $Env:CMDER_USER_CONFIG\user-profile.ps1 -Value '. $HOME\bin\Windows\profiles\AllUsersAllHosts.ps1'`
-	* (Optional) change icons for tasks
-	* See also https://blogs.technet.microsoft.com/heyscriptingguy/2012/05/21/understanding-the-six-powershell-profiles/)
-		* `$PROFILE | Format-List * -Force`
 1. `C:` mount point differs between Git bash and WSL. Create symlink in WSL for consistent behavior: `sudo ln -s /mnt/c /c`
 1. gitcredentials
 	* NEW: Keep an eye on https://github.com/microsoft/Git-Credential-Manager-Core for Linux support
@@ -117,14 +101,6 @@ PS> [Environment]::SetEnvironmentVariable("MY_VAR", "My Value", "Machine"|"User"
 * `.gvimrc` in fish (mac) and win10
 * fish config
 * Rename `local-fish` to `mac-fish` (or something to distinguish deployment OS/environment)
-
-## VS Code
-* VS Code use environment vars in settings.json: https://github.com/Microsoft/vscode/issues/2809
-	* Once that is resolved, we can use `CMDER_ROOT` to locate the Cmder profile
-
-## Cmder
-* Cmder (1.3.11) and PowerShell core (6.1) color issue: https://github.com/cmderdev/cmder/issues/1899
-* Store cmder and/or ConEmu configs?
 
 ## Environments
 * Git credential configuration per environment
