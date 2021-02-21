@@ -52,6 +52,11 @@
 	vim +PlugInstall
 	```
 1. Install PowerShell Core and add to `%PATH%`
+1. Install posh-git
+	```PowerShell
+	# TODO: Prerelease for 1.0beta currently; revisit if we need prerelease after 1.0 is stable
+	Install-Module posh-git -AllowPrerelease -Force
+	```
 1. Add to %PATH%: `%UserProfile%\bin\Windows`
 1. Install [gvim](https://www.vim.org/download.php#pc)
 1. Install [rg](https://github.com/BurntSushi/ripgrep#installation) in Windows and WSL.
@@ -95,6 +100,9 @@ PS> [Environment]::SetEnvironmentVariable("MY_VAR", "My Value", "Machine"|"User"
     Get-ChildItem -Directory -Recurse | Resolve-Path -Relative | ForEach-Object { New-Item -ItemType Directory -Path (Join-Path -Path $HOME -ChildPath "temp" -AdditionalChildPath $_) | Select-Object FullName, Attributes }
     Get-ChildItem -File -Recurse | ForEach-Object { New-Item -ItemType SymbolicLink -Target $_.FullName -Path (Join-Path -Path $HOME -ChildPath "temp" -AdditionalChildPath (Resolve-Path -Relative -Path $_)) | Select-Object LinkType,Target }
 	```
+* See also https://blogs.technet.microsoft.com/heyscriptingguy/2012/05/21/understanding-the-six-powershell-profiles/)
+	* `$PROFILE | Format-List * -Force`
+
 
 ## Merge/DRY up
 * `vdr` in fish (mac) and win10

@@ -128,3 +128,9 @@ function MyMeasure-Command
 # Use rg and fd ArgumentCompleter registrations
 . $HOME\bin\Windows\_rg.ps1
 . $HOME\bin\Windows\_fd.ps1
+
+# Import posh-git
+Import-Module posh-git
+
+# Add a newline after prompt (requires posh-git 1.0+)
+$GitPromptSettings.DefaultPromptBeforeSuffix.Text = '`nPS'
