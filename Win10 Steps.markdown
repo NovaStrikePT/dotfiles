@@ -100,9 +100,6 @@ PS> [Environment]::SetEnvironmentVariable("MY_VAR", "My Value", "Machine"|"User"
     Get-ChildItem -Directory -Recurse | Resolve-Path -Relative | ForEach-Object { New-Item -ItemType Directory -Path (Join-Path -Path $HOME -ChildPath "temp" -AdditionalChildPath $_) | Select-Object FullName, Attributes }
     Get-ChildItem -File -Recurse | ForEach-Object { New-Item -ItemType SymbolicLink -Target $_.FullName -Path (Join-Path -Path $HOME -ChildPath "temp" -AdditionalChildPath (Resolve-Path -Relative -Path $_)) | Select-Object LinkType,Target }
 	```
-* See also https://blogs.technet.microsoft.com/heyscriptingguy/2012/05/21/understanding-the-six-powershell-profiles/)
-	* `$PROFILE | Format-List * -Force`
-
 
 ## Merge/DRY up
 * `vdr` in fish (mac) and win10

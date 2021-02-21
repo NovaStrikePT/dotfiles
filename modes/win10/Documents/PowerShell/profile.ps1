@@ -1,3 +1,7 @@
+# CurrentUserAllHosts profile
+# See $PROFILE | Format-List * -Force
+# See also https://blogs.technet.microsoft.com/heyscriptingguy/2012/05/21/understanding-the-six-powershell-profiles/
+
 # Customize PSReadLine behavior
     # Disable default history handler (sensitive info in command history DISCLAIMER). See PowerShell/PSReadLine pull 1058
     # Picking a default from PowerShell session history default $MaximumHistoryCount
