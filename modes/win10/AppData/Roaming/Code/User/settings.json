@@ -56,8 +56,6 @@
     "terminal.integrated.shell.windows": "pwsh.exe",
     "terminal.integrated.shellArgs.windows": [
         "-ExecutionPolicy", "Bypass",
-        "-NoLogo",
-        "-NoProfile",
         "-NoExit",
     ],
 
