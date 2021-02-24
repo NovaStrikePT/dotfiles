@@ -10,6 +10,7 @@ Set-PSReadLineOption `
     -AddToHistoryHandler $null `
     -MaximumHistoryCount 4096  `
     -BellStyle           None  `
+    -PredictionSource    History
 ;
 
 # Map PSReadLine key handlers using chords VSCode understands in its integrated terminals so that default keys work
