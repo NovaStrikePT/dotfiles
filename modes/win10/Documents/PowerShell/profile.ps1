@@ -29,6 +29,59 @@ function arg
     rg.exe --hidden --pretty --smart-case --no-ignore-vcs --glob !.git $args
 }
 
+<#
+.SYNOPSIS
+Shorthand for creating a symbolic link
+
+.PARAMETER Target
+The link target
+
+.PARAMETER LinkPath
+The link to create
+
+.PARAMETER UseTheForce
+Allows overwriting LinkPath if it already exists
+
+.EXAMPLE
+PS> New-Symlink .\README.md my-symlinks\overwrite-me.md
+
+.EXAMPLE
+PS> New-Symlink -UseTheForce .\README.md my-symlinks\overwrite-me.md
+
+#>
+function New-Symlink
+{
+    [CmdletBinding()]
+    Param(
+        [Parameter(Mandatory=$true, Position=0)]
+        [string]
+        $Target,
+
+        [Parameter(Mandatory=$true, Position=1)]
+        [string]
+        $LinkPath,
+
+        #[Parameter(Mandatory=$false, Position=2)]
+        [Switch]
+        $UseTheForce
+    )
+
+    # This should throw an error if $Target does not exist
+    $resolvedPath = Resolve-Path $Target
+
+    # Variable parameters via splatting (see https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_splatting)
+    $newItemParams = @{
+        ItemType = "SymbolicLink";
+        Target   = $resolvedPath;
+        Path     = $LinkPath;
+    }
+    if ($UseTheForce)
+    {
+        $newItemParams["Force"] = $true
+    }
+    New-Item @newItemParams
+}
+
 # Human-readable file sizes
 # Source: https://superuser.com/questions/468782/show-human-readable-file-sizes-in-the-default-powershell-ls-command#answer-468795
 # Example usage: Get-ChildItem | Select-Object Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
