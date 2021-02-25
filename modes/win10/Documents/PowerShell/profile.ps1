@@ -51,7 +51,6 @@ PS> New-Symlink -UseTheForce .\README.md my-symlinks\overwrite-me.md
 #>
 function New-Symlink
 {
-    [CmdletBinding()]
     Param(
         [Parameter(Mandatory=$true, Position=0)]
         [string]
@@ -61,12 +60,10 @@ function New-Symlink
         [string]
         $LinkPath,
 
+        [Parameter(Mandatory=$false)]
         [Switch]
         $UseTheForce
     )
-
-    # Note: we only want the CmdletBinding attribute for the PositionalBinding default argument
-    # See also https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_functions_cmdletbindingattribute#positionalbinding
 
     # This should throw an error if $Target does not exist
     $resolvedPath = Resolve-Path $Target
