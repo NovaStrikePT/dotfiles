@@ -65,8 +65,8 @@ function New-Symlink
         $UseTheForce
     )
 
-    # This should throw an error if $Target does not exist
-    $resolvedPath = Resolve-Path $Target
+    # $Target must be a resolvable path; otherwise, generate a terminating error
+    $resolvedPath = Resolve-Path $Target -ErrorAction Stop
 
     # Variable parameters via splatting (see https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_splatting)
     $newItemParams = @{
