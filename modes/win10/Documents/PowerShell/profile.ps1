@@ -168,5 +168,5 @@ Import-Module posh-git
 # Add a newline after prompt (requires posh-git 1.0+)
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = '`nPS'
 
-# Green path
-$GitPromptSettings.DefaultPromptPath.ForegroundColor = 'Green'
+# Color the path portion of the prompt
+$GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::DarkGreen
