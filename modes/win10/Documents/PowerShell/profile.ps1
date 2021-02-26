@@ -13,6 +13,48 @@ Set-PSReadLineOption `
     -PredictionSource    History
 ;
 
+#region Override default key bindings for PSReadLine's prediction suggestions
+
+# Copied from PowerShell/PSReadLine f8fb650774a0c0e9421d9389f4a6dee5b8718b07 SamplePSReadLineProfile.ps1#L585-L602
+# "Out of the box", `ForwardChar` accepts the entire suggestion text when the cursor is at the end of the line.
+# This custom binding makes `RightArrow` behave similarly - accepting the next word instead of the entire suggestion text.
+Set-PSReadLineKeyHandler -Key RightArrow `
+                         -BriefDescription ForwardCharAndAcceptNextSuggestionWord `
+                         -LongDescription "Move cursor one character to the right in the current editing line or accept the next word in suggestion when it's at the end of current editing line" `
+                         -ScriptBlock {
+    param($key, $arg)
+
+    $line = $null
+    $cursor = $null
+    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+
+    if ($cursor -lt $line.Length) {
+        [Microsoft.PowerShell.PSConsoleReadLine]::ForwardChar($key, $arg)
+    } else {
+        [Microsoft.PowerShell.PSConsoleReadLine]::AcceptNextSuggestionWord($key, $arg)
+    }
+}
+
+# Adapted from the ForwardChar above 👆
+# This custom binding makes `End` do what `ForwardChar` did: accept the entire suggestion text when the cursor is at the end of the line.
+Set-PSReadLineKeyHandler -Key End `
+                         -BriefDescription EndOfLineAndAcceptSuggestion `
+                         -LongDescription "Move cursor to the end of the current editing line or accept the suggestion when it's at the end of current editing line" `
+                         -ScriptBlock {
+    param($key, $arg)
+
+    $line = $null
+    $cursor = $null
+    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+
+    if ($cursor -lt $line.Length) {
+        [Microsoft.PowerShell.PSConsoleReadLine]::EndOfLine($key, $arg)
+    } else {
+        [Microsoft.PowerShell.PSConsoleReadLine]::AcceptSuggestion($key, $arg)
+    }
+}
+#endregion
+
 # Map PSReadLine key handlers using chords VSCode understands in its integrated terminals so that default keys work
 # like the external terminal (e.g. Ctrl+Backspace, Ctrl+Del, Ctrl+Space)
 # See also PowerShell vscode-powershell issue 535
