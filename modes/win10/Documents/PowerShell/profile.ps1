@@ -55,14 +55,20 @@ Set-PSReadLineKeyHandler -Key End `
 }
 #endregion
 
-# Map PSReadLine key handlers using chords VSCode understands in its integrated terminals so that default keys work
-# like the external terminal (e.g. Ctrl+Backspace, Ctrl+Del, Ctrl+Space)
-# See also PowerShell vscode-powershell issue 535
+# Set custom VS Code-specific PSReadLine behaviors
 if ($env:TERM_PROGRAM -eq "vscode")
 {
+    # Map PSReadLine key handlers using chords VSCode understands in its integrated terminals so that default keys work
+    # like the external terminal (e.g. Ctrl+Backspace, Ctrl+Del, Ctrl+Space)
+    # See also PowerShell vscode-powershell issue 535
     Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord
     Set-PSReadLineKeyHandler -Chord 'Alt+D' -Function KillWord
     Set-PSReadLineKeyHandler -Chord 'Ctrl+@' -Function MenuComplete
+
+    # The default InlinePredictionColor appears to be reduced to black in VS Code, rendering it indistinguishable from a dark background theme
+    # Here is the default: `Set-PSReadLineOption -Colors @{ InlinePrediction = "$([char]0x1b)[38;5;238m" }`
+    # Setting it to a ConsoleColor seems to work just fine
+    Set-PSReadLineOption -Colors @{ InlinePrediction = [ConsoleColor]::DarkGray }
 }
 
 # `rg` aliases
@@ -212,3 +218,5 @@ $GitPromptSettings.DefaultPromptBeforeSuffix.Text = '`nPS'
 
 # Color the path portion of the prompt
 $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::DarkGreen
+
+. $HOME\Documents\PowerShell\work.ps1
