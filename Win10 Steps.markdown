@@ -1,9 +1,18 @@
 # Setup Steps
 1. Add user `HOME` environment variable = `%UserProfile%`
-1. Install Ubuntu WSL (18.04)
-	* See https://docs.microsoft.com/en-us/windows/wsl/install-on-server
-	1. Enable Windows Subsystem for Linux (via Turn Windows features on or off)
-	1. Download via Store or appx
+1. [Install WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+	* If a version 1 is already installed, `wsl --list --verbose`, and `--set-version` doesn't seem to work (TBD why):
+		1. Uninstall old distro (Add or remove programs)
+		1. [Unregister](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#unregister-and-reinstall-a-distribution)
+		1. `--set-default-version 2`
+		1. Run through installation steps for new distribution
+	* Ensure [.wslconfig](modes/win10/.wslconfig) is used to constrain memory usage. See also:
+		* microsoft/WSL issues 4166
+		* https://docs.microsoft.com/en-us/windows/wsl/wsl-config#wsl-2-settings
+		* `wsl --shutdown ; wsl --list --verbose` to confirm wsl is not running
+		* Confirm memory usage: `free -h`, `cat /proc/meminfo`, check Task Manager / procexp to see vmmem process.
+		* Confirm `%LocalAppData%\Temp\swap.vhdx` does not exist (cf. `swap=0`)
+	1. Download Ubuntu via Store or [appx](https://docs.microsoft.com/en-us/windows/wsl/install-on-server)
 		* If used appx, to move windows installation, see registry keys in `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss`
 			* Source: https://github.com/Microsoft/WSL/issues/3324
 	1. Run the Ubuntu app for initial installation
