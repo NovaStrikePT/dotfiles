@@ -46,7 +46,7 @@
                 // PowerShell Core
                 "guid": "{5ed93886-be95-40b3-a584-24a09d95490e}",
                 "name": "PowerShell Core",
-                "commandline": "D:\\PowerShell Core\\PowerShell\\pwsh.exe",
+                "commandline": "pwsh.exe",
                 "icon": "D:\\PowerShell Core\\PowerShell\\assets\\Powershell_black.ico",
                 "hidden": false
             },

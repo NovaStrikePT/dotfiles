@@ -17,12 +17,11 @@
     "merge-conflict.diffViewPosition": "Below",
 
     // Use the PowerShell Preview extension
-    // See also TODO about environment variables with respect to vscode issue 2809
     "powershell.developer.featureFlags": [ "PSReadLine" ],
     "powershell.integratedConsole.focusConsoleOnExecute": false,
     "powershell.powerShellAdditionalExePaths": [
         {
-            "exePath": "C:\\PowerShell Core\\pwsh.exe",
+            "exePath": "pwsh.exe",
             "versionName": "PowerShell Core"
         }
     ],
