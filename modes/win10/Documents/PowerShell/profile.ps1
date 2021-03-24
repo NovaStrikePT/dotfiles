@@ -218,5 +218,3 @@ $GitPromptSettings.DefaultPromptBeforeSuffix.Text = '`nPS'
 
 # Color the path portion of the prompt
 $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::DarkGreen
-
-. $HOME\Documents\PowerShell\work.ps1
