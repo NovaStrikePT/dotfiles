@@ -50,6 +50,7 @@
         // Ctrl-Q (be able to use openView shortcut from terminal)
         "workbench.action.openView",
     ],
+    "terminal.integrated.enablePersistentSessions": false,
     "terminal.integrated.fontFamily": "Consolas",
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.profiles.windows": {
