@@ -12,6 +12,18 @@
         "when": "terminalFocus"
     },
 
+    // Binding for focusing on the active editor group (not from Terminal)
+    // (Steal this from a default binding (I don't use Open Editors view))
+    {
+        "key": "ctrl+k e",
+        "command": "-workbench.files.action.focusOpenEditorsView",
+        "when": "workbench.explorer.openEditorsView.active"
+    },
+    {
+        "key": "ctrl+k e",
+        "command": "workbench.action.focusActiveEditorGroup"
+    },
+
     // Use contextual Ctrl+PageUp/PageDown instead of global bindings
     {
         "key": "ctrl+pageup",
