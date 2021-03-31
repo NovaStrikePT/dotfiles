@@ -52,11 +52,19 @@
     ],
     "terminal.integrated.fontFamily": "Consolas",
     "terminal.integrated.fontSize": 14,
+    "terminal.integrated.profiles.windows": {
+        "PowerShell Core": {
+            "path": "pwsh.exe"
+        },
+        "Windows PowerShell": {
+            "path": "powershell.exe"
+        },
+        // Disable some of the built-in profiles
+        "Command Prompt": null,
+        "PowerShell": null,
+        "Git Bash": null
+    },
     "terminal.integrated.shell.windows": "pwsh.exe",
-    "terminal.integrated.shellArgs.windows": [
-        "-ExecutionPolicy", "Bypass",
-        "-NoExit",
-    ],
 
     // Control how new VSCode windows behave
     "window.menuBarVisibility": "toggle",
