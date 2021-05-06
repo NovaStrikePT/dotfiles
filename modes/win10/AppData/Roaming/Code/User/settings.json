@@ -50,6 +50,7 @@
         // Ctrl-Q (be able to use openView shortcut from terminal)
         "workbench.action.openView",
     ],
+    "terminal.integrated.defaultProfile.windows": "PowerShell Core",
     "terminal.integrated.enablePersistentSessions": false,
     "terminal.integrated.fontFamily": "Consolas",
     "terminal.integrated.fontSize": 14,
@@ -65,13 +66,15 @@
         "PowerShell": null,
         "Git Bash": null
     },
-    "terminal.integrated.shell.windows": "pwsh.exe",
+    "terminal.integrated.tabs.enabled": true,
 
     // Control how new VSCode windows behave
     "window.menuBarVisibility": "toggle",
     "window.newWindowDimensions": "inherit",
+    "window.restoreWindows": "preserve",
     "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}${separator}${appName}",
     "window.titleBarStyle": "native",
+    "window.zoomLevel": 0,
 
     "workbench.activityBar.visible": true,
 
@@ -91,7 +94,5 @@
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.untitled.labelFormat": "name",
     "workbench.startupEditor": "newUntitledFile",
-
-    "window.restoreWindows": "preserve",
-    "window.zoomLevel": 0,
+    "workbench.editor.untitled.hint": "hidden",
 }
