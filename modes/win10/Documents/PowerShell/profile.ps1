@@ -126,22 +126,70 @@ function New-Symlink
     New-Item @newItemParams
 }
 
-# Human-readable file sizes
-# Source: https://superuser.com/questions/468782/show-human-readable-file-sizes-in-the-default-powershell-ls-command#answer-468795
-# Example usage: Get-ChildItem | Select-Object Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
+<#
+.SYNOPSIS
+Return a numeric file size as a string in a human-readable format.
+
+.PARAMETER size
+The file size to format.
+
+.PARAMETER unit
+The storage size unit to use when formatting the file size. By default, 'Auto' is used, which follows the "human-readable" approach.
+
+.OUTPUTS
+System.String. Returns the formatted file size.
+
+.EXAMPLE
+PS> Format-FileSize 999 'KB'
+0.98 KB
+
+.EXAMPLE
+Get-ChildItem | Format-Table -Property Mode, LastWriteTime, @{Expression={Format-FileSize -size $_.Length -unit 'MB'};Label='Size';Alignment='Right'}, Name
+Mode  LastWriteTime         HRLength  Name
+----  -------------         --------  ----
+-a--- 8/18/2021 11:50:26 AM  1.70 MB  thing1.txt
+-a--- 8/18/2021 11:51:21 AM 32.85 GB  thing2.txt
+-a--- 4/12/2018 2:08:00 PM   23.00 B  thing3.txt
+-a--- 4/12/2018 2:08:00 PM   1.74 KB  thing4.txt
+
+.NOTES
+Given typical storage volume sizes, we don't expect any file sizes in the petabyte range, so we stop at terabyte.
+
+Implementation based on https://superuser.com/questions/468782/show-human-readable-file-sizes-in-the-default-powershell-ls-command#answer-468795
+
+#>
 function Format-FileSize
 {
     Param(
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [uint64]
-        $size
+        $size,
+
+        [Parameter()]
+        [ValidateSet('Auto', 'KB', 'MB', 'GB', 'TB', 'B')]
+        [string]
+        $unit = 'Auto'
     )
-    If     ($size -gt 1TB) {[string]::Format("{0:0.00} TB", $size / 1TB)}
-    ElseIf ($size -gt 1GB) {[string]::Format("{0:0.00} GB", $size / 1GB)}
-    ElseIf ($size -gt 1MB) {[string]::Format("{0:0.00} MB", $size / 1MB)}
-    ElseIf ($size -gt 1KB) {[string]::Format("{0:0.00} kB", $size / 1KB)}
-    ElseIf ($size -gt 0)   {[string]::Format("{0:0.00} B" , $size)}
-    Else                   {""}
+    if ($unit -eq 'TB' -or ($unit -eq 'Auto' -and $size -gt 1TB))
+    {
+        [string]::Format("{0:0.00} TB", $size / 1TB)
+    }
+    elseif ($unit -eq 'GB' -or ($unit -eq 'Auto' -and $size -gt 1GB))
+    {
+        [string]::Format("{0:0.00} GB", $size / 1GB)
+    }
+    elseif ($unit -eq 'MB' -or ($unit -eq 'Auto' -and $size -gt 1MB))
+    {
+        [string]::Format("{0:0.00} MB", $size / 1MB)
+    }
+    elseif ($unit -eq 'KB' -or ($unit -eq 'Auto' -and $size -gt 1KB))
+    {
+        [string]::Format("{0:0.00} KB", $size / 1KB)
+    }
+    else # ($unit -eq 'B' -or ($unit -eq 'Auto' -and $size -gt 0))
+    {
+        [string]::Format("{0:0.00} B" , $size)
+    }
 }
 
 # Compare input objects for equality
