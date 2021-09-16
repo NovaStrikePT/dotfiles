@@ -4,6 +4,7 @@
 
     "debug.showBreakpointsInOverviewRuler": true,
 
+    "editor.bracketPairColorization.enabled": true,
     "editor.minimap.enabled": true,
     "editor.renderWhitespace": "boundary",
     "editor.rulers": [
