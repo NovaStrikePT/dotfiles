@@ -31,9 +31,7 @@
 
     "search.showLineNumbers": true,
 
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
-
+    "telemetry.telemetryLevel": "off",
 
     "terminal.integrated.allowChords": false,
     "terminal.integrated.commandsToSkipShell": [
