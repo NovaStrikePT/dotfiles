@@ -134,4 +134,9 @@
         "when": "terminalFocus"
     },
 
+    // Let ctrl+delete deleteWordRight globally (this should override the default terminal.sendSequence binding)
+    {
+        "key": "ctrl+delete",
+        "command": "deleteWordRight"
+    },
 ]
