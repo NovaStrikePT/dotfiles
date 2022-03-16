@@ -13,6 +13,12 @@
         { "column": 140, "color": "#FF00003F" },
     ],
 
+    // See also https://certitude.consulting/blog/en/invisible-backdoor/
+    "editor.unicodeHighlight.ambiguousCharacters": true,
+    "editor.unicodeHighlight.includeComments": true,
+    "editor.unicodeHighlight.invisibleCharacters": true,
+    "editor.unicodeHighlight.nonBasicASCII": true,
+
     "git.showCommitInput": false,
     "git.untrackedChanges": "separate",
 
