@@ -5,6 +5,7 @@
 	diffc   = diff --cached
 	diffns  = diff --name-status
 	diffcns = diff --cached --name-status
+	diffst  = diff --stat --stat-graph-width=10
 	dt      = difftool
 	dtc     = difftool --cached
 	dog     = log --decorate --oneline --graph
