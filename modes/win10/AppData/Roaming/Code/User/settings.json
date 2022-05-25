@@ -19,7 +19,12 @@
     "editor.unicodeHighlight.invisibleCharacters": true,
     "editor.unicodeHighlight.nonBasicASCII": true,
 
+    "explorer.fileNesting.enabled": true,
+
+    "files.refactoring.autoSave": true,
+
     "git.showCommitInput": false,
+    "git.timeline.showUncommitted": true,
     "git.untrackedChanges": "separate",
 
     "merge-conflict.diffViewPosition": "Below",
