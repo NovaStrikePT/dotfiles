@@ -23,6 +23,11 @@
 
     "files.refactoring.autoSave": true,
 
+    "git.showActionButton": {
+        "commit": false,
+        "publish": false,
+        "sync": false
+    },
     "git.showCommitInput": false,
     "git.timeline.showUncommitted": true,
     "git.untrackedChanges": "separate",
