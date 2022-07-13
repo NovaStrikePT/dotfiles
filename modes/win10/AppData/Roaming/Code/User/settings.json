@@ -29,16 +29,7 @@
 
     "merge-conflict.diffViewPosition": "Below",
 
-    // Use the PowerShell Preview extension
-    "powershell.developer.featureFlags": [ "PSReadLine" ],
     "powershell.integratedConsole.focusConsoleOnExecute": false,
-    "powershell.powerShellAdditionalExePaths": [
-        {
-            "exePath": "pwsh.exe",
-            "versionName": "PowerShell Core"
-        }
-    ],
-    "powershell.powerShellDefaultVersion": "PowerShell Core",
 
     "search.showLineNumbers": true,
 
@@ -95,7 +86,7 @@
         // Determine if theme file eventually adds this after the VS Code v1.40 release (which added more activityBar styling)
         // See %HOME%\.vscode\extensions\azemoh.one-monokai-0.4.4\themes\OneMonokai-color-theme.json
         "activityBar.activeBackground": "#28495a",
-        "activityBar.activeBorder": "#0981d0",
+        "activityBar.activeBorder"    : "#0981d0",
 
         "editor.lineHighlightBorder" : "#9872A2",
         "statusBar.background"       : "#002b36",
