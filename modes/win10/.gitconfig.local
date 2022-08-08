@@ -10,6 +10,8 @@
 	dtwsl  = difftool  --tool=vscode-wsl --no-symlinks
 	dtcwsl = difftool  --tool=vscode-wsl --no-symlinks --cached
 	mtwsl  = mergetool --tool=vscode-wsl
+[core]
+	editor = code --wait
 [diff]
 	tool = vscode
 [difftool]
