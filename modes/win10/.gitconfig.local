@@ -25,9 +25,9 @@
 	prompt = false
 	keepBackup = false
 [mergetool "vscode"]
-	cmd = code --new-window --wait \"$MERGED\"
+	cmd = code --new-window --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
 [mergetool "vscode-wsl"]
 	# See wslpath notes above
-	cmd = code --new-window --wait \"`wslpath -w $MERGED`\"
+	cmd = code --new-window --wait --merge \"`wslpath -w $REMOTE`\" \"`wslpath -w $LOCAL`\" \"`wslpath -w $BASE`\" \"`wslpath -w $MERGED`\"
 [user]
 	name = Phuong Tran
