@@ -4,6 +4,9 @@
 
     "debug.showBreakpointsInOverviewRuler": true,
 
+    // Intellisense features
+    "editor.acceptSuggestionOnEnter": "off",
+
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.minimap.enabled": true,
