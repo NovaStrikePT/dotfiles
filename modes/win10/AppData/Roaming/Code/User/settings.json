@@ -12,6 +12,7 @@
         { "column": 120, "color": "#FF00FF3F" },
         { "column": 140, "color": "#FF00003F" },
     ],
+    "editor.stickyScroll.enabled": true,
 
     // See also https://certitude.consulting/blog/en/invisible-backdoor/
     "editor.unicodeHighlight.ambiguousCharacters": true,
@@ -73,6 +74,7 @@
         "PowerShell": null,
         "Git Bash": null
     },
+    "terminal.integrated.smoothScrolling": true,
     "terminal.integrated.tabs.enabled": true,
 
     // Control how new VSCode windows behave
