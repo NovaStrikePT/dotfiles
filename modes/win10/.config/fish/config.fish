@@ -4,9 +4,6 @@ set -gx PATH {$HOME}/bin $PATH
 # No welcome message, please
 set -gx fish_greeting ''
 
-# Set default user for Agnoster theme
-set -gx default_user (whoami)
-
 # Set up less to use syntax highlighting (with color) and no de-init (don't clear the screen)
 # source-highlight needs to be installed for syntax highlighting
 set -gx LESS '--RAW-CONTROL-CHARS --quit-if-one-screen --no-init' # Alternatively, `-RFX`
