@@ -3,7 +3,7 @@
 1. [Install WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 	* If a version 1 is already installed, `wsl --list --verbose`, and `--set-version` doesn't seem to work (TBD why):
 		1. Uninstall old distro (Add or remove programs)
-		1. [Unregister](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#unregister-and-reinstall-a-distribution)
+			1. Alt? https://learn.microsoft.com/en-us/windows/wsl/faq#how-do-i-uninstall-a-wsl-distribution-
 		1. `--set-default-version 2`
 		1. Run through installation steps for new distribution
 	* Ensure [.wslconfig](modes/win10/.wslconfig) is used to constrain memory usage. See also:
@@ -55,6 +55,17 @@
 		* Git config files
 		* Most bash configuration files (used by Git bash for Windows)
 		* gVim uses *vimfiles*: `PS> New-Item -ItemType SymbolicLink -Target $HOME\.vim -Path $HOME\vimfiles`
+1. Install [rg](https://github.com/BurntSushi/ripgrep#installation) in Windows and WSL.
+	* Ubuntu WSL: .deb file
+	* Windows
+		* Move/link `.exe` into a %Path% location
+1. Install [fd](https://github.com/sharkdp/fd/releases)
+	* Ubuntu WSL: .deb file
+	* Windows
+		* Move/link `.exe` into a %Path% location
+1. Install [fzf](https://github.com/junegunn/fzf#installation) (just executable?)
+1. Download [fzf.exe for Windows](https://github.com/junegunn/fzf-bin/releases) and install/link into a %Path% location
+	* Create **System** environment variable: FZF_DEFAULT_COMMAND='fd.exe --type file --hidden --no-ignore-vcs --exclude .git 2>nul'
 1. Install plug.vim, plugins
 	```
 	curl -Lo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -68,17 +79,6 @@
 	```
 1. Add to %PATH%: `%UserProfile%\bin\Windows`
 1. Install [gvim](https://www.vim.org/download.php#pc)
-1. Install [rg](https://github.com/BurntSushi/ripgrep#installation) in Windows and WSL.
-	* Ubuntu WSL: .deb file
-	* Windows
-		* Move/link `.exe` into a %Path% location
-1. Install [fd](https://github.com/sharkdp/fd/releases)
-	* Ubuntu WSL: .deb file
-	* Windows
-		* Move/link `.exe` into a %Path% location
-1. Download [fzf.exe for Windows](https://github.com/junegunn/fzf-bin/releases) and install/link into a %Path% location
-	* Needs to exist at `$HOME\.fzf\bin\fzf.exe` for gVim
-	* Create **System** environment variable: FZF_DEFAULT_COMMAND='fd.exe --type file --hidden --no-ignore-vcs --exclude .git 2>nul'
 1. `C:` mount point differs between Git bash and WSL. Create symlink in WSL for consistent behavior: `sudo ln -s /mnt/c /c`
 1. gitcredentials
 	* NEW: Keep an eye on https://github.com/microsoft/Git-Credential-Manager-Core for Linux support

@@ -16,9 +16,6 @@ set visualbell
 call plug#begin('~/.vim/plugged')
 
 " Note: Per vim-plug instructions, use single quotes for plugin indentifiers
-" Note: The fzf install script should automatically find and use a fzf executable if it exists in $PATH
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install' }
-Plug 'junegunn/fzf.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'dag/vim-fish'
 Plug 'tpope/vim-fugitive'
