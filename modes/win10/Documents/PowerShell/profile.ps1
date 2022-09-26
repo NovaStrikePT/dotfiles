@@ -71,10 +71,44 @@ if ($env:TERM_PROGRAM -eq "vscode")
     Set-PSReadLineOption -Colors @{ InlinePrediction = [ConsoleColor]::DarkGray }
 }
 
-# `rg` aliases
+<#
+.SYNOPSIS
+A `rg` (ripgrep) wrapper to specify commonly used flags/behaviors:
+* "Search hidden files and directories."
+* "Case-sensitive match only if the pattern contains uppercase letters."
+* "Don't respect version control ignore files (.gitignore, etc.)"
+* Pretty output
+* Exclude .git files/directories
+
+.NOTES
+See also `rg --help`.
+#>
 function arg
 {
-    rg.exe --hidden --pretty --smart-case --no-ignore-vcs --glob !.git $args
+    rg.exe --hidden --smart-case --no-ignore-vcs --pretty --glob !.git $args
+}
+
+<#
+.SYNOPSIS
+A convenience wrapper for `git pull`.
+
+.LINK
+pug
+#>
+function gup
+{
+    git pull $args
+}
+<#
+.SYNOPSIS
+A convenience wrapper for `git pull`.
+
+.LINK
+gup
+#>
+function pug
+{
+    git pull $args
 }
 
 <#
@@ -192,8 +226,23 @@ function Format-FileSize
     }
 }
 
-# Compare input objects for equality
-# Returns true if and only if all inputs have matching hash contents
+<#
+.SYNOPSIS
+Compare input objects for equality. Returns true if and only if all inputs have matching hash contents
+
+.PARAMETER InputObjects
+An array of paths or hash strings. Test-Path is used to determine whether the input object is a path.
+
+.PARAMETER Algorithm
+This argument is used as described in
+https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.2#-algorithm
+
+.EXAMPLE
+PS> Compare-FileHashes -Algorithm SHA256 -InputObjects 'ff2ffaf555e11311b3381e85d660d870dfc28dbb78ae9fb7b472250b5b0dff4f',.\node-v16.17.0-x64.msi | Format-List
+
+.EXAMPLE
+PS> Compare-FileHashes -Algorithm MD5 -InputObjects './file1.txt','.\file2.txt'
+#>
 function Compare-FileHashes
 {
     Param(
