@@ -36,6 +36,8 @@
     "git.timeline.showUncommitted": true,
     "git.untrackedChanges": "separate",
 
+    "markdown.validate.enabled": true,
+
     "merge-conflict.diffViewPosition": "Below",
 
     "powershell.integratedConsole.focusConsoleOnExecute": false,
