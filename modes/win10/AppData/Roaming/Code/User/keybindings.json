@@ -24,7 +24,7 @@
         "command": "workbench.action.focusActiveEditorGroup"
     },
 
-    // Navigate within side bar and panel views (contextual)
+    //#region Navigate within side bar and panel views (contextual)
     // Also use more iTerm-esque pane navigation (context: terminal)
     { "key": "alt+]", "command": "workbench.action.nextEditor" },
     { "key": "alt+[", "command": "workbench.action.previousEditor" },
@@ -58,40 +58,32 @@
         "command": "workbench.action.terminal.focusPreviousPane",
         "when": "terminalFocus"
     },
+    //#endregion
 
-    // Use fish default keybindings for directory history navigation (prevd/nextd)
+    //#region Send Alt+Left and Alt+Right sequences for fish default keybindings (e.g. prevd/nextd, word navigation, autosuggestion)
     {
         "key": "alt+left",
         "command": "-workbench.action.terminal.focusPreviousPane",
-        "when": "terminalFocus"
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
     },
     {
         "key": "alt+right",
         "command": "-workbench.action.terminal.focusNextPane",
-        "when": "terminalFocus"
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
     },
     {
         "key": "alt+left",
         "command": "workbench.action.terminal.sendSequence",
-        "args": { "text": "\u001b[1;3D\u007f" },
+        "args": { "text": "\u001b[1;3D" },
         "when": "terminalFocus"
         },
     {
         "key": "alt+right",
         "command": "workbench.action.terminal.sendSequence",
-        "args": { "text": "\u001b[1;3C\u007f" },
+        "args": { "text": "\u001b[1;3C" },
         "when": "terminalFocus"
     },
-    {
-        "key": "alt+up",
-        "command": "-workbench.action.terminal.focusPreviousPane",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt+down",
-        "command": "-workbench.action.terminal.focusNextPane",
-        "when": "terminalFocus"
-    },
+    //#endregion
 
     // Use ctrl+q "slow" open view (instead of quick-open)
     {
@@ -131,7 +123,7 @@
     {
         "key": "ctrl+v",
         "command": "-workbench.action.terminal.paste",
-        "when": "terminalFocus"
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
     },
 
     // Let ctrl+delete deleteWordRight globally (this should override the default terminal.sendSequence binding)

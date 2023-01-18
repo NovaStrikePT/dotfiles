@@ -48,19 +48,10 @@
 
     "terminal.integrated.allowChords": false,
     "terminal.integrated.commandsToSkipShell": [
-        // Alt-] and Alt-] are specifically used in terminal view to switch intra-terminal panes
-        "workbench.action.nextPanelView",
-        "workbench.action.nextSideBarView",
-        "workbench.action.previousPanelView",
-        "workbench.action.previousSideBarView",
-
-        // Disable accidental Shift-Del on terminal (when intending to Cut from editor)
-        "workbench.action.terminal.deleteToLineStart",
-
-        // Ctrl-B (be able to toggle sidebar from terminal)
+        // Allow toggling sidebar from terminal via keyboard shortcut (Ctrl+B)
         "workbench.action.toggleSidebarVisibility",
 
-        // Ctrl-Q (be able to use openView shortcut from terminal)
+        // Allow openView from terminal via keyboard shortcut (Ctrl+Q)
         "workbench.action.openView",
     ],
     "terminal.integrated.defaultProfile.windows": "PowerShell Core",
