@@ -27,6 +27,10 @@
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
+        },
+        {
+            "command": "quit",
+            "keys": "ctrl+shift+q"
         }
     ],
     "copyFormatting": "none",
