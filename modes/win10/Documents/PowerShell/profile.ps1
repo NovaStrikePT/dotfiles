@@ -304,8 +304,8 @@ function Get-LastBootupTime
 }
 
 # Use rg and fd ArgumentCompleter registrations
-. $HOME\bin\Windows\_rg.ps1
-. $HOME\bin\Windows\_fd.ps1
+. $HOME\bin\Windows\autocomplete\rg.ps1
+. $HOME\bin\Windows\autocomplete\fd.ps1
 
 # Import posh-git
 Import-Module posh-git
