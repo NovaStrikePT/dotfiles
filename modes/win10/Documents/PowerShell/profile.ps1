@@ -294,6 +294,35 @@ function Compare-FileHashes
     }
 }
 
+<#
+.SYNOPSIS
+Tee the provided input to the pipeline and to the clipboard. See Tee-Object for details.
+
+.EXAMPLE
+PS> Get-Date | Tee-ToClipboard
+
+.EXAMPLE
+PS> Tee-ToClipboard "tee party!"
+
+.LINK
+Tee-Object
+
+.LINK
+Set-Clipboard
+#>
+function Tee-ToClipboard
+{
+    Param(
+        [Parameter(Mandatory=$true, ValueFromPipeLine)]
+        [PSObject]
+        $InputObject
+    )
+
+    Tee-Object -InputObject $InputObject -Variable clipValue
+    Set-Clipboard -Value $clipValue
+}
+Set-Alias -Name tclip -Value Tee-ToClipboard
+
 # Confer with `Find-Module -Name Recycle`
 Set-Alias -Name recycle -Value Remove-ItemSafely
 
