@@ -93,20 +93,9 @@ function arg
 A convenience wrapper for `git pull`.
 
 .LINK
-pug
-#>
-function gup
-{
-    git pull $args
-}
-<#
-.SYNOPSIS
-A convenience wrapper for `git pull`.
-
-.LINK
 gup
 #>
-function pug
+function gup
 {
     git pull $args
 }
