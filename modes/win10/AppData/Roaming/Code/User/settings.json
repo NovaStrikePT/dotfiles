@@ -1,5 +1,14 @@
 {
     "breadcrumbs.enabled": true,
+
+    "accessibility.verbosity.inlineChat": false,
+    "chat.agent.enabled": false,
+    "chat.commandCenter.enabled": false,
+    "chat.edits2.enabled": false,
+    "chat.extensionTools.enabled": false,
+    "chat.mcp.enabled": false,
+    "inlineChat.lineNaturalLanguageHint": false,
+
     "diffEditor.ignoreTrimWhitespace": false,
 
     "debug.showBreakpointsInOverviewRuler": true,
@@ -25,6 +34,8 @@
 
     "explorer.fileNesting.enabled": true,
 
+    "extensions.ignoreRecommendations": true,
+
     "files.refactoring.autoSave": true,
 
     "git.showActionButton": {
@@ -36,6 +47,7 @@
     "git.timeline.showUncommitted": true,
     "git.untrackedChanges": "separate",
 
+    "markdown.preview.doubleClickToSwitchToEditor": false,
     "markdown.validate.enabled": true,
 
     "merge-conflict.diffViewPosition": "Below",
@@ -44,6 +56,7 @@
 
     "search.showLineNumbers": true,
 
+    "telemetry.feedback.enabled": false,
     "telemetry.telemetryLevel": "off",
 
     "terminal.integrated.allowChords": false,
@@ -54,10 +67,12 @@
         // Allow openView from terminal via keyboard shortcut (Ctrl+Q)
         "workbench.action.openView",
     ],
+    "terminal.integrated.confirmOnKill": "always",
     "terminal.integrated.defaultProfile.windows": "PowerShell Core",
     "terminal.integrated.enablePersistentSessions": false,
     "terminal.integrated.fontFamily": "Consolas",
     "terminal.integrated.fontSize": 14,
+    "terminal.integrated.initialHint": false,
     "terminal.integrated.profiles.windows": {
         "PowerShell Core": {
             "path": "pwsh.exe"
@@ -81,8 +96,6 @@
     "window.titleBarStyle": "native",
     "window.zoomLevel": 0,
 
-    "workbench.activityBar.visible": true,
-
     "workbench.colorTheme": "One Monokai",
     "workbench.colorCustomizations": {
         // Assumes One Monokai theme
@@ -96,6 +109,7 @@
         "tab.activeBackground"       : "#005A6FAA",
     },
     "workbench.editor.closeOnFileDelete": false,
+    "workbench.editor.empty.hint": "hidden",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.languageDetection": false,
     "workbench.editor.untitled.labelFormat": "name",
