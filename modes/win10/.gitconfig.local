@@ -6,26 +6,13 @@
 #   -m    translate from a WSL path to a Windows path, with ‘/’ instead of ‘\\’
 #   EX: wslpath ‘c:\users’
 
-[alias]
-	dtwsl  = difftool  --tool=vscode-wsl --no-symlinks
-	dtcwsl = difftool  --tool=vscode-wsl --no-symlinks --cached
-	mtwsl  = mergetool --tool=vscode-wsl
 [core]
-	editor = code --wait
+	editor = codium --wait
 [diff]
-	tool = vscode
+	tool = codium
 [difftool]
 	prompt = false
-[difftool "vscode-wsl"]
-	# See wslpath notes above
-	cmd = code --new-window --wait --diff \"`wslpath -w $LOCAL`\" \"`wslpath -w $REMOTE`\"
-[merge]
-	tool = vscode
-[mergetool]
-	prompt = false
-	keepBackup = false
-[mergetool "vscode-wsl"]
-	# See wslpath notes above
-	cmd = code --new-window --wait --merge \"`wslpath -w $REMOTE`\" \"`wslpath -w $LOCAL`\" \"`wslpath -w $BASE`\" \"`wslpath -w $MERGED`\"
+[difftool "codium"]
+	cmd = codium --wait --diff "$LOCAL" "$REMOTE"
 [user]
 	name = Phuong Tran
