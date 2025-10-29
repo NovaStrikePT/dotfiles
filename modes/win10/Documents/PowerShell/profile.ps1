@@ -321,9 +321,10 @@ function Get-LastBootupTime
     return (Get-CimInstance Win32_OperatingSystem).LastBootUpTime
 }
 
-# Use rg and fd ArgumentCompleter registrations
+# Register ArgumentCompleters
 . $HOME\bin\Windows\autocomplete\rg.ps1
 . $HOME\bin\Windows\autocomplete\fd.ps1
+. $HOME\bin\Windows\autocomplete\bat.ps1
 
 # Import posh-git
 Import-Module posh-git
