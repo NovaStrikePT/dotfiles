@@ -6,7 +6,8 @@
     "chat.commandCenter.enabled": false,
     "chat.edits2.enabled": false,
     "chat.extensionTools.enabled": false,
-    "chat.mcp.enabled": false,
+    "chat.mcp.access": "none",
+    "chat.mcp.autostart": "never",
     "inlineChat.lineNaturalLanguageHint": false,
 
     "diffEditor.ignoreTrimWhitespace": false,
@@ -89,11 +90,11 @@
     "terminal.integrated.tabs.enabled": true,
 
     // Control how new VSCode windows behave
-    "window.menuBarVisibility": "toggle",
+    "window.menuBarVisibility": "visible",
     "window.newWindowDimensions": "inherit",
     "window.restoreWindows": "preserve",
     "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}${separator}${appName}",
-    "window.titleBarStyle": "native",
+    "window.titleBarStyle": "custom",
     "window.zoomLevel": 0,
 
     "workbench.colorTheme": "One Monokai",
@@ -112,7 +113,8 @@
     "workbench.editor.empty.hint": "hidden",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.languageDetection": false,
-    "workbench.editor.untitled.labelFormat": "name",
-    "workbench.startupEditor": "newUntitledFile",
     "workbench.editor.untitled.hint": "hidden",
+    "workbench.editor.untitled.labelFormat": "name",
+    "workbench.settings.alwaysShowAdvancedSettings": true,
+    "workbench.startupEditor": "newUntitledFile",
 }
