@@ -255,6 +255,13 @@ function Compare-FileHashes
 
     for ($i = 0 ; $i -lt $InputObjects.Length ; $i++)
     {
+        # Short-circut: Once a mismatch is detected, we don't need to continue checking
+        if (!$areEqual)
+        {
+            break
+        }
+
+
         $obj = $InputObjects[$i]
 
         # If the input object is a file path, compute its hash value
@@ -263,12 +270,21 @@ function Compare-FileHashes
             $hashes[$i] = (Get-FileHash -Algorithm $Algorithm -Path $obj).Hash
         }
         # Otherwise, by default, the input object is taken to be a literal hash value
+        # However literal hashes may contain prefixes, e.g. `sha256:somehashstring`
+        # Remove that prefix (if exists) for comparison
+        else
+        {
+            $indexOfColon = $obj.IndexOf(':')
+            Write-Host $indexOfColon
+            if ($indexOfColon -ne -1)
+            {
+                $hashes[$i] = $obj.SubString($indexOfColon + 1)
+            }
+        }
 
-        # Short-circut:
-        # * Once a mismatch is detected, we don't need to continue checking
-        # * Nothing to compare first object to
+        # Skip comparing first object to nothing
         # Use case-insensitive comparison for file hash values
-        if ($areEqual -and ($i -gt 0) -and ($hashes[$i] -ne $hashes[$i - 1]))
+        if (($i -gt 0) -and ($hashes[$i] -ne $hashes[$i - 1]))
         {
             $areEqual = $false
         }
