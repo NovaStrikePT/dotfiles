@@ -342,6 +342,9 @@ function Get-LastBootupTime
 . $HOME\bin\Windows\autocomplete\fd.ps1
 . $HOME\bin\Windows\autocomplete\bat.ps1
 
+# Other custom functions
+. $HOME\Documents\PowerShell\Move-ToRecycleBin.ps1
+
 # Import posh-git
 Import-Module posh-git
 
