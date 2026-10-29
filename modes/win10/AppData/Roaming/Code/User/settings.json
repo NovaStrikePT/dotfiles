@@ -99,6 +99,12 @@
     "window.zoomLevel": 0,
 
     "workbench.colorTheme": "Monokai Dimmed",
+    "workbench.colorCustomizations": {
+        "[Monokai Dimmed]": {
+            "activityBar.activeBackground": "#28495A",
+            "tab.activeBackground": "#005A6F88",
+        }
+    },
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.empty.hint": "hidden",
     "workbench.editor.highlightModifiedTabs": true,
